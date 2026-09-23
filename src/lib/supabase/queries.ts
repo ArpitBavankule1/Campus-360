@@ -650,3 +650,52 @@ export async function getUserNotifications(userId?: string) {
   }
   return MOCK_NOTIFICATIONS;
 }
+
+/**
+ * Fetch Location By ID
+ */
+export async function getLocationById(id: string): Promise<LocationRow | null> {
+  const supabase = createClient();
+  try {
+    const { data, error } = await supabase
+      .from("locations")
+      .select("*")
+      .eq("id", id)
+      .single();
+
+    if (!error && data) {
+      return data;
+    }
+  } catch {
+    // fallback
+  }
+
+  const found = MOCK_LOCATIONS.find((loc) => loc.id === id);
+  return found || null;
+}
+
+/**
+ * Update Profile Information
+ */
+export async function updateUserProfile(
+  userId: string,
+  updates: Partial<Database["public"]["Tables"]["profiles"]["Update"]>
+) {
+  const supabase = createClient();
+  try {
+    const { data, error } = await supabase
+      .from("profiles")
+      .update(updates)
+      .eq("id", userId)
+      .select()
+      .single();
+
+    if (error) {
+      return { success: false, error: error.message };
+    }
+    return { success: true, data };
+  } catch (err: any) {
+    return { success: false, error: err?.message || "Failed to update profile" };
+  }
+}
+
