@@ -16,6 +16,7 @@ export type EventRow = Database["public"]["Tables"]["events"]["Row"];
 export type FacilityRow = Database["public"]["Tables"]["facilities"]["Row"];
 export type HelpRequestRow = Database["public"]["Tables"]["help_requests"]["Row"];
 export type NotificationRow = Database["public"]["Tables"]["notifications"]["Row"];
+export type DepartmentRow = Database["public"]["Tables"]["departments"]["Row"];
 
 // High-fidelity fallback data for demonstration & offline development
 export const MOCK_LOCATIONS: LocationRow[] = [
@@ -698,4 +699,183 @@ export async function updateUserProfile(
     return { success: false, error: err?.message || "Failed to update profile" };
   }
 }
+
+export const MOCK_DEPARTMENTS: DepartmentRow[] = [
+  {
+    id: "a1111111-1111-4111-8111-111111111111",
+    college_id: "11111111-1111-4111-8111-111111111111",
+    name: "Computer Science & Engineering",
+    code: "CSE",
+    description: "Pioneering research in artificial intelligence, distributed systems, algorithms, and cybersecurity.",
+    building: "Alan Turing Block (Block A)",
+    room_number: "A-301",
+    contact_email: "cse@demo-apex.edu",
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+  },
+  {
+    id: "a2222222-2222-4222-8222-222222222222",
+    college_id: "11111111-1111-4111-8111-111111111111",
+    name: "Information Technology",
+    code: "IT",
+    description: "Focusing on enterprise cloud architecture, mobile app engineering, devops, and full-stack software.",
+    building: "Ada Lovelace Block (Block B)",
+    room_number: "B-205",
+    contact_email: "it@demo-apex.edu",
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+  },
+  {
+    id: "a3333333-3333-4333-8333-333333333333",
+    college_id: "11111111-1111-4111-8111-111111111111",
+    name: "Electronics & Telecommunication",
+    code: "ECE",
+    description: "Specialized in VLSI circuit design, embedded microcontrollers, IoT hardware, and signal processing.",
+    building: "Claude Shannon Hall (Block C)",
+    room_number: "C-102",
+    contact_email: "ece@demo-apex.edu",
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+  },
+  {
+    id: "a4444444-4444-4444-8444-444444444444",
+    college_id: "11111111-1111-4111-8111-111111111111",
+    name: "Mechanical Engineering & Robotics",
+    code: "MECH",
+    description: "Autonomous robotics, thermodynamics, additive manufacturing, CAD/CAM, and automotive mechanics.",
+    building: "Newton Engineering Wing (Block E)",
+    room_number: "N-101",
+    contact_email: "mech@demo-apex.edu",
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+  },
+];
+
+/**
+ * Fetch Department Directory
+ */
+export async function getDepartments(): Promise<DepartmentRow[]> {
+  const supabase = createClient();
+  try {
+    const { data, error } = await supabase
+      .from("departments")
+      .select("*")
+      .order("name", { ascending: true });
+    if (!error && data && data.length > 0) {
+      return data;
+    }
+  } catch {
+    // fallback
+  }
+  return MOCK_DEPARTMENTS;
+}
+
+/**
+ * Fetch Timetable with Filters
+ */
+export async function getTimetableList(params?: {
+  day?: string;
+  year?: number;
+  division?: string;
+  departmentId?: string;
+}): Promise<TimetableRow[]> {
+  const supabase = createClient();
+  try {
+    let query = supabase.from("timetable").select("*").order("start_time", { ascending: true });
+
+    if (params?.day && params.day !== "all") query = query.eq("day_of_week", params.day);
+    if (params?.year) query = query.eq("year", params.year);
+    if (params?.division && params.division !== "all") query = query.eq("division", params.division);
+    if (params?.departmentId) query = query.eq("department_id", params.departmentId);
+
+    const { data, error } = await query;
+    if (!error && data && data.length > 0) {
+      return data;
+    }
+  } catch {
+    // fallback
+  }
+
+  let list = MOCK_TIMETABLE;
+  if (params?.day && params.day !== "all") {
+    list = list.filter((t) => t.day_of_week.toLowerCase() === params.day!.toLowerCase());
+  }
+  if (params?.year) {
+    list = list.filter((t) => t.year === params.year);
+  }
+  if (params?.division && params.division !== "all") {
+    list = list.filter((t) => t.division.toUpperCase() === params.division!.toUpperCase());
+  }
+  return list;
+}
+
+/**
+ * Fetch Notices with Filters
+ */
+export async function getNoticesList(params?: {
+  category?: string;
+  priority?: string;
+  search?: string;
+}): Promise<NoticeRow[]> {
+  const supabase = createClient();
+  try {
+    let query = supabase.from("notices").select("*").order("published_at", { ascending: false });
+
+    if (params?.category && params.category !== "all") query = query.eq("category", params.category as any);
+    if (params?.priority && params.priority !== "all") query = query.eq("priority", params.priority as any);
+
+    const { data, error } = await query;
+    if (!error && data && data.length > 0) {
+      return data;
+    }
+  } catch {
+    // fallback
+  }
+
+  let list = MOCK_NOTICES;
+  if (params?.category && params.category !== "all") {
+    list = list.filter((n) => n.category === params.category);
+  }
+  if (params?.priority && params.priority !== "all") {
+    list = list.filter((n) => n.priority === params.priority);
+  }
+  if (params?.search && params.search.trim()) {
+    const q = params.search.toLowerCase();
+    list = list.filter((n) => n.title.toLowerCase().includes(q) || n.content.toLowerCase().includes(q));
+  }
+  return list;
+}
+
+/**
+ * Fetch Events with Filters
+ */
+export async function getEventsList(params?: {
+  category?: string;
+  search?: string;
+}): Promise<EventRow[]> {
+  const supabase = createClient();
+  try {
+    let query = supabase.from("events").select("*").order("start_date", { ascending: true });
+
+    if (params?.category && params.category !== "all") query = query.eq("category", params.category as any);
+
+    const { data, error } = await query;
+    if (!error && data && data.length > 0) {
+      return data;
+    }
+  } catch {
+    // fallback
+  }
+
+  let list = MOCK_EVENTS;
+  if (params?.category && params.category !== "all") {
+    list = list.filter((e) => e.category === params.category);
+  }
+  if (params?.search && params.search.trim()) {
+    const q = params.search.toLowerCase();
+    list = list.filter((e) => e.title.toLowerCase().includes(q) || e.description.toLowerCase().includes(q));
+  }
+  return list;
+}
+
 

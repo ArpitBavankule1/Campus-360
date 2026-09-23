@@ -69,6 +69,11 @@ const studentNavItems: NavItem[] = [
     icon: Users,
   },
   {
+    title: "Academic Depts",
+    href: "/departments",
+    icon: School,
+  },
+  {
     title: "Campus AI Assistant",
     href: "/ai-assistant",
     icon: Bot,
