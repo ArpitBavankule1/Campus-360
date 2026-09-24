@@ -878,4 +878,338 @@ export async function getEventsList(params?: {
   return list;
 }
 
+export type HelpRequestReplyRow = Database["public"]["Tables"]["help_request_replies"]["Row"];
+
+export interface HelpRequestWithDetails extends HelpRequestRow {
+  replies?: HelpRequestReplyRow[];
+  department?: DepartmentRow | null;
+}
+
+export const MOCK_HELP_REQUEST_REPLIES: Record<string, HelpRequestReplyRow[]> = {
+  "hr-11111111-1111-4111-8111-111111111111": [
+    {
+      id: "rep-1",
+      request_id: "hr-11111111-1111-4111-8111-111111111111",
+      sender_id: "mock-student",
+      message: "The access point in Corridor C-2 keeps blinking amber and all devices disconnect around 8 PM.",
+      created_at: new Date(Date.now() - 48 * 3600 * 1000).toISOString(),
+    },
+    {
+      id: "rep-2",
+      request_id: "hr-11111111-1111-4111-8111-111111111111",
+      sender_id: "staff-it",
+      message: "Hello! Our network engineer has dispatched an order to replace the Cisco PoE switch on 2nd floor today.",
+      created_at: new Date(Date.now() - 24 * 3600 * 1000).toISOString(),
+    },
+  ],
+  "hr-22222222-2222-4111-8111-111111111111": [
+    {
+      id: "rep-3",
+      request_id: "hr-22222222-2222-4111-8111-111111111111",
+      sender_id: "mock-student",
+      message: "Whenever I tap my card at Turnstile Gate 3 in the Central Library, it flashes red and beeps.",
+      created_at: new Date(Date.now() - 72 * 3600 * 1000).toISOString(),
+    },
+    {
+      id: "rep-4",
+      request_id: "hr-22222222-2222-4111-8111-111111111111",
+      sender_id: "staff-lib",
+      message: "Your RFID transponder frequency has been refreshed and synced with turnstiles 1-4. Please test at Desk 2.",
+      created_at: new Date(Date.now() - 12 * 3600 * 1000).toISOString(),
+    },
+  ],
+  "hr-33333333-3333-4111-8111-111111111111": [
+    {
+      id: "rep-5",
+      request_id: "hr-33333333-3333-4111-8111-111111111111",
+      sender_id: "mock-student",
+      message: "We need access to the NVIDIA DGX server in AI Lab B-108 for our final year computer vision capstone project.",
+      created_at: new Date(Date.now() - 14 * 3600 * 1000).toISOString(),
+    },
+    {
+      id: "rep-6",
+      request_id: "hr-33333333-3333-4111-8111-111111111111",
+      sender_id: "staff-hod",
+      message: "Forwarded to Prof. Anita Desai for project guide endorsement.",
+      created_at: new Date(Date.now() - 6 * 3600 * 1000).toISOString(),
+    },
+  ],
+};
+
+export const MOCK_HELP_REQUESTS: HelpRequestWithDetails[] = [
+  {
+    id: "hr-11111111-1111-4111-8111-111111111111",
+    college_id: "11111111-1111-4111-8111-111111111111",
+    student_id: "mock-student",
+    department_id: "a1111111-1111-4111-8111-111111111111",
+    category: "IT & Network",
+    subject: "Hostel Wi-Fi signal drops continuously in Wing C (2nd Floor)",
+    description: "The primary Wi-Fi access point in Boys Hostel Block C, 2nd floor suffers packet loss and drops every 10 minutes between 8:00 PM and midnight.",
+    priority: "high",
+    status: "in_progress",
+    assigned_to: "IT Infrastructure Team",
+    resolution_notes: null,
+    created_at: new Date(Date.now() - 2 * 24 * 3600 * 1000).toISOString(),
+    updated_at: new Date(Date.now() - 24 * 3600 * 1000).toISOString(),
+  },
+  {
+    id: "hr-22222222-2222-4111-8111-111111111111",
+    college_id: "11111111-1111-4111-8111-111111111111",
+    student_id: "mock-student",
+    department_id: null,
+    category: "Library & RFID",
+    subject: "Digital RFID Library card authentication failing at turnstiles",
+    description: "My student RFID card triggers an error sound when checking in at Central Library Turnstile 3.",
+    priority: "medium",
+    status: "resolved",
+    assigned_to: "Library Operations Desk",
+    resolution_notes: "Card transponder re-encoded and calibrated at library circulation desk.",
+    created_at: new Date(Date.now() - 4 * 24 * 3600 * 1000).toISOString(),
+    updated_at: new Date(Date.now() - 12 * 3600 * 1000).toISOString(),
+  },
+  {
+    id: "hr-33333333-3333-4111-8111-111111111111",
+    college_id: "11111111-1111-4111-8111-111111111111",
+    student_id: "mock-student",
+    department_id: "a1111111-1111-4111-8111-111111111111",
+    category: "Laboratory",
+    subject: "Access clearance for AI Robotics Lab (B-108) Workstations",
+    description: "Requesting server access permissions for training deep learning models on GPU clusters during evening research hours.",
+    priority: "medium",
+    status: "under_review",
+    assigned_to: "Prof. Anita Desai",
+    resolution_notes: null,
+    created_at: new Date(Date.now() - 18 * 3600 * 1000).toISOString(),
+    updated_at: new Date(Date.now() - 6 * 3600 * 1000).toISOString(),
+  },
+  {
+    id: "hr-44444444-4444-4111-8111-111111111111",
+    college_id: "11111111-1111-4111-8111-111111111111",
+    student_id: "mock-student",
+    department_id: "a1111111-1111-4111-8111-111111111111",
+    category: "Examinations",
+    subject: "Question mark totaling inquiry in Distributed Systems midterm",
+    description: "Submitted request for re-verification of question 4(b) total marks on paper ID CS-501.",
+    priority: "urgent",
+    status: "submitted",
+    assigned_to: null,
+    resolution_notes: null,
+    created_at: new Date(Date.now() - 4 * 3600 * 1000).toISOString(),
+    updated_at: new Date(Date.now() - 4 * 3600 * 1000).toISOString(),
+  },
+  {
+    id: "hr-55555555-5555-4111-8111-111111111111",
+    college_id: "11111111-1111-4111-8111-111111111111",
+    student_id: "mock-student",
+    department_id: null,
+    category: "Hostel & Facilities",
+    subject: "Hostel Mess Rebate adjustment for Inter-College Sports tour",
+    description: "Applied for 5-day mess credit deduction due to official college athletics tournament attendance in Pune.",
+    priority: "low",
+    status: "resolved",
+    assigned_to: "Accounts & Hostel Warden",
+    resolution_notes: "Rebate credited to next month hostel dues invoice.",
+    created_at: new Date(Date.now() - 8 * 24 * 3600 * 1000).toISOString(),
+    updated_at: new Date(Date.now() - 6 * 24 * 3600 * 1000).toISOString(),
+  },
+];
+
+/**
+ * Fetch Help Desk Requests
+ */
+export async function getHelpRequests(params?: {
+  studentId?: string;
+  status?: string;
+  category?: string;
+  search?: string;
+}): Promise<HelpRequestWithDetails[]> {
+  const supabase = createClient();
+  try {
+    let query = supabase.from("help_requests").select("*").order("created_at", { ascending: false });
+
+    if (params?.studentId) query = query.eq("student_id", params.studentId);
+    if (params?.status && params.status !== "all") query = query.eq("status", params.status as any);
+    if (params?.category && params.category !== "all") query = query.eq("category", params.category);
+
+    const { data, error } = await query;
+    if (!error && data && data.length > 0) {
+      return data;
+    }
+  } catch {
+    // fallback
+  }
+
+  let list = MOCK_HELP_REQUESTS;
+  if (params?.status && params.status !== "all") {
+    list = list.filter((r) => r.status === params.status);
+  }
+  if (params?.category && params.category !== "all") {
+    list = list.filter((r) => r.category.toLowerCase().includes(params.category!.toLowerCase()));
+  }
+  if (params?.search && params.search.trim()) {
+    const q = params.search.toLowerCase();
+    list = list.filter(
+      (r) =>
+        r.subject.toLowerCase().includes(q) ||
+        r.description.toLowerCase().includes(q) ||
+        r.category.toLowerCase().includes(q)
+    );
+  }
+  return list;
+}
+
+/**
+ * Fetch Single Help Request by ID
+ */
+export async function getHelpRequestById(id: string): Promise<HelpRequestWithDetails | null> {
+  const supabase = createClient();
+  try {
+    const { data, error } = await supabase
+      .from("help_requests")
+      .select("*, help_request_replies(*)")
+      .eq("id", id)
+      .single();
+
+    if (!error && data) {
+      return {
+        ...data,
+        replies: (data as any).help_request_replies || [],
+      };
+    }
+  } catch {
+    // fallback
+  }
+
+  const found = MOCK_HELP_REQUESTS.find((r) => r.id === id);
+  if (!found) return null;
+  return {
+    ...found,
+    replies: MOCK_HELP_REQUEST_REPLIES[id] || [],
+  };
+}
+
+/**
+ * Create a new Help Request
+ */
+export async function createHelpRequest(data: {
+  college_id: string;
+  student_id: string;
+  department_id?: string | null;
+  category: string;
+  subject: string;
+  description: string;
+  priority: Database["public"]["Enums"]["request_priority"];
+}) {
+  const supabase = createClient();
+  try {
+    const { data: created, error } = await supabase
+      .from("help_requests")
+      .insert({
+        ...data,
+        status: "submitted",
+      })
+      .select()
+      .single();
+
+    if (!error && created) {
+      return { success: true, data: created };
+    }
+  } catch {
+    // fallback
+  }
+
+  // Local fallback response
+  const newMockTicket: HelpRequestWithDetails = {
+    id: `hr-${Date.now()}`,
+    college_id: data.college_id,
+    student_id: data.student_id,
+    department_id: data.department_id || null,
+    category: data.category,
+    subject: data.subject,
+    description: data.description,
+    priority: data.priority,
+    status: "submitted",
+    assigned_to: "Help Desk Central Triage",
+    resolution_notes: null,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+    replies: [],
+  };
+
+  return { success: true, data: newMockTicket };
+}
+
+/**
+ * Add a reply to a Help Request
+ */
+export async function addHelpRequestReply(params: {
+  requestId: string;
+  senderId: string;
+  message: string;
+}) {
+  const supabase = createClient();
+  try {
+    const { data, error } = await supabase
+      .from("help_request_replies")
+      .insert({
+        request_id: params.requestId,
+        sender_id: params.senderId,
+        message: params.message,
+      })
+      .select()
+      .single();
+
+    if (!error && data) {
+      return { success: true, data };
+    }
+  } catch {
+    // fallback
+  }
+
+  const mockReply: HelpRequestReplyRow = {
+    id: `rep-${Date.now()}`,
+    request_id: params.requestId,
+    sender_id: params.senderId,
+    message: params.message,
+    created_at: new Date().toISOString(),
+  };
+
+  return { success: true, data: mockReply };
+}
+
+/**
+ * Fetch Filtered Notifications
+ */
+export async function getNotificationsList(params?: {
+  userId?: string;
+  type?: string;
+  unreadOnly?: boolean;
+}): Promise<NotificationRow[]> {
+  const supabase = createClient();
+  try {
+    let query = supabase.from("notifications").select("*").order("created_at", { ascending: false });
+
+    if (params?.userId) query = query.eq("user_id", params.userId);
+    if (params?.type && params.type !== "all") query = query.eq("type", params.type as any);
+    if (params?.unreadOnly) query = query.eq("is_read", false);
+
+    const { data, error } = await query;
+    if (!error && data && data.length > 0) {
+      return data;
+    }
+  } catch {
+    // fallback
+  }
+
+  let list = MOCK_NOTIFICATIONS;
+  if (params?.type && params.type !== "all") {
+    list = list.filter((n) => n.type === params.type);
+  }
+  if (params?.unreadOnly) {
+    list = list.filter((n) => !n.is_read);
+  }
+  return list;
+}
+
+
 

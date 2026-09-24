@@ -131,13 +131,20 @@ export function NotificationBell() {
             )}
           </div>
 
-          <div className="p-2 border-t bg-muted/20 text-center">
+          <div className="p-2 border-t bg-muted/20 flex items-center justify-between text-xs px-3">
+            <Link
+              href="/notifications"
+              onClick={() => setIsOpen(false)}
+              className="text-primary hover:underline font-semibold block py-1"
+            >
+              Open Alerts Center →
+            </Link>
             <Link
               href="/notices"
               onClick={() => setIsOpen(false)}
-              className="text-xs text-muted-foreground hover:text-foreground font-medium block py-1"
+              className="text-muted-foreground hover:text-foreground font-medium block py-1"
             >
-              Browse all institutional notices
+              Notices
             </Link>
           </div>
         </div>
