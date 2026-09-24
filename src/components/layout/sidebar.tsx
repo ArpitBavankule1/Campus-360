@@ -15,7 +15,8 @@ import {
   GraduationCap,
   ChevronRight,
   School,
-  Bot
+  Bot,
+  Building2,
 } from "lucide-react";
 import { useAuth } from "@/components/layout/auth-provider";
 import { Badge } from "@/components/ui/badge";
@@ -64,7 +65,7 @@ const studentNavItems: NavItem[] = [
     icon: Sparkles,
   },
   {
-    title: "Faculty Directory",
+    title: "Faculty Hub",
     href: "/faculty",
     icon: Users,
   },
@@ -72,6 +73,12 @@ const studentNavItems: NavItem[] = [
     title: "Academic Depts",
     href: "/departments",
     icon: School,
+  },
+  {
+    title: "HOD Dept Portal",
+    href: "/hod",
+    icon: Building2,
+    badge: "Staff",
   },
   {
     title: "Campus AI Assistant",
