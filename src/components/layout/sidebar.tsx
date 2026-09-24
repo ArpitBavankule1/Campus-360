@@ -17,6 +17,7 @@ import {
   School,
   Bot,
   Building2,
+  ShieldAlert,
 } from "lucide-react";
 import { useAuth } from "@/components/layout/auth-provider";
 import { Badge } from "@/components/ui/badge";
@@ -79,6 +80,12 @@ const studentNavItems: NavItem[] = [
     href: "/hod",
     icon: Building2,
     badge: "Staff",
+  },
+  {
+    title: "Admin Console",
+    href: "/admin",
+    icon: ShieldAlert,
+    badge: "Admin",
   },
   {
     title: "Campus AI Assistant",
