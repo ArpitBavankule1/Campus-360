@@ -27,18 +27,23 @@ export function Footer() {
             <h4 className="text-sm font-semibold">Platform</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
-                <Link href="/#features" className="hover:text-foreground transition-colors">
+                <Link href="/features" className="hover:text-foreground transition-colors">
                   Features
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="hover:text-foreground transition-colors">
-                  About
+                <Link href="/map" className="hover:text-foreground transition-colors">
+                  Campus Map
                 </Link>
               </li>
               <li>
-                <Link href="/about#contact" className="hover:text-foreground transition-colors">
-                  Contact
+                <Link href="/about" className="hover:text-foreground transition-colors">
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="hover:text-foreground transition-colors">
+                  Contact & Inquiries
                 </Link>
               </li>
             </ul>

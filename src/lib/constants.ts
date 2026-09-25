@@ -12,9 +12,10 @@ export const APP_LONG_DESCRIPTION =
 // Navigation links for the public site
 export const PUBLIC_NAV_LINKS = [
   { title: "Home", href: "/" },
+  { title: "Features", href: "/features" },
+  { title: "Campus Map", href: "/map" },
   { title: "About", href: "/about" },
-  { title: "Features", href: "/#features" },
-  { title: "Contact", href: "/about#contact" },
+  { title: "Contact", href: "/contact" },
 ] as const;
 
 // Feature cards for the landing page

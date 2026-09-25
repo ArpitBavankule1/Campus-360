@@ -13,8 +13,10 @@ import {
   Building2,
   Calendar,
   ChevronRight,
+  ShieldCheck,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { PublicHeader } from "@/components/layout/public-header";
 import { Footer } from "@/components/layout/footer";
@@ -82,7 +84,7 @@ export default function HomePage() {
                   Get Started
                   <ArrowRight className="h-4 w-4" />
                 </Button>
-                <Button size="lg" variant="outline" className="gap-2 px-8" render={<Link href="/#features" />}>
+                <Button size="lg" variant="outline" className="gap-2 px-8" render={<Link href="/features" />}>
                   Explore Features
                   <ChevronRight className="h-4 w-4" />
                 </Button>
@@ -129,6 +131,104 @@ export default function HomePage() {
                   </Card>
                 );
               })}
+            </div>
+
+            <div className="mt-12 text-center">
+              <Button size="lg" variant="outline" className="gap-2 rounded-xl" render={<Link href="/features" />}>
+                <span>Explore Full Capabilities & Role Matrix</span>
+                <ArrowRight className="h-4 w-4" />
+              </Button>
+            </div>
+          </div>
+        </section>
+
+        {/* ======================== ROLE PERSONAS ======================== */}
+        <section className="py-20 sm:py-28 border-t border-border/40">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="mx-auto max-w-2xl text-center mb-16">
+              <Badge variant="outline" className="mb-3 px-3 py-1 text-xs border-primary/30 text-primary">
+                Ecosystem Architecture
+              </Badge>
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+                Dedicated Portals for Every Campus Role
+              </h2>
+              <p className="mt-4 text-base text-muted-foreground sm:text-lg">
+                Role-based routing automatically serves customized workspaces tailored to daily academic responsibilities.
+              </p>
+            </div>
+
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {/* Student */}
+              <Card className="border-border/60 bg-card/80 hover:border-primary/40 transition-all hover:shadow-lg">
+                <CardContent className="p-6">
+                  <div className="h-10 w-10 rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-4">
+                    <GraduationCap className="h-5 w-5" />
+                  </div>
+                  <h3 className="font-bold text-base text-foreground">Students</h3>
+                  <p className="mt-1.5 text-xs text-muted-foreground leading-relaxed">
+                    Personalized daily lecture schedule, holographic digital student ID card, campus map, and AI assistant.
+                  </p>
+                  <div className="mt-4 pt-4 border-t border-border/50 text-[11px] font-medium text-primary">
+                    <Link href="/dashboard" className="inline-flex items-center gap-1 hover:underline">
+                      Explore Student Portal &rarr;
+                    </Link>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Faculty */}
+              <Card className="border-border/60 bg-card/80 hover:border-primary/40 transition-all hover:shadow-lg">
+                <CardContent className="p-6">
+                  <div className="h-10 w-10 rounded-xl bg-purple-500/10 text-purple-600 dark:text-purple-400 flex items-center justify-center mb-4">
+                    <Users className="h-5 w-5" />
+                  </div>
+                  <h3 className="font-bold text-base text-foreground">Faculty</h3>
+                  <p className="mt-1.5 text-xs text-muted-foreground leading-relaxed">
+                    Dual-mode teaching schedule, quick circular publishing, student query response threads, and exam alerts.
+                  </p>
+                  <div className="mt-4 pt-4 border-t border-border/50 text-[11px] font-medium text-primary">
+                    <Link href="/faculty" className="inline-flex items-center gap-1 hover:underline">
+                      Explore Teaching Hub &rarr;
+                    </Link>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* HOD */}
+              <Card className="border-border/60 bg-card/80 hover:border-primary/40 transition-all hover:shadow-lg">
+                <CardContent className="p-6">
+                  <div className="h-10 w-10 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-4">
+                    <Building2 className="h-5 w-5" />
+                  </div>
+                  <h3 className="font-bold text-base text-foreground">Department Heads</h3>
+                  <p className="mt-1.5 text-xs text-muted-foreground leading-relaxed">
+                    Department analytics, faculty roster, student workload overview, timetable oversight, and academic policies.
+                  </p>
+                  <div className="mt-4 pt-4 border-t border-border/50 text-[11px] font-medium text-primary">
+                    <Link href="/hod" className="inline-flex items-center gap-1 hover:underline">
+                      Explore HOD Portal &rarr;
+                    </Link>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Administrator */}
+              <Card className="border-border/60 bg-card/80 hover:border-primary/40 transition-all hover:shadow-lg">
+                <CardContent className="p-6">
+                  <div className="h-10 w-10 rounded-xl bg-rose-500/10 text-rose-600 dark:text-rose-400 flex items-center justify-center mb-4">
+                    <ShieldCheck className="h-5 w-5" />
+                  </div>
+                  <h3 className="font-bold text-base text-foreground">Administrators</h3>
+                  <p className="mt-1.5 text-xs text-muted-foreground leading-relaxed">
+                    Complete multi-resource CRUD for students, staff, facilities, courses, and system telemetry with tenant scoping.
+                  </p>
+                  <div className="mt-4 pt-4 border-t border-border/50 text-[11px] font-medium text-primary">
+                    <Link href="/admin" className="inline-flex items-center gap-1 hover:underline">
+                      Explore Admin Portal &rarr;
+                    </Link>
+                  </div>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </section>
