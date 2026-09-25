@@ -1375,6 +1375,126 @@ export async function updateTicketStatusAndResolution(
   };
 }
 
+export type BookmarkRow = Database["public"]["Tables"]["bookmarks"]["Row"];
+export type BookmarkType = Database["public"]["Enums"]["bookmark_type"];
+
+export interface EnrichedBookmark extends BookmarkRow {
+  title: string;
+  description?: string | null;
+  href: string;
+  categoryLabel?: string;
+  imageUrl?: string | null;
+}
+
+export const MOCK_BOOKMARKS: EnrichedBookmark[] = [
+  {
+    id: "bm-1",
+    user_id: "mock-student",
+    entity_type: "location",
+    entity_id: "c2222222-2222-4111-8111-111111111111",
+    title: "Central Digital Library & Research Commons",
+    description: "Vikram Sarabhai Knowledge Hub • Quiet Study Pods & IEEE Digital Subscriptions",
+    href: "/explore/c2222222-2222-4111-8111-111111111111",
+    categoryLabel: "Library",
+    imageUrl: "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=800&auto=format&fit=crop&q=80",
+    created_at: new Date(Date.now() - 3 * 24 * 3600 * 1000).toISOString(),
+  },
+  {
+    id: "bm-2",
+    user_id: "mock-student",
+    entity_type: "location",
+    entity_id: "c3333333-3333-4111-8111-111111111111",
+    title: "Apex Innovation & AI Robotics Hub",
+    description: "Ada Lovelace Block (B-108) • NVIDIA DGX GPU workstations & IoT testbeds",
+    href: "/explore/c3333333-3333-4111-8111-111111111111",
+    categoryLabel: "Laboratory",
+    imageUrl: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&auto=format&fit=crop&q=80",
+    created_at: new Date(Date.now() - 2 * 24 * 3600 * 1000).toISOString(),
+  },
+  {
+    id: "bm-3",
+    user_id: "mock-student",
+    entity_type: "notice",
+    entity_id: "n-1",
+    title: "Mid-Term Examination Schedule & Seating Allotment",
+    description: "Computer Science & Engineering Department • Hall tickets mandatory",
+    href: "/notices",
+    categoryLabel: "Examination Notice",
+    imageUrl: null,
+    created_at: new Date(Date.now() - 24 * 3600 * 1000).toISOString(),
+  },
+  {
+    id: "bm-4",
+    user_id: "mock-student",
+    entity_type: "event",
+    entity_id: "1a111111-1111-4111-8111-111111111111",
+    title: "National AI Student Summit 2026",
+    description: "Grand Tech Auditorium • Keynotes on Large Models, Generative Agents, Robotics",
+    href: "/events",
+    categoryLabel: "Conference & Hackathon",
+    imageUrl: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&auto=format&fit=crop&q=80",
+    created_at: new Date(Date.now() - 12 * 3600 * 1000).toISOString(),
+  },
+  {
+    id: "bm-5",
+    user_id: "mock-student",
+    entity_type: "faculty",
+    entity_id: "d2222222-2222-4111-8111-111111111111",
+    title: "Prof. Anita Desai — Associate Professor (AI & NLP)",
+    description: "Turing Block A-308 • Office Hours: Tue & Thu 11:00 AM - 01:00 PM",
+    href: "/faculty",
+    categoryLabel: "Faculty Member",
+    imageUrl: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&auto=format&fit=crop&q=80",
+    created_at: new Date(Date.now() - 5 * 24 * 3600 * 1000).toISOString(),
+  },
+];
+
+/**
+ * Fetch User Bookmarks with enriched details
+ */
+export async function getUserBookmarks(userId?: string): Promise<EnrichedBookmark[]> {
+  const supabase = createClient();
+  if (userId) {
+    try {
+      const { data, error } = await supabase
+        .from("bookmarks")
+        .select("*")
+        .eq("user_id", userId)
+        .order("created_at", { ascending: false });
+
+      if (!error && data && data.length > 0) {
+        // Enriched mapping
+        return data.map((b) => {
+          if (b.entity_type === "location") {
+            const loc = MOCK_LOCATIONS.find((l) => l.id === b.entity_id);
+            return {
+              ...b,
+              title: loc?.name || "Campus Location",
+              description: loc?.description || null,
+              href: `/explore/${b.entity_id}`,
+              categoryLabel: loc?.category || "Location",
+              imageUrl: loc?.image_url || null,
+            };
+          }
+          return {
+            ...b,
+            title: "Saved Bookmark",
+            description: null,
+            href: "/explore",
+            categoryLabel: b.entity_type,
+            imageUrl: null,
+          };
+        });
+      }
+    } catch {
+      // fallback
+    }
+  }
+
+  return MOCK_BOOKMARKS;
+}
+
+
 
 
 

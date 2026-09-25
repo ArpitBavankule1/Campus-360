@@ -18,6 +18,7 @@ import {
   Bot,
   Building2,
   ShieldAlert,
+  Bookmark,
 } from "lucide-react";
 import { useAuth } from "@/components/layout/auth-provider";
 import { Badge } from "@/components/ui/badge";
@@ -97,6 +98,11 @@ const studentNavItems: NavItem[] = [
     title: "Help Desk",
     href: "/help-desk",
     icon: LifeBuoy,
+  },
+  {
+    title: "My Bookmarks",
+    href: "/bookmarks",
+    icon: Bookmark,
   },
 ];
 
