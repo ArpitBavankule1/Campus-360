@@ -26,12 +26,19 @@ export const metadata: Metadata = {
 };
 
 import { AuthProvider } from "@/components/layout/auth-provider";
+import { RealtimeProvider } from "@/lib/realtime/realtime-provider";
+import { RealtimeToastContainer } from "@/components/realtime/realtime-toast";
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
-        <AuthProvider>{children}</AuthProvider>
+        <AuthProvider>
+          <RealtimeProvider>
+            {children}
+            <RealtimeToastContainer />
+          </RealtimeProvider>
+        </AuthProvider>
       </body>
     </html>
   );

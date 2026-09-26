@@ -2,6 +2,7 @@
 
 import { Sidebar } from "@/components/layout/sidebar";
 import { Header } from "@/components/layout/header";
+import { EmergencyBroadcastBanner } from "@/components/realtime/emergency-broadcast-banner";
 
 interface PortalLayoutProps {
   children: React.ReactNode;
@@ -19,6 +20,7 @@ export function PortalLayout({ children }: PortalLayoutProps) {
       <div className="flex flex-col flex-1 md:pl-64 lg:pl-72 min-h-screen">
         <Header />
         <main className="flex-1 p-4 md:p-6 lg:p-8 max-w-7xl w-full mx-auto animate-in fade-in-50 duration-200">
+          <EmergencyBroadcastBanner />
           {children}
         </main>
       </div>
