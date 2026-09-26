@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Send,
   MessageSquare,
@@ -9,10 +9,13 @@ import {
   Clock,
   CheckCircle2,
   AlertCircle,
+  Radio,
+  Sparkles,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/components/layout/auth-provider";
 import { addHelpRequestReply, type HelpRequestReplyRow } from "@/lib/supabase/queries";
+import { useRealtime } from "@/lib/realtime/realtime-provider";
 import { cn } from "cn";
 
 interface TicketThreadProps {
@@ -23,9 +26,28 @@ interface TicketThreadProps {
 
 export function TicketThread({ requestId, initialReplies, isResolved }: TicketThreadProps) {
   const { user } = useAuth();
+  const { activeTicketReplies, dispatchTicketReply, connectionState } = useRealtime();
   const [replies, setReplies] = useState<HelpRequestReplyRow[]>(initialReplies);
   const [newMessage, setNewMessage] = useState("");
   const [isSending, setIsSending] = useState(false);
+
+  // Sync real-time replies dispatched across websockets or broadcast channel
+  useEffect(() => {
+    const liveForThisTicket = activeTicketReplies[requestId];
+    if (!liveForThisTicket || liveForThisTicket.length === 0) return;
+
+    setReplies((prev) => {
+      let changed = false;
+      const merged = [...prev];
+      for (const item of liveForThisTicket) {
+        if (!merged.some((r) => r.id === item.id)) {
+          merged.push(item);
+          changed = true;
+        }
+      }
+      return changed ? merged : prev;
+    });
+  }, [activeTicketReplies, requestId]);
 
   const handleSendReply = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -45,6 +67,7 @@ export function TicketThread({ requestId, initialReplies, isResolved }: TicketTh
 
       if (res.success && res.data) {
         setReplies((prev) => [...prev, res.data]);
+        dispatchTicketReply(res.data);
       }
     } catch {
       // optimistic fallback
@@ -56,22 +79,47 @@ export function TicketThread({ requestId, initialReplies, isResolved }: TicketTh
         created_at: new Date().toISOString(),
       };
       setReplies((prev) => [...prev, fallbackReply]);
+      dispatchTicketReply(fallbackReply);
     } finally {
       setIsSending(false);
     }
   };
 
+  const handleSimulateStaffReply = () => {
+    const staffReply: HelpRequestReplyRow = {
+      id: `rep-staff-${Date.now()}`,
+      request_id: requestId,
+      sender_id: "staff-support-desk",
+      message: `[Staff Desk Update • ${new Date().toLocaleTimeString()}]: We have updated your ticket status. A technical officer has reviewed your report and diagnostic logs are being evaluated.`,
+      created_at: new Date().toISOString(),
+    };
+    dispatchTicketReply(staffReply);
+  };
+
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between border-b pb-3">
+      <div className="flex flex-wrap items-center justify-between gap-2 border-b pb-3">
         <h3 className="font-bold text-base flex items-center gap-2">
           <MessageSquare className="w-4 h-4 text-primary" />
           Official Communication Thread ({replies.length})
         </h3>
-        <span className="text-xs text-muted-foreground flex items-center gap-1">
-          <Clock className="w-3.5 h-3.5" />
-          Real-time updates
-        </span>
+        <div className="flex items-center gap-2">
+          <span className="text-[11px] font-medium px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 border border-emerald-500/20 flex items-center gap-1.5">
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+            {connectionState === "connected" ? "Live WebSocket Connected" : "Live Bus Active"}
+          </span>
+          <Button
+            type="button"
+            variant="ghost"
+            size="sm"
+            onClick={handleSimulateStaffReply}
+            className="text-[11px] h-7 px-2 text-muted-foreground hover:text-primary gap-1"
+            title="Simulate incoming staff reply via WebSocket"
+          >
+            <Sparkles className="w-3 h-3 text-amber-500" />
+            Simulate Staff Reply
+          </Button>
+        </div>
       </div>
 
       {/* Messages Feed */}
