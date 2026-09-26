@@ -1,0 +1,47 @@
+name: CampusLens AI CI Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate:
+    name: Build, Lint & Phase Verification
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js Environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: TypeScript Static Type Check
+        run: npx tsc --noEmit
+
+      - name: Verify Phase 13 (Command Palette & Bookmarks)
+        run: node scripts/verify-phase13.mjs
+
+      - name: Verify Phase 14 (Public Website & Features)
+        run: node scripts/verify-phase14.mjs
+
+      - name: Verify Phase 15 (Master Security & Schema Audit)
+        run: node scripts/verify-phase15.mjs
+
+      - name: Verify Phase 16 (Real-Time Websockets & Broadcasts)
+        run: node scripts/verify-phase16.mjs
+
+      - name: Run Next.js Production Build
+        run: npm run build
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: "https://mock.supabase.co"
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: "mock-anon-key"
+          SUPABASE_SERVICE_ROLE_KEY: "mock-service-role-key"
