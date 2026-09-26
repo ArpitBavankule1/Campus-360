@@ -1,0 +1,39 @@
+{
+  "name": "CampusLens AI — Smart College Connect",
+  "short_name": "CampusLens",
+  "description": "Institutional Smart College Connect Platform for Students, Faculty, and Administrators",
+  "start_url": "/dashboard",
+  "display": "standalone",
+  "background_color": "#090d16",
+  "theme_color": "#2563eb",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Timetable",
+      "url": "/timetable",
+      "description": "View daily academic schedule"
+    },
+    {
+      "name": "Campus Map",
+      "url": "/map",
+      "description": "Explore classrooms and facilities"
+    },
+    {
+      "name": "Help Desk",
+      "url": "/help-desk",
+      "description": "Submit and track support requests"
+    },
+    {
+      "name": "AI Assistant",
+      "url": "/ai-assistant",
+      "description": "Ask questions to CampusLens AI"
+    }
+  ]
+}
