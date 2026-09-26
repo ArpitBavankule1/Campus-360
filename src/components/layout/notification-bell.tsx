@@ -6,12 +6,38 @@ import { Bell, CheckCheck, Clock, Calendar, BookOpen, AlertCircle, Info } from "
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { MOCK_NOTIFICATIONS, type NotificationRow } from "@/lib/supabase/queries";
+import { useRealtime } from "@/lib/realtime/realtime-provider";
 import { cn } from "cn";
 
 export function NotificationBell() {
   const [isOpen, setIsOpen] = useState(false);
   const [notifications, setNotifications] = useState<NotificationRow[]>(MOCK_NOTIFICATIONS);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const { toasts } = useRealtime();
+
+  // Dynamically append new real-time toasts to notification ledger
+  useEffect(() => {
+    if (toasts.length === 0) return;
+    const latestToast = toasts[0];
+
+    setNotifications((prev) => {
+      if (prev.some((n) => n.id === latestToast.id)) return prev;
+
+      const newNotif: NotificationRow = {
+        id: latestToast.id,
+        user_id: "current-user",
+        college_id: "11111111-1111-4111-8111-111111111111",
+        title: latestToast.title,
+        message: latestToast.message,
+        type: latestToast.type === "reply" ? "query" : latestToast.type === "broadcast" ? "notice" : "announcement",
+        link: latestToast.link || null,
+        is_read: false,
+        created_at: latestToast.timestamp,
+      };
+
+      return [newNotif, ...prev];
+    });
+  }, [toasts]);
 
   const unreadCount = notifications.filter(n => !n.is_read).length;
 
