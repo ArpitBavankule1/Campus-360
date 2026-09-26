@@ -35,6 +35,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useAuth } from "@/components/layout/auth-provider";
+import { AdminBroadcastDialog } from "@/components/realtime/admin-broadcast-dialog";
 import {
   MOCK_LOCATIONS,
   MOCK_NOTICES,
@@ -188,6 +189,11 @@ export default function AdminDashboardPage() {
             </div>
 
             <div className="flex flex-wrap items-center gap-2.5">
+              <AdminBroadcastDialog
+                buttonLabel="Transmit Live Alert"
+                triggerClassName="bg-white/10 text-white border-white/25 hover:bg-white/20 hover:text-white"
+              />
+
               <Link
                 href="/dashboard"
                 className="px-4 py-2 rounded-xl bg-white text-rose-950 font-bold text-xs shadow-md hover:bg-rose-50 transition-colors flex items-center gap-1.5"

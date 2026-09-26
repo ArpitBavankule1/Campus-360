@@ -29,6 +29,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { useAuth } from "@/components/layout/auth-provider";
+import { AdminBroadcastDialog } from "@/components/realtime/admin-broadcast-dialog";
 import {
   MOCK_FACULTY,
   MOCK_TIMETABLE,
@@ -133,6 +134,11 @@ export default function HodDashboardPage() {
                   ))}
                 </select>
               </div>
+
+              <AdminBroadcastDialog
+                buttonLabel="Emergency Broadcast"
+                triggerClassName="bg-white/10 text-white border-white/20 hover:bg-white/20 hover:text-white"
+              />
 
               <Link
                 href="/faculty"
