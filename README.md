@@ -79,6 +79,17 @@ graph TD
 - **Universal Bookmarks (`/bookmarks`)**: Save frequently visited locations, important exam circulars, and faculty contacts.
 - **Real-Time Notification Bell**: Unread indicator and quick-action notification feed.
 
+### 9. ⚡ Real-Time Websockets & Emergency Broadcasts (Phase 16)
+- **Supabase Realtime Channel & Cross-Tab Bus**: Subscriptions across `help_request_replies`, `notices`, and `notifications` with `BroadcastChannel` local event bus fallback.
+- **Campus Emergency Broadcast Banner**: Critical, warning, and informational institutional alerts with animated pulse cues and dismissibility.
+- **Web Audio API Synthesized Chimes**: Built-in dual-tone audio alert cues without external sound assets and user mute/unmute control.
+- **Live Ticket Messaging Thread**: Instant message synchronization and built-in staff technician reply simulator.
+- **Administrative Incident Dispatcher**: 1-click preset incident templates for severe weather, electrical maintenance, or tech fests.
+
+### 10. 📱 Progressive Web App (PWA) & Offline Capabilities
+- **Installable Web App**: Standard Manifest V3 schema (`/manifest.json`) with app shortcuts and standalone display mode.
+- **Service Worker Cache**: Offline-first caching for dashboard, navigation shell, and core application assets.
+
 ---
 
 ## 🛠️ Technology Stack
@@ -172,6 +183,9 @@ node scripts/verify-phase14.mjs
 
 # Phase 15: Master System & Security Audit
 node scripts/verify-phase15.mjs
+
+# Phase 16: Real-Time Websockets & Emergency Broadcasts
+node scripts/verify-phase16.mjs
 
 # Run production build validation
 npm run build
