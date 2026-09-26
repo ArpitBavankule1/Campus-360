@@ -11,11 +11,13 @@ import { NotificationBell } from "@/components/layout/notification-bell";
 import { Sidebar } from "@/components/layout/sidebar";
 import { CommandPalette } from "@/components/layout/command-palette";
 import { useAuth } from "@/components/layout/auth-provider";
+import { useRealtime } from "@/lib/realtime/realtime-provider";
 import { APP_NAME } from "@/lib/constants";
 import { cn } from "cn";
 
 export function Header() {
   const { user, profile, role } = useAuth();
+  const { connectionState } = useRealtime();
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const openPalette = () => {
@@ -80,10 +82,23 @@ export function Header() {
             <Search className="h-4 w-4" />
           </button>
         <div className="hidden lg:flex items-center gap-1.5 text-xs text-muted-foreground bg-muted/40 px-3 py-1.5 rounded-full border border-border/50">
-          <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+          <span
+            className={cn(
+              "h-2 w-2 rounded-full",
+              connectionState === "connected"
+                ? "bg-emerald-500 animate-pulse"
+                : connectionState === "fallback"
+                ? "bg-blue-500"
+                : "bg-amber-500"
+            )}
+            title={`Realtime Status: ${connectionState}`}
+          />
           <span className="font-medium text-foreground">Apex Institute (AIT)</span>
           <span className="text-muted-foreground/60">•</span>
           <span>Autumn 2026</span>
+          <span className="text-[10px] text-emerald-600 font-mono font-bold ml-0.5 tracking-tight">
+            • LIVE
+          </span>
         </div>
 
         {/* Notification Bell Dropdown */}
