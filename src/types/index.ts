@@ -287,3 +287,88 @@ export interface FacilityBookingSlot {
   bookingId?: string;
   purpose?: string;
 }
+
+// --- Phase 19: Academic Examinations & Grade Analytics Types ---
+
+export type ExamType = "mid_term" | "end_sem" | "practical" | "viva";
+export type LetterGrade = "O" | "A+" | "A" | "B+" | "B" | "C" | "F";
+export type GradeRecordStatus = "passed" | "failed" | "under_revaluation";
+
+export interface ExamSchedule {
+  id: string;
+  college_id: string;
+  department_id?: string | null;
+  semester: string;
+  subject_code: string;
+  subject_name: string;
+  exam_date: string;
+  start_time: string;
+  end_time: string;
+  room_number: string;
+  building_name: string;
+  total_marks: number;
+  exam_type: ExamType;
+  created_at?: string;
+}
+
+export interface ExamHallTicket {
+  id: string;
+  college_id: string;
+  student_id: string;
+  student_name: string;
+  roll_number: string;
+  enrolled_program: string;
+  semester: string;
+  hall_ticket_number: string;
+  is_eligible: boolean;
+  attendance_percentage: number;
+  fee_clearance: boolean;
+  qr_verification_code: string;
+  exam_center: string;
+  schedules: ExamSchedule[];
+  instructions: string[];
+}
+
+export interface ExamSeating {
+  id: string;
+  exam_schedule_id: string;
+  student_id: string;
+  roll_number: string;
+  student_name: string;
+  subject_code: string;
+  subject_name: string;
+  room_number: string;
+  building_name: string;
+  floor: string;
+  bench_number: string;
+  exam_date: string;
+  start_time: string;
+  end_time: string;
+}
+
+export interface StudentGradeRecord {
+  id: string;
+  student_id: string;
+  semester: string;
+  subject_code: string;
+  subject_name: string;
+  credits: number;
+  internal_marks: number;
+  endsem_marks: number;
+  total_marks: number;
+  grade: LetterGrade;
+  grade_point: number;
+  status: GradeRecordStatus;
+}
+
+export interface SemesterTranscriptSummary {
+  semester: string;
+  totalCredits: number;
+  creditsEarned: number;
+  sgpa: number;
+  cgpa: number;
+  totalMarksScored: number;
+  maxMarks: number;
+  percentage: number;
+  records: StudentGradeRecord[];
+}
