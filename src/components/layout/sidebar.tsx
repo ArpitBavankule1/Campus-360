@@ -55,6 +55,12 @@ const studentNavItems: NavItem[] = [
     badge: "Phase 18",
   },
   {
+    title: "Exams & Grades",
+    href: "/exams",
+    icon: GraduationCap,
+    badge: "Phase 19",
+  },
+  {
     title: "Campus Explorer",
     href: "/explore",
     icon: Compass,
