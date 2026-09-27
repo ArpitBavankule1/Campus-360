@@ -884,6 +884,193 @@ export interface Database {
         };
         Relationships: [];
       };
+
+      exam_schedules: {
+        Row: {
+          id: string;
+          college_id: string;
+          department_id: string | null;
+          semester: string;
+          subject_code: string;
+          subject_name: string;
+          exam_date: string;
+          start_time: string;
+          end_time: string;
+          room_number: string;
+          building_name: string;
+          total_marks: number;
+          exam_type: "mid_term" | "end_sem" | "practical" | "viva";
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          college_id: string;
+          department_id?: string | null;
+          semester: string;
+          subject_code: string;
+          subject_name: string;
+          exam_date: string;
+          start_time: string;
+          end_time: string;
+          room_number: string;
+          building_name?: string;
+          total_marks?: number;
+          exam_type?: "mid_term" | "end_sem" | "practical" | "viva";
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          college_id?: string;
+          department_id?: string | null;
+          semester?: string;
+          subject_code?: string;
+          subject_name?: string;
+          exam_date?: string;
+          start_time?: string;
+          end_time?: string;
+          room_number?: string;
+          building_name?: string;
+          total_marks?: number;
+          exam_type?: "mid_term" | "end_sem" | "practical" | "viva";
+          created_at?: string;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
+
+      exam_hall_tickets: {
+        Row: {
+          id: string;
+          college_id: string;
+          student_id: string;
+          semester: string;
+          hall_ticket_number: string;
+          is_eligible: boolean;
+          attendance_percentage: number;
+          fee_clearance: boolean;
+          qr_verification_code: string;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          college_id: string;
+          student_id: string;
+          semester: string;
+          hall_ticket_number: string;
+          is_eligible?: boolean;
+          attendance_percentage?: number;
+          fee_clearance?: boolean;
+          qr_verification_code: string;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          college_id?: string;
+          student_id?: string;
+          semester?: string;
+          hall_ticket_number?: string;
+          is_eligible?: boolean;
+          attendance_percentage?: number;
+          fee_clearance?: boolean;
+          qr_verification_code?: string;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
+
+      exam_seating_allocations: {
+        Row: {
+          id: string;
+          exam_schedule_id: string;
+          student_id: string;
+          roll_number: string;
+          room_number: string;
+          floor: string;
+          bench_number: string;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          exam_schedule_id: string;
+          student_id: string;
+          roll_number: string;
+          room_number: string;
+          floor: string;
+          bench_number: string;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          exam_schedule_id?: string;
+          student_id?: string;
+          roll_number?: string;
+          room_number?: string;
+          floor?: string;
+          bench_number?: string;
+          created_at?: string;
+        };
+        Relationships: [];
+      };
+
+      student_grade_records: {
+        Row: {
+          id: string;
+          student_id: string;
+          college_id: string;
+          semester: string;
+          subject_code: string;
+          subject_name: string;
+          credits: number;
+          internal_marks: number;
+          endsem_marks: number;
+          total_marks: number;
+          grade: "O" | "A+" | "A" | "B+" | "B" | "C" | "F";
+          grade_point: number;
+          status: "passed" | "failed" | "under_revaluation";
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          student_id: string;
+          college_id: string;
+          semester: string;
+          subject_code: string;
+          subject_name: string;
+          credits?: number;
+          internal_marks: number;
+          endsem_marks: number;
+          total_marks: number;
+          grade: "O" | "A+" | "A" | "B+" | "B" | "C" | "F";
+          grade_point: number;
+          status?: "passed" | "failed" | "under_revaluation";
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          student_id?: string;
+          college_id?: string;
+          semester?: string;
+          subject_code?: string;
+          subject_name?: string;
+          credits?: number;
+          internal_marks?: number;
+          endsem_marks?: number;
+          total_marks?: number;
+          grade?: "O" | "A+" | "A" | "B+" | "B" | "C" | "F";
+          grade_point?: number;
+          status?: "passed" | "failed" | "under_revaluation";
+          created_at?: string;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
     };
     Views: {
       [_ in never]: never;
