@@ -248,3 +248,42 @@ export interface NavItem {
   badge?: string;
   children?: NavItem[];
 }
+
+// --- Phase 18: Campus Facility & Resource Booking Types ---
+
+export type FacilityBookingStatus =
+  | "pending"
+  | "approved"
+  | "rejected"
+  | "cancelled"
+  | "completed";
+
+export interface FacilityBooking {
+  id: string;
+  college_id: string;
+  facility_id: string;
+  user_id: string;
+  booking_date: string;
+  start_time: string;
+  end_time: string;
+  purpose: string;
+  attendees_count: number;
+  status: FacilityBookingStatus;
+  booking_pass_code: string;
+  approved_by?: string | null;
+  rejection_reason?: string | null;
+  created_at: string;
+  updated_at: string;
+  facility?: Facility;
+  user_name?: string;
+  user_email?: string;
+  user_role?: UserRole;
+}
+
+export interface FacilityBookingSlot {
+  startTime: string;
+  endTime: string;
+  isAvailable: boolean;
+  bookingId?: string;
+  purpose?: string;
+}
