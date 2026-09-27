@@ -9,6 +9,7 @@ import {
   Bot,
   LifeBuoy,
   ArrowRight,
+  CalendarCheck,
 } from "lucide-react";
 import { cn } from "cn";
 
@@ -39,6 +40,16 @@ const actionItems: QuickActionItem[] = [
     icon: CalendarDays,
     iconBg: "bg-emerald-500/10 dark:bg-emerald-500/20",
     iconColor: "text-emerald-600 dark:text-emerald-400",
+  },
+  {
+    title: "Facility Bookings",
+    description: "Reserve smart study pods, GPU AI labs & campus sports arenas",
+    href: "/bookings",
+    icon: CalendarCheck,
+    iconBg: "bg-teal-500/10 dark:bg-teal-500/20",
+    iconColor: "text-teal-600 dark:text-teal-400",
+    badge: "Phase 18",
+    badgeBg: "bg-teal-500/15 text-teal-600 dark:text-teal-400 border-teal-500/30",
   },
   {
     title: "Notices & Circulars",
