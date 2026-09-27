@@ -829,6 +829,61 @@ export interface Database {
         };
         Relationships: [];
       };
+
+      facility_bookings: {
+        Row: {
+          id: string;
+          college_id: string;
+          facility_id: string;
+          user_id: string;
+          booking_date: string;
+          start_time: string;
+          end_time: string;
+          purpose: string;
+          attendees_count: number;
+          status: "pending" | "approved" | "rejected" | "cancelled" | "completed";
+          booking_pass_code: string;
+          approved_by: string | null;
+          rejection_reason: string | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          college_id: string;
+          facility_id: string;
+          user_id: string;
+          booking_date: string;
+          start_time: string;
+          end_time: string;
+          purpose: string;
+          attendees_count?: number;
+          status?: "pending" | "approved" | "rejected" | "cancelled" | "completed";
+          booking_pass_code: string;
+          approved_by?: string | null;
+          rejection_reason?: string | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          college_id?: string;
+          facility_id?: string;
+          user_id?: string;
+          booking_date?: string;
+          start_time?: string;
+          end_time?: string;
+          purpose?: string;
+          attendees_count?: number;
+          status?: "pending" | "approved" | "rejected" | "cancelled" | "completed";
+          booking_pass_code?: string;
+          approved_by?: string | null;
+          rejection_reason?: string | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
     };
     Views: {
       [_ in never]: never;
