@@ -22,6 +22,7 @@ import {
   Command,
   X,
   ExternalLink,
+  CalendarCheck,
 } from "lucide-react";
 import {
   MOCK_LOCATIONS,
@@ -86,6 +87,7 @@ export function CommandPalette() {
   const allItems: PaletteItem[] = [
     // Navigation
     { id: "p-dash", title: "Dashboard Overview", subtitle: "Today's timeline & schedule", category: "Navigation", href: "/dashboard", icon: LayoutDashboard },
+    { id: "p-book", title: "Smart Facility Bookings", subtitle: "Study pods, AI labs & auditoriums", category: "Navigation", href: "/bookings", icon: CalendarCheck },
     { id: "p-explore", title: "Campus Explorer", subtitle: "Directory of buildings & facilities", category: "Navigation", href: "/explore", icon: Compass },
     { id: "p-map", title: "Interactive 3D Campus Map", subtitle: "Real-time geographical pinpoints", category: "Navigation", href: "/map", icon: MapPin },
     { id: "p-time", title: "Class Timetable", subtitle: "Day-wise lecture routines", category: "Navigation", href: "/timetable", icon: CalendarDays },
