@@ -5,6 +5,7 @@ import Link from "next/link";
 import { PortalLayout } from "@/components/layout/portal-layout";
 import { getFacultyDirectory, type FacultyRow, MOCK_FACULTY, MOCK_TIMETABLE } from "@/lib/supabase/queries";
 import { useAuth } from "@/components/layout/auth-provider";
+import { FacultyQrGenerator } from "@/components/attendance/faculty-qr-generator";
 import {
   Users,
   Search,
@@ -435,6 +436,23 @@ function FacultyContent() {
                       </div>
                     </div>
                   ))}
+                </CardContent>
+              </Card>
+
+              {/* QR Attendance Session Generator */}
+              <Card className="border shadow-xs">
+                <CardHeader className="pb-3 border-b">
+                  <CardTitle className="text-sm font-bold">QR Lecture Check-In</CardTitle>
+                  <p className="text-xs text-muted-foreground">Generate a time-limited QR for students to scan</p>
+                </CardHeader>
+                <CardContent className="p-4">
+                  <FacultyQrGenerator
+                    courseCode="CS-501"
+                    courseName="Distributed Systems"
+                    roomNumber="A-301"
+                    facultyId={user?.id || "faculty-demo"}
+                    validMinutes={15}
+                  />
                 </CardContent>
               </Card>
 

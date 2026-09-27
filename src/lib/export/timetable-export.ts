@@ -2,7 +2,9 @@
  * CampusLens AI - Academic Timetable CSV & Printable Schedule Export Utility
  */
 
-import type { TimetableSlotWithDetails } from "@/lib/supabase/queries";
+import type { TimetableRow } from "@/lib/supabase/queries";
+
+type TimetableSlotWithDetails = TimetableRow;
 
 export function exportTimetableToCSV(slots: TimetableSlotWithDetails[], departmentCode: string): void {
   if (typeof window === "undefined" || slots.length === 0) return;
@@ -13,12 +15,12 @@ export function exportTimetableToCSV(slots: TimetableSlotWithDetails[], departme
     slot.day_of_week,
     slot.start_time,
     slot.end_time,
-    `"${(slot.course_name || "").replace(/"/g, '""')}"`,
-    slot.course_code || "",
+    `"${(slot.subject_name || "").replace(/"/g, '""')}"`,
+    slot.subject_code || "",
     slot.room_number || "",
-    slot.building_name || "",
-    `"${(slot.faculty_name || "").replace(/"/g, '""')}"`,
-    slot.batch_division || "All",
+    "", // building_name not in TimetableRow; omit
+    "", // faculty_name not in TimetableRow; resolved separately
+    slot.division || "All",
   ]);
 
   const csvContent = [headers.join(","), ...rows.map((r) => r.join(","))].join("\n");

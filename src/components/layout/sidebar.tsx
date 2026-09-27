@@ -19,6 +19,7 @@ import {
   Building2,
   ShieldAlert,
   Bookmark,
+  ScanLine,
 } from "lucide-react";
 import { useAuth } from "@/components/layout/auth-provider";
 import { Badge } from "@/components/ui/badge";
@@ -39,6 +40,12 @@ const studentNavItems: NavItem[] = [
     title: "Dashboard",
     href: "/dashboard",
     icon: LayoutDashboard,
+  },
+  {
+    title: "Attendance Check-In",
+    href: "/attendance",
+    icon: ScanLine,
+    badge: "Phase 17",
   },
   {
     title: "Campus Explorer",
