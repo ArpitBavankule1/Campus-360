@@ -1266,6 +1266,174 @@ export interface Database {
         };
         Relationships: [];
       };
+      student_fee_dues: {
+        Row: {
+          id: string;
+          college_id: string;
+          student_id: string;
+          semester: string;
+          academic_year: string;
+          category: "tuition" | "hostel" | "library" | "examination" | "lab_equipment";
+          amount_due: number;
+          amount_paid: number;
+          penalty_amount: number;
+          due_date: string;
+          status: "pending" | "partially_paid" | "paid" | "overdue";
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          college_id: string;
+          student_id: string;
+          semester: string;
+          academic_year?: string;
+          category: "tuition" | "hostel" | "library" | "examination" | "lab_equipment";
+          amount_due?: number;
+          amount_paid?: number;
+          penalty_amount?: number;
+          due_date: string;
+          status?: "pending" | "partially_paid" | "paid" | "overdue";
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          college_id?: string;
+          student_id?: string;
+          semester?: string;
+          academic_year?: string;
+          category?: "tuition" | "hostel" | "library" | "examination" | "lab_equipment";
+          amount_due?: number;
+          amount_paid?: number;
+          penalty_amount?: number;
+          due_date?: string;
+          status?: "pending" | "partially_paid" | "paid" | "overdue";
+          created_at?: string;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
+      fee_payment_transactions: {
+        Row: {
+          id: string;
+          fee_due_id: string;
+          student_id: string;
+          college_id: string;
+          transaction_ref: string;
+          payment_method: "upi" | "credit_card" | "debit_card" | "net_banking";
+          amount_paid: number;
+          payment_date: string;
+          receipt_number: string;
+          status: "success" | "pending" | "failed";
+          gateway_response_id: string | null;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          fee_due_id: string;
+          student_id: string;
+          college_id: string;
+          transaction_ref: string;
+          payment_method: "upi" | "credit_card" | "debit_card" | "net_banking";
+          amount_paid: number;
+          payment_date?: string;
+          receipt_number: string;
+          status?: "success" | "pending" | "failed";
+          gateway_response_id?: string | null;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          fee_due_id?: string;
+          student_id?: string;
+          college_id?: string;
+          transaction_ref?: string;
+          payment_method?: "upi" | "credit_card" | "debit_card" | "net_banking";
+          amount_paid?: number;
+          payment_date?: string;
+          receipt_number?: string;
+          status?: "success" | "pending" | "failed";
+          gateway_response_id?: string | null;
+          created_at?: string;
+        };
+        Relationships: [];
+      };
+      scholarship_programs: {
+        Row: {
+          id: string;
+          college_id: string;
+          title: string;
+          provider: string;
+          grant_amount: number;
+          min_cgpa: number;
+          max_family_income: number;
+          deadline: string;
+          status: "open" | "closed";
+          description: string;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          college_id: string;
+          title: string;
+          provider: string;
+          grant_amount: number;
+          min_cgpa?: number;
+          max_family_income?: number;
+          deadline: string;
+          status?: "open" | "closed";
+          description: string;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          college_id?: string;
+          title?: string;
+          provider?: string;
+          grant_amount?: number;
+          min_cgpa?: number;
+          max_family_income?: number;
+          deadline?: string;
+          status?: "open" | "closed";
+          description?: string;
+          created_at?: string;
+        };
+        Relationships: [];
+      };
+      scholarship_applications: {
+        Row: {
+          id: string;
+          scholarship_id: string;
+          student_id: string;
+          college_id: string;
+          applied_at: string;
+          status: "submitted" | "under_review" | "approved" | "disbursed" | "rejected";
+          disbursed_amount: number;
+          notes: string | null;
+        };
+        Insert: {
+          id?: string;
+          scholarship_id: string;
+          student_id: string;
+          college_id: string;
+          applied_at?: string;
+          status?: "submitted" | "under_review" | "approved" | "disbursed" | "rejected";
+          disbursed_amount?: number;
+          notes?: string | null;
+        };
+        Update: {
+          id?: string;
+          scholarship_id?: string;
+          student_id?: string;
+          college_id?: string;
+          applied_at?: string;
+          status?: "submitted" | "under_review" | "approved" | "disbursed" | "rejected";
+          disbursed_amount?: number;
+          notes?: string | null;
+        };
+        Relationships: [];
+      };
     };
     Views: {
       [_ in never]: never;
