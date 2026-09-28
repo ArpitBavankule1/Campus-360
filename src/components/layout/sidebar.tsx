@@ -21,6 +21,7 @@ import {
   Bookmark,
   ScanLine,
   CalendarCheck,
+  Briefcase,
 } from "lucide-react";
 import { useAuth } from "@/components/layout/auth-provider";
 import { Badge } from "@/components/ui/badge";
@@ -59,6 +60,12 @@ const studentNavItems: NavItem[] = [
     href: "/exams",
     icon: GraduationCap,
     badge: "Phase 19",
+  },
+  {
+    title: "Career & Placements",
+    href: "/placements",
+    icon: Briefcase,
+    badge: "Phase 20",
   },
   {
     title: "Campus Explorer",
