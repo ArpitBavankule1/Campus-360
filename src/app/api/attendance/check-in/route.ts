@@ -10,6 +10,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
 import { decodeSessionPayload } from "@/lib/attendance/qr-generator";
+import { containsSQLInjection, containsXSS } from "@/lib/security/sanitize";
 
 export async function POST(req: NextRequest) {
   try {
@@ -23,6 +24,24 @@ export async function POST(req: NextRequest) {
     if (!qrToken) {
       return NextResponse.json(
         { success: false, reason: "No QR token provided." },
+        { status: 400 }
+      );
+    }
+
+    // Protection against injection attacks
+    if (containsSQLInjection(qrToken) || containsXSS(qrToken)) {
+      return NextResponse.json(
+        { success: false, reason: "Malicious or invalid token format detected." },
+        { status: 400 }
+      );
+    }
+
+    if (
+      (latitude !== undefined && (typeof latitude !== "number" || isNaN(latitude))) ||
+      (longitude !== undefined && (typeof longitude !== "number" || isNaN(longitude)))
+    ) {
+      return NextResponse.json(
+        { success: false, reason: "Invalid coordinate values provided." },
         { status: 400 }
       );
     }
