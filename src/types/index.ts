@@ -372,3 +372,108 @@ export interface SemesterTranscriptSummary {
   percentage: number;
   records: StudentGradeRecord[];
 }
+
+// --- Phase 20: Campus Placements & Career Ecosystem Types ---
+
+export type DriveType = "full_time" | "internship" | "intern_to_fte";
+export type DriveStatus = "upcoming" | "ongoing" | "completed" | "cancelled";
+export type ApplicationStatus =
+  | "applied"
+  | "shortlisted"
+  | "assessment_scheduled"
+  | "interview_scheduled"
+  | "offered"
+  | "rejected"
+  | "withdrawn";
+export type InterviewRoundStatus = "scheduled" | "cleared" | "failed" | "rescheduled";
+export type OfferAcceptanceStatus = "pending" | "accepted" | "declined";
+
+export interface PlacementDrive {
+  id: string;
+  college_id: string;
+  company_name: string;
+  company_logo_url?: string | null;
+  role_title: string;
+  drive_type: DriveType;
+  ctc_lpa: number;
+  stipend_monthly?: number;
+  location: string;
+  eligibility_min_cgpa: number;
+  allowed_departments: string[];
+  max_active_backlogs: number;
+  application_deadline: string;
+  drive_date: string;
+  status: DriveStatus;
+  job_description: string;
+  skills_required: string[];
+  created_at?: string;
+  total_applicants?: number;
+}
+
+export interface PlacementApplication {
+  id: string;
+  drive_id: string;
+  student_id: string;
+  college_id: string;
+  resume_url?: string | null;
+  current_cgpa: number;
+  status: ApplicationStatus;
+  applied_at: string;
+  notes?: string | null;
+  drive?: PlacementDrive;
+}
+
+export interface PlacementInterviewRound {
+  id: string;
+  application_id: string;
+  drive_id: string;
+  round_number: number;
+  round_name: string;
+  scheduled_at: string;
+  duration_minutes: number;
+  mode: "online" | "on_campus";
+  venue_or_link: string;
+  status: InterviewRoundStatus;
+  feedback?: string | null;
+  company_name?: string;
+  role_title?: string;
+}
+
+export interface PlacementOffer {
+  id: string;
+  application_id: string;
+  student_id: string;
+  college_id: string;
+  company_name: string;
+  role_title: string;
+  offered_ctc_lpa: number;
+  bonus_joining?: number;
+  offer_letter_url?: string | null;
+  acceptance_status: OfferAcceptanceStatus;
+  offer_date: string;
+  valid_until: string;
+  created_at?: string;
+}
+
+export interface DepartmentPlacementStat {
+  department: string;
+  totalEligible: number;
+  totalPlaced: number;
+  placementPercentage: number;
+  avgCtcLpa: number;
+  highestCtcLpa: number;
+}
+
+export interface InstitutionalPlacementStats {
+  totalStudentsEligible: number;
+  totalOffersMade: number;
+  uniqueStudentsPlaced: number;
+  overallPlacementRate: number;
+  averageCtcLpa: number;
+  highestCtcLpa: number;
+  medianCtcLpa: number;
+  totalParticipatingCompanies: number;
+  departmentStats: DepartmentPlacementStat[];
+  topRecruiters: { company: string; offersCount: number; maxCtc: number }[];
+}
+
