@@ -12,6 +12,7 @@ import {
   CalendarCheck,
   GraduationCap,
   Briefcase,
+  CreditCard,
 } from "lucide-react";
 import { cn } from "cn";
 
@@ -72,6 +73,16 @@ const actionItems: QuickActionItem[] = [
     iconColor: "text-blue-600 dark:text-blue-400",
     badge: "Phase 20",
     badgeBg: "bg-blue-500/15 text-blue-600 dark:text-blue-400 border-blue-500/30",
+  },
+  {
+    title: "Fee Portal & Payments",
+    description: "Clear semester dues, download e-receipts & apply for aid",
+    href: "/fees",
+    icon: CreditCard,
+    iconBg: "bg-emerald-500/10 dark:bg-emerald-500/20",
+    iconColor: "text-emerald-600 dark:text-emerald-400",
+    badge: "Phase 21",
+    badgeBg: "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border-emerald-500/30",
   },
   {
     title: "Notices & Circulars",
