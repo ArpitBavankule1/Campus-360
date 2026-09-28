@@ -39,9 +39,22 @@ jobs:
       - name: Verify Phase 16 (Real-Time Websockets & Broadcasts)
         run: node scripts/verify-phase16.mjs
 
+      - name: Verify Phase 17 (Dynamic Geofenced Attendance)
+        run: node scripts/verify-phase17.mjs
+
+      - name: Verify Phase 18 (Facility Bookings & Passes)
+        run: node scripts/verify-phase18.mjs
+
+      - name: Verify Phase 19 (Examinations & Transcripts)
+        run: node scripts/verify-phase19.mjs
+
+      - name: Verify Master Security & Anti-Injection Suite
+        run: node scripts/verify-security.mjs
+
       - name: Run Next.js Production Build
         run: npm run build
         env:
+          NEXT_PUBLIC_APP_URL: "https://campuslens.ai"
           NEXT_PUBLIC_SUPABASE_URL: "https://mock.supabase.co"
           NEXT_PUBLIC_SUPABASE_ANON_KEY: "mock-anon-key"
           SUPABASE_SERVICE_ROLE_KEY: "mock-service-role-key"
