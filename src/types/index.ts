@@ -477,3 +477,105 @@ export interface InstitutionalPlacementStats {
   topRecruiters: { company: string; offersCount: number; maxCtc: number }[];
 }
 
+// --- Phase 21: Student Fee Management, Payments & Scholarships Types ---
+
+export type FeeCategory =
+  | "tuition"
+  | "hostel"
+  | "library"
+  | "examination"
+  | "lab_equipment";
+
+export type FeeStatus = "pending" | "partially_paid" | "paid" | "overdue";
+export type PaymentMethod = "upi" | "credit_card" | "debit_card" | "net_banking";
+export type PaymentTransactionStatus = "success" | "pending" | "failed";
+export type ScholarshipStatus = "open" | "closed";
+export type ScholarshipApplicationStatus =
+  | "submitted"
+  | "under_review"
+  | "approved"
+  | "disbursed"
+  | "rejected";
+
+export interface StudentFeeDue {
+  id: string;
+  college_id: string;
+  student_id: string;
+  semester: string;
+  academic_year: string;
+  category: FeeCategory;
+  title: string;
+  amount_due: number;
+  amount_paid: number;
+  penalty_amount: number;
+  due_date: string;
+  status: FeeStatus;
+  created_at?: string;
+}
+
+export interface FeeTransaction {
+  id: string;
+  fee_due_id: string;
+  student_id: string;
+  college_id: string;
+  transaction_ref: string;
+  payment_method: PaymentMethod;
+  amount_paid: number;
+  payment_date: string;
+  receipt_number: string;
+  status: PaymentTransactionStatus;
+  fee_title?: string;
+  category?: FeeCategory;
+  gateway_response_id?: string;
+}
+
+export interface ScholarshipProgram {
+  id: string;
+  college_id: string;
+  title: string;
+  provider: string;
+  grant_amount: number;
+  min_cgpa: number;
+  max_family_income: number;
+  deadline: string;
+  status: ScholarshipStatus;
+  description: string;
+  eligibility_criteria?: string[];
+}
+
+export interface ScholarshipApplication {
+  id: string;
+  scholarship_id: string;
+  student_id: string;
+  college_id: string;
+  applied_at: string;
+  status: ScholarshipApplicationStatus;
+  disbursed_amount: number;
+  notes?: string | null;
+  scholarship?: ScholarshipProgram;
+}
+
+export interface StudentFeeSummary {
+  studentId: string;
+  studentName: string;
+  rollNumber: string;
+  totalPayable: number;
+  totalPaid: number;
+  outstandingBalance: number;
+  hasOverdue: boolean;
+  feeClearanceStatus: boolean; // Cleared for Exam Hall Ticket issuance
+  duesCount: number;
+  paidCount: number;
+}
+
+export interface InstitutionalFeeAnalytics {
+  totalExpectedRevenue: number;
+  totalCollectedRevenue: number;
+  totalOutstandingRevenue: number;
+  overallCollectionPercentage: number;
+  totalStudentsClear: number;
+  totalStudentsPending: number;
+  categoryBreakdown: { category: FeeCategory; collected: number; pending: number }[];
+}
+
+
