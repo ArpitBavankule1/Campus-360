@@ -7,6 +7,11 @@ import {
   isSlotAvailable,
 } from "@/lib/bookings/booking-engine";
 import { FacilityBooking } from "@/types";
+import {
+  containsSQLInjection,
+  containsXSS,
+  sanitizeInput,
+} from "@/lib/security/sanitize";
 
 // In-memory runtime cache for seamless operation across the server session
 let activeBookings: FacilityBooking[] = getInitialSeedBookings();
@@ -80,6 +85,25 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    // Security validation against SQL injection and script injection
+    if (
+      containsSQLInjection(purpose) ||
+      containsSQLInjection(facility_id) ||
+      containsXSS(purpose) ||
+      containsXSS(user_name)
+    ) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: "Malicious payload detected: SQL injection or script attempt blocked.",
+        },
+        { status: 400 }
+      );
+    }
+
+    const cleanPurpose = sanitizeInput(purpose, 300);
+    const cleanUserName = sanitizeInput(user_name, 100);
+
     const space = CAMPUS_SPACES.find((s) => s.id === facility_id);
     if (!space) {
       return NextResponse.json(
@@ -118,13 +142,13 @@ export async function POST(req: NextRequest) {
       booking_date,
       start_time,
       end_time,
-      purpose,
+      purpose: cleanPurpose,
       attendees_count: Number(attendees_count) || 1,
       status,
       booking_pass_code: passCode,
       created_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
-      user_name,
+      user_name: cleanUserName,
       user_email,
       user_role,
     };
