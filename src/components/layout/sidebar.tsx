@@ -22,6 +22,7 @@ import {
   ScanLine,
   CalendarCheck,
   Briefcase,
+  CreditCard,
 } from "lucide-react";
 import { useAuth } from "@/components/layout/auth-provider";
 import { Badge } from "@/components/ui/badge";
@@ -66,6 +67,12 @@ const studentNavItems: NavItem[] = [
     href: "/placements",
     icon: Briefcase,
     badge: "Phase 20",
+  },
+  {
+    title: "Fee Portal & Payments",
+    href: "/fees",
+    icon: CreditCard,
+    badge: "Phase 21",
   },
   {
     title: "Campus Explorer",
