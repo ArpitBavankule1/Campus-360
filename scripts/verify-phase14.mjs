@@ -67,7 +67,7 @@ if (existsSync(featuresPage)) {
 if (existsSync(contactForm)) {
   const formContent = readFileSync(contactForm, "utf8");
   const hasTicketId = formContent.includes("INQ-");
-  const hasRoleSelect = formContent.includes("Select role");
+  const hasRoleSelect = formContent.includes('id="role"') || formContent.includes("Institutional Role");
 
   console.log("\n5. Interactive Inquiry System:");
   console.log(`   [${hasRoleSelect ? "✓ PASS" : "✗ FAIL"}] Role-based inquiry categorization`);
