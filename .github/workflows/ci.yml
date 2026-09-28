@@ -48,6 +48,9 @@ jobs:
       - name: Verify Phase 19 (Examinations & Transcripts)
         run: node scripts/verify-phase19.mjs
 
+      - name: Verify Phase 20 (Career Placements & TPC)
+        run: node scripts/verify-phase20.mjs
+
       - name: Verify Master Security & Anti-Injection Suite
         run: node scripts/verify-security.mjs
 
