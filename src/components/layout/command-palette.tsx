@@ -25,6 +25,7 @@ import {
   CalendarCheck,
   GraduationCap,
   Briefcase,
+  CreditCard,
 } from "lucide-react";
 import {
   MOCK_LOCATIONS,
@@ -92,6 +93,7 @@ export function CommandPalette() {
     { id: "p-book", title: "Smart Facility Bookings", subtitle: "Study pods, AI labs & auditoriums", category: "Navigation", href: "/bookings", icon: CalendarCheck },
     { id: "p-exam", title: "Examinations & Hall Tickets", subtitle: "Admit cards, seating matrix & GPA planner", category: "Navigation", href: "/exams", icon: GraduationCap },
     { id: "p-place", title: "Career & Placement Drives", subtitle: "Industry job drives, CTC analytics & offer vault", category: "Navigation", href: "/placements", icon: Briefcase },
+    { id: "p-fees", title: "Fee Portal & Digital Receipts", subtitle: "Semester dues, online payment & scholarships", category: "Navigation", href: "/fees", icon: CreditCard },
     { id: "p-explore", title: "Campus Explorer", subtitle: "Directory of buildings & facilities", category: "Navigation", href: "/explore", icon: Compass },
     { id: "p-map", title: "Interactive 3D Campus Map", subtitle: "Real-time geographical pinpoints", category: "Navigation", href: "/map", icon: MapPin },
     { id: "p-time", title: "Class Timetable", subtitle: "Day-wise lecture routines", category: "Navigation", href: "/timetable", icon: CalendarDays },
