@@ -578,4 +578,116 @@ export interface InstitutionalFeeAnalytics {
   categoryBreakdown: { category: FeeCategory; collected: number; pending: number }[];
 }
 
+// ================================================================
+// Phase 22 — Smart Digital Library & Knowledge Commons
+// ================================================================
+
+export type BookCategory =
+  | "computer_science"
+  | "electronics"
+  | "mechanical"
+  | "civil"
+  | "mathematics"
+  | "physics"
+  | "management"
+  | "literature"
+  | "general";
+
+export type BorrowStatus = "active" | "returned" | "overdue" | "lost";
+
+export type ReservationStatus =
+  | "queued"
+  | "ready_for_pickup"
+  | "fulfilled"
+  | "cancelled"
+  | "expired";
+
+export type EResourceType =
+  | "journal"
+  | "ebook"
+  | "research_paper"
+  | "conference"
+  | "thesis";
+
+export interface LibraryBook {
+  id: string;
+  college_id: string;
+  title: string;
+  author: string;
+  isbn: string;
+  category: BookCategory;
+  publisher: string;
+  edition?: string | null;
+  call_number: string;
+  shelf_location: string;
+  total_copies: number;
+  available_copies: number;
+  cover_image_url?: string | null;
+  description?: string | null;
+  is_digital_available: boolean;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface LibraryBorrowRecord {
+  id: string;
+  college_id: string;
+  book_id: string;
+  student_id: string;
+  borrow_pass_code: string;
+  borrowed_at: string;
+  due_date: string;
+  returned_at?: string | null;
+  renewal_count: number;
+  max_renewals: number;
+  fine_amount: number;
+  fine_paid: boolean;
+  status: BorrowStatus;
+  book?: LibraryBook;
+}
+
+export interface LibraryReservation {
+  id: string;
+  college_id: string;
+  book_id: string;
+  student_id: string;
+  reservation_code: string;
+  status: ReservationStatus;
+  reserved_at: string;
+  expires_at?: string | null;
+  book?: LibraryBook;
+}
+
+export interface LibraryEResource {
+  id: string;
+  college_id: string;
+  title: string;
+  type: EResourceType;
+  publisher: string;
+  access_url: string;
+  department_id?: string | null;
+  downloads_count: number;
+  is_open_access: boolean;
+  created_at?: string;
+}
+
+export interface StudentLibrarySummary {
+  studentId: string;
+  activeBorrowsCount: number;
+  overdueCount: number;
+  totalFinesPending: number;
+  reservationsCount: number;
+  borrowingPrivilegeActive: boolean;
+}
+
+export interface InstitutionalLibraryStats {
+  totalVolumes: number;
+  totalActiveLoans: number;
+  totalOverdueLoans: number;
+  totalReservations: number;
+  digitalAccessCount: number;
+  categoryDistribution: { category: BookCategory; count: number }[];
+}
+
+
 
