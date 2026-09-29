@@ -13,6 +13,7 @@ import {
   GraduationCap,
   Briefcase,
   CreditCard,
+  BookOpen,
 } from "lucide-react";
 import { cn } from "cn";
 
@@ -83,6 +84,16 @@ const actionItems: QuickActionItem[] = [
     iconColor: "text-emerald-600 dark:text-emerald-400",
     badge: "Phase 21",
     badgeBg: "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border-emerald-500/30",
+  },
+  {
+    title: "Digital Library & Commons",
+    description: "Search 150k+ book catalog, reserve holds & access IEEE e-resources",
+    href: "/library",
+    icon: BookOpen,
+    iconBg: "bg-blue-500/10 dark:bg-blue-500/20",
+    iconColor: "text-blue-600 dark:text-blue-400",
+    badge: "Phase 22",
+    badgeBg: "bg-blue-500/15 text-blue-600 dark:text-blue-400 border-blue-500/30",
   },
   {
     title: "Notices & Circulars",

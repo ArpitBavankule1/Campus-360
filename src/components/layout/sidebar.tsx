@@ -23,6 +23,7 @@ import {
   CalendarCheck,
   Briefcase,
   CreditCard,
+  BookOpen,
 } from "lucide-react";
 import { useAuth } from "@/components/layout/auth-provider";
 import { Badge } from "@/components/ui/badge";
@@ -73,6 +74,12 @@ const studentNavItems: NavItem[] = [
     href: "/fees",
     icon: CreditCard,
     badge: "Phase 21",
+  },
+  {
+    title: "Digital Library & Commons",
+    href: "/library",
+    icon: BookOpen,
+    badge: "Phase 22",
   },
   {
     title: "Campus Explorer",
