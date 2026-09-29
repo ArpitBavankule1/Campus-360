@@ -90,6 +90,13 @@ graph TD
 - **Installable Web App**: Standard Manifest V3 schema (`/manifest.json`) with app shortcuts and standalone display mode.
 - **Service Worker Cache**: Offline-first caching for dashboard, navigation shell, and core application assets.
 
+### 11. 📚 Smart Digital Library & Knowledge Commons (Phase 22)
+- **150,000+ Volume Search**: Search book catalog by title, author, ISBN, call number, and shelf location.
+- **1-Click Loan Extension**: Instant 14-day renewal with maximum 2-cycle quota enforcement.
+- **Overdue Fine Engine**: Daily calculation (₹5/day) and automatic standing assessment for examination admittance.
+- **Voucher QR Passes**: Verifiable circulation and hold codes (`CL-LIB-BRW-2026-XXXX` & `CL-LIB-RES-2026-XXXX`).
+- **Institutional E-Resources**: Integrated repository for IEEE transactions, ACM proceedings, and open access monographs.
+
 ---
 
 ## 🛠️ Technology Stack
@@ -186,6 +193,9 @@ node scripts/verify-phase15.mjs
 
 # Phase 16: Real-Time Websockets & Emergency Broadcasts
 node scripts/verify-phase16.mjs
+
+# Phase 22: Smart Digital Library & Knowledge Commons
+node scripts/verify-phase22.mjs
 
 # Run production build validation
 npm run build
