@@ -54,6 +54,9 @@ jobs:
       - name: Verify Phase 21 (Student Fees & Digital Payments)
         run: node scripts/verify-phase21.mjs
 
+      - name: Verify Phase 22 (Digital Library & Knowledge Commons)
+        run: node scripts/verify-phase22.mjs
+
       - name: Verify Master Security & Anti-Injection Suite
         run: node scripts/verify-security.mjs
 
