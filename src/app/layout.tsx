@@ -29,7 +29,11 @@ import { AuthProvider } from "@/components/layout/auth-provider";
 import { RealtimeProvider } from "@/lib/realtime/realtime-provider";
 import { RealtimeToastContainer } from "@/components/realtime/realtime-toast";
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
