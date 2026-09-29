@@ -15,11 +15,11 @@ export function NotificationBell() {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const { toasts } = useRealtime();
 
-  // Dynamically append new real-time toasts to notification ledger
   useEffect(() => {
     if (toasts.length === 0) return;
     const latestToast = toasts[0];
 
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- legitimate external-state sync: toasts arrive from Supabase realtime and must be merged into the local ledger
     setNotifications((prev) => {
       if (prev.some((n) => n.id === latestToast.id)) return prev;
 

@@ -4,7 +4,7 @@ import React, { createContext, useContext, useEffect, useState, useCallback, use
 import { createClient } from "@/lib/supabase/client";
 import type { CampusBroadcast, RealtimeConnectionState } from "./types";
 import { playChime, isSoundEnabled, setSoundEnabled } from "./chime";
-import type { HelpRequestReplyRow, NotificationRow } from "@/lib/supabase/queries";
+import type { HelpRequestReplyRow } from "@/lib/supabase/queries";
 
 export interface RealtimeToast {
   id: string;
@@ -56,8 +56,8 @@ export function RealtimeProvider({ children }: { children: React.ReactNode }) {
   const broadcastChannelRef = useRef<BroadcastChannel | null>(null);
   const supabaseRef = useRef(createClient());
 
-  // Initialize sound settings
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- reads from localStorage (external system) on mount
     setSoundEnabledState(isSoundEnabled());
   }, []);
 
@@ -282,6 +282,7 @@ export function RealtimeProvider({ children }: { children: React.ReactNode }) {
           }
         });
     } catch {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- error path: Supabase channel creation throws synchronously, fallback state must be set
       setConnectionState("fallback");
     }
 

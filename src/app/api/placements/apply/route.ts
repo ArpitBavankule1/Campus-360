@@ -11,7 +11,7 @@ import {
 } from "@/lib/security/sanitize";
 import { PlacementApplication } from "@/types";
 
-let activeApplications: PlacementApplication[] = [...MOCK_STUDENT_APPLICATIONS];
+const activeApplications: PlacementApplication[] = [...MOCK_STUDENT_APPLICATIONS];
 
 export async function GET(req: NextRequest) {
   try {

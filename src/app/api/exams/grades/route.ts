@@ -6,7 +6,7 @@ import {
   sanitizeInput,
 } from "@/lib/security/sanitize";
 
-let currentTranscript = { ...MOCK_SEMESTER_5_TRANSCRIPT };
+const currentTranscript = { ...MOCK_SEMESTER_5_TRANSCRIPT };
 
 export async function GET(req: NextRequest) {
   try {

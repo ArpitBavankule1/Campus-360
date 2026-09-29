@@ -9,7 +9,7 @@ import {
 } from "@/lib/security/sanitize";
 import { StudentFeeDue } from "@/types";
 
-let currentDues: StudentFeeDue[] = [...MOCK_STUDENT_FEE_DUES];
+const currentDues: StudentFeeDue[] = [...MOCK_STUDENT_FEE_DUES];
 
 export async function GET(req: NextRequest) {
   try {

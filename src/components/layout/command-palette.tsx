@@ -80,8 +80,10 @@ export function CommandPalette() {
   useEffect(() => {
     if (isOpen) {
       setTimeout(() => inputRef.current?.focus(), 50);
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- reset selection when palette opens
       setSelectedIndex(0);
     } else {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- clear query when palette closes
       setQuery("");
     }
   }, [isOpen]);
@@ -206,7 +208,7 @@ export function CommandPalette() {
             <div className="text-center py-12 text-xs text-muted-foreground space-y-1">
               <Command className="w-6 h-6 mx-auto text-muted-foreground/40 mb-2" />
               <p className="font-semibold text-foreground">No matches found</p>
-              <p>Try searching for "Library", "Timetable", "Anita Desai", or "Notices"</p>
+              <p>Try searching for &quot;Library&quot;, &quot;Timetable&quot;, &quot;Anita Desai&quot;, or &quot;Notices&quot;</p>
             </div>
           ) : (
             filteredItems.map((item, idx) => {

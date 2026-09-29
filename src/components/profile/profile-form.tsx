@@ -169,7 +169,7 @@ export function ProfileForm() {
             Institutional Verification
           </div>
           <p className="text-muted-foreground leading-relaxed">
-            Your digital credential is cryptographically tied to Apex Institute's enrollment registry. It grants access to smart gates, library loans, and examination centers.
+            Your digital credential is cryptographically tied to Apex Institute&apos;s enrollment registry. It grants access to smart gates, library loans, and examination centers.
           </p>
         </div>
       </div>

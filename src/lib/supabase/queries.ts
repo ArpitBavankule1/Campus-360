@@ -6,7 +6,15 @@
 // ================================================================
 
 import { createClient } from "@/lib/supabase/client";
-import type { Database } from "@/types/database.types";
+import type {
+  Database,
+  LocationCategory,
+  NoticeCategory,
+  NoticePriority,
+  EventCategory,
+  RequestStatus,
+  NotificationType,
+} from "@/types/database.types";
 
 export type LocationRow = Database["public"]["Tables"]["locations"]["Row"];
 export type FacultyRow = Database["public"]["Tables"]["faculty"]["Row"];
@@ -594,7 +602,7 @@ export async function getCampusLocations(category?: string) {
   try {
     let query = supabase.from("locations").select("*").order("name", { ascending: true });
     if (category && category !== "all") {
-      query = query.eq("category", category as any);
+      query = query.eq("category", category as LocationCategory);
     }
     const { data, error } = await query;
     if (!error && data && data.length > 0) {
@@ -695,8 +703,9 @@ export async function updateUserProfile(
       return { success: false, error: error.message };
     }
     return { success: true, data };
-  } catch (err: any) {
-    return { success: false, error: err?.message || "Failed to update profile" };
+  } catch (err: unknown) {
+    const message = err instanceof Error ? err.message : "Failed to update profile";
+    return { success: false, error: message };
   }
 }
 
@@ -821,8 +830,8 @@ export async function getNoticesList(params?: {
   try {
     let query = supabase.from("notices").select("*").order("published_at", { ascending: false });
 
-    if (params?.category && params.category !== "all") query = query.eq("category", params.category as any);
-    if (params?.priority && params.priority !== "all") query = query.eq("priority", params.priority as any);
+    if (params?.category && params.category !== "all") query = query.eq("category", params.category as NoticeCategory);
+    if (params?.priority && params.priority !== "all") query = query.eq("priority", params.priority as NoticePriority);
 
     const { data, error } = await query;
     if (!error && data && data.length > 0) {
@@ -857,7 +866,7 @@ export async function getEventsList(params?: {
   try {
     let query = supabase.from("events").select("*").order("start_date", { ascending: true });
 
-    if (params?.category && params.category !== "all") query = query.eq("category", params.category as any);
+    if (params?.category && params.category !== "all") query = query.eq("category", params.category as EventCategory);
 
     const { data, error } = await query;
     if (!error && data && data.length > 0) {
@@ -1028,7 +1037,7 @@ export async function getHelpRequests(params?: {
     let query = supabase.from("help_requests").select("*").order("created_at", { ascending: false });
 
     if (params?.studentId) query = query.eq("student_id", params.studentId);
-    if (params?.status && params.status !== "all") query = query.eq("status", params.status as any);
+    if (params?.status && params.status !== "all") query = query.eq("status", params.status as RequestStatus);
     if (params?.category && params.category !== "all") query = query.eq("category", params.category);
 
     const { data, error } = await query;
@@ -1073,7 +1082,7 @@ export async function getHelpRequestById(id: string): Promise<HelpRequestWithDet
     if (!error && data) {
       return {
         ...data,
-        replies: (data as any).help_request_replies || [],
+        replies: (data as unknown as { help_request_replies?: HelpRequestReplyRow[] }).help_request_replies || [],
       };
     }
   } catch {
@@ -1190,7 +1199,7 @@ export async function getNotificationsList(params?: {
     let query = supabase.from("notifications").select("*").order("created_at", { ascending: false });
 
     if (params?.userId) query = query.eq("user_id", params.userId);
-    if (params?.type && params.type !== "all") query = query.eq("type", params.type as any);
+    if (params?.type && params.type !== "all") query = query.eq("type", params.type as NotificationType);
     if (params?.unreadOnly) query = query.eq("is_read", false);
 
     const { data, error } = await query;

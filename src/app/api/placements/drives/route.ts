@@ -9,7 +9,7 @@ import {
 } from "@/lib/security/sanitize";
 import { PlacementDrive } from "@/types";
 
-let activeDrives: PlacementDrive[] = [...MOCK_PLACEMENT_DRIVES];
+const activeDrives: PlacementDrive[] = [...MOCK_PLACEMENT_DRIVES];
 
 export async function GET(req: NextRequest) {
   try {

@@ -11,8 +11,8 @@ import {
 } from "@/lib/security/sanitize";
 import { FeeTransaction, StudentFeeDue } from "@/types";
 
-let activeDues: StudentFeeDue[] = [...MOCK_STUDENT_FEE_DUES];
-let activeTransactions: FeeTransaction[] = [...MOCK_FEE_TRANSACTIONS];
+const activeDues: StudentFeeDue[] = [...MOCK_STUDENT_FEE_DUES];
+const activeTransactions: FeeTransaction[] = [...MOCK_FEE_TRANSACTIONS];
 
 export async function GET(req: NextRequest) {
   try {

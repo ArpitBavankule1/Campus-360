@@ -14,7 +14,7 @@ import {
 } from "@/lib/security/sanitize";
 
 // In-memory runtime cache for seamless operation across the server session
-let activeBookings: FacilityBooking[] = getInitialSeedBookings();
+const activeBookings: FacilityBooking[] = getInitialSeedBookings();
 
 export async function GET(req: NextRequest) {
   try {

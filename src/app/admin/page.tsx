@@ -301,7 +301,7 @@ export default function AdminDashboardPage() {
             return (
               <button
                 key={tab.id}
-                onClick={() => setActiveTab(tab.id as any)}
+                onClick={() => setActiveTab(tab.id as "overview" | "locations" | "notices" | "timetable" | "triage" | "system")}
                 className={cn(
                   "px-4 py-2 rounded-xl text-xs font-semibold transition-all flex items-center gap-2 whitespace-nowrap",
                   isActive
@@ -543,7 +543,7 @@ export default function AdminDashboardPage() {
                     <Label className="text-xs font-semibold">Category</Label>
                     <select
                       value={newLocCategory}
-                      onChange={(e) => setNewLocCategory(e.target.value as any)}
+                      onChange={(e) => setNewLocCategory(e.target.value as LocationCategory)}
                       className="mt-1 w-full h-9 rounded-xl border border-input bg-background px-3 text-xs shadow-xs"
                     >
                       <option value="academic">Academic</option>
@@ -684,7 +684,7 @@ export default function AdminDashboardPage() {
                       <Label className="text-xs font-semibold">Category</Label>
                       <select
                         value={newNoticeCategory}
-                        onChange={(e) => setNewNoticeCategory(e.target.value as any)}
+                        onChange={(e) => setNewNoticeCategory(e.target.value as NoticeCategory)}
                         className="mt-1 w-full h-9 rounded-xl border border-input bg-background px-3 text-xs shadow-xs"
                       >
                         <option value="academic">Academic</option>
@@ -699,7 +699,7 @@ export default function AdminDashboardPage() {
                       <Label className="text-xs font-semibold">Priority</Label>
                       <select
                         value={newNoticePriority}
-                        onChange={(e) => setNewNoticePriority(e.target.value as any)}
+                        onChange={(e) => setNewNoticePriority(e.target.value as NoticePriority)}
                         className="mt-1 w-full h-9 rounded-xl border border-input bg-background px-3 text-xs shadow-xs"
                       >
                         <option value="normal">Normal</option>

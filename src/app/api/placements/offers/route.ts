@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { MOCK_STUDENT_OFFERS } from "@/lib/placements/placement-engine";
 import { PlacementOffer } from "@/types";
 
-let activeOffers: PlacementOffer[] = [...MOCK_STUDENT_OFFERS];
+const activeOffers: PlacementOffer[] = [...MOCK_STUDENT_OFFERS];
 
 export async function GET(req: NextRequest) {
   try {

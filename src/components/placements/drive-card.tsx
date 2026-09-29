@@ -1,4 +1,3 @@
-"useContent";
 "use client";
 
 import React, { useState } from "react";
@@ -44,6 +43,7 @@ export function DriveCard({ drive, student, isApplied, onApply }: DriveCardProps
   const skillMatch = calculateSkillMatchScore(drive.skills_required, student.skills);
 
   const deadlineDate = new Date(drive.application_deadline);
+  // eslint-disable-next-line react-hooks/purity -- render-time comparison against current epoch to evaluate expired application window
   const isExpired = deadlineDate.getTime() < Date.now();
   const formattedDeadline = deadlineDate.toLocaleDateString("en-IN", {
     day: "numeric",

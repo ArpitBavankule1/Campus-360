@@ -14,16 +14,11 @@ import {
   Users,
   BellRing,
   LifeBuoy,
-  MessageSquare,
-  HelpCircle,
-  ExternalLink,
   ChevronRight,
-  CheckCircle2,
   Lightbulb,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Card } from "@/components/ui/card";
 import { cn } from "cn";
 
 interface Message {
@@ -106,7 +101,7 @@ export function AiChatInterface() {
 
     setInput("");
     const userMsg: Message = {
-      id: `usr-${Date.now()}`,
+      id: `usr-${crypto.randomUUID()}`,
       role: "user",
       content: queryText,
       timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
@@ -131,7 +126,7 @@ export function AiChatInterface() {
 
       const data = await res.json();
       const botMsg: Message = {
-        id: `bot-${Date.now()}`,
+        id: `bot-${crypto.randomUUID()}`,
         role: "assistant",
         content: data.reply || "Sorry, I couldn't process your request.",
         relatedLinks: data.relatedLinks || [],
@@ -142,7 +137,7 @@ export function AiChatInterface() {
       setMessages((prev) => [...prev, botMsg]);
     } catch {
       const errorMsg: Message = {
-        id: `bot-err-${Date.now()}`,
+        id: `bot-err-${crypto.randomUUID()}`,
         role: "assistant",
         content: "⚠️ I encountered a temporary connection issue. Please try again or select one of the suggested campus topics.",
         suggestions: INITIAL_SUGGESTIONS.slice(0, 3),
