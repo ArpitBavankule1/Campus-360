@@ -27,6 +27,8 @@ import {
   Briefcase,
   CreditCard,
   BookOpen,
+  Bed,
+  Utensils,
 } from "lucide-react";
 import {
   MOCK_LOCATIONS,
@@ -98,6 +100,7 @@ export function CommandPalette() {
     { id: "p-place", title: "Career & Placement Drives", subtitle: "Industry job drives, CTC analytics & offer vault", category: "Navigation", href: "/placements", icon: Briefcase },
     { id: "p-fees", title: "Fee Portal & Digital Receipts", subtitle: "Semester dues, online payment & scholarships", category: "Navigation", href: "/fees", icon: CreditCard },
     { id: "p-library", title: "Digital Library & Knowledge Commons", subtitle: "150k+ book catalog, borrow pass & IEEE e-resources", category: "Navigation", href: "/library", icon: BookOpen },
+    { id: "p-hostel", title: "Hostel & Residence Portal", subtitle: "Room allotments, mess dining menu & out-passes", category: "Navigation", href: "/hostel", icon: Bed },
     { id: "p-explore", title: "Campus Explorer", subtitle: "Directory of buildings & facilities", category: "Navigation", href: "/explore", icon: Compass },
     { id: "p-map", title: "Interactive 3D Campus Map", subtitle: "Real-time geographical pinpoints", category: "Navigation", href: "/map", icon: MapPin },
     { id: "p-time", title: "Class Timetable", subtitle: "Day-wise lecture routines", category: "Navigation", href: "/timetable", icon: CalendarDays },
@@ -116,6 +119,7 @@ export function CommandPalette() {
     { id: "a-ticket", title: "Raise a Support Ticket", subtitle: "Submit IT, Hostel, or Exam inquiry", category: "Actions", href: "/help-desk/new", icon: LifeBuoy },
     { id: "a-ai", title: "Ask AI Campus Assistant", subtitle: "Ask about room locations or exams", category: "Actions", href: "/ai-assistant", icon: Bot },
     { id: "a-library", title: "Search Book Catalog & Reserve Holds", subtitle: "Borrow physical textbooks or place reservation holds", category: "Actions", href: "/library", icon: BookOpen },
+    { id: "a-outpass", title: "Request Night Out-Pass", subtitle: "Submit electronic hostel departure pass", category: "Actions", href: "/hostel", icon: Bed },
 
     // Locations
     ...MOCK_LOCATIONS.map((l) => ({

@@ -24,6 +24,7 @@ import {
   Briefcase,
   CreditCard,
   BookOpen,
+  Bed,
 } from "lucide-react";
 import { useAuth } from "@/components/layout/auth-provider";
 import { Badge } from "@/components/ui/badge";
@@ -80,6 +81,12 @@ const studentNavItems: NavItem[] = [
     href: "/library",
     icon: BookOpen,
     badge: "Phase 22",
+  },
+  {
+    title: "Hostel & Residence",
+    href: "/hostel",
+    icon: Bed,
+    badge: "Phase 23",
   },
   {
     title: "Campus Explorer",
