@@ -92,6 +92,12 @@ export type GrievanceCategory = "plumbing" | "electrical" | "carpentry" | "clean
 export type GrievancePriority = "low" | "medium" | "high" | "urgent";
 export type GrievanceStatus = "reported" | "assigned" | "in_progress" | "resolved";
 
+export type BloodGroup = "A+" | "A-" | "B+" | "B-" | "AB+" | "AB-" | "O+" | "O-";
+export type AppointmentStatus = "scheduled" | "completed" | "cancelled" | "no_show";
+export type MedicalLeaveStatus = "pending" | "approved" | "rejected";
+export type EmergencySOSType = "cardiac" | "trauma" | "asthma" | "fainting" | "general";
+export type EmergencySOSStatus = "dispatched" | "en_route" | "attended" | "resolved";
+
 export interface Database {
   public: {
     Tables: {
@@ -1938,6 +1944,243 @@ export interface Database {
           resolved_at?: string | null;
           created_at?: string;
           updated_at?: string;
+        };
+        Relationships: [];
+      };
+      student_health_profiles: {
+        Row: {
+          id: string;
+          college_id: string;
+          student_id: string;
+          blood_group: BloodGroup;
+          allergies: string[];
+          chronic_conditions: string[];
+          emergency_contact_name: string;
+          emergency_contact_phone: string;
+          emergency_contact_relation: string;
+          insurance_policy_no: string | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          college_id: string;
+          student_id: string;
+          blood_group: BloodGroup;
+          allergies?: string[];
+          chronic_conditions?: string[];
+          emergency_contact_name: string;
+          emergency_contact_phone: string;
+          emergency_contact_relation: string;
+          insurance_policy_no?: string | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          college_id?: string;
+          student_id?: string;
+          blood_group?: BloodGroup;
+          allergies?: string[];
+          chronic_conditions?: string[];
+          emergency_contact_name?: string;
+          emergency_contact_phone?: string;
+          emergency_contact_relation?: string;
+          insurance_policy_no?: string | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
+      health_appointments: {
+        Row: {
+          id: string;
+          college_id: string;
+          student_id: string;
+          doctor_name: string;
+          specialization: string;
+          appointment_date: string;
+          time_slot: string;
+          token_number: number;
+          symptoms: string;
+          status: AppointmentStatus;
+          prescription_notes: string | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          college_id: string;
+          student_id: string;
+          doctor_name: string;
+          specialization: string;
+          appointment_date: string;
+          time_slot: string;
+          token_number: number;
+          symptoms: string;
+          status?: AppointmentStatus;
+          prescription_notes?: string | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          college_id?: string;
+          student_id?: string;
+          doctor_name?: string;
+          specialization?: string;
+          appointment_date?: string;
+          time_slot?: string;
+          token_number?: number;
+          symptoms?: string;
+          status?: AppointmentStatus;
+          prescription_notes?: string | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
+      medical_leave_requests: {
+        Row: {
+          id: string;
+          college_id: string;
+          student_id: string;
+          leave_code: string;
+          start_date: string;
+          end_date: string;
+          total_days: number;
+          reason: string;
+          doctor_certificate_url: string | null;
+          attendance_waiver_granted: boolean;
+          verified_by: string | null;
+          status: MedicalLeaveStatus;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          college_id: string;
+          student_id: string;
+          leave_code: string;
+          start_date: string;
+          end_date: string;
+          total_days: number;
+          reason: string;
+          doctor_certificate_url?: string | null;
+          attendance_waiver_granted?: boolean;
+          verified_by?: string | null;
+          status?: MedicalLeaveStatus;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          college_id?: string;
+          student_id?: string;
+          leave_code?: string;
+          start_date?: string;
+          end_date?: string;
+          total_days?: number;
+          reason?: string;
+          doctor_certificate_url?: string | null;
+          attendance_waiver_granted?: boolean;
+          verified_by?: string | null;
+          status?: MedicalLeaveStatus;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
+      dispensary_medicines: {
+        Row: {
+          id: string;
+          college_id: string;
+          name: string;
+          generic_name: string;
+          dosage: string;
+          available_quantity: number;
+          unit: string;
+          requires_prescription: boolean;
+          is_in_stock: boolean;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          college_id: string;
+          name: string;
+          generic_name: string;
+          dosage: string;
+          available_quantity?: number;
+          unit?: string;
+          requires_prescription?: boolean;
+          is_in_stock?: boolean;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          college_id?: string;
+          name?: string;
+          generic_name?: string;
+          dosage?: string;
+          available_quantity?: number;
+          unit?: string;
+          requires_prescription?: boolean;
+          is_in_stock?: boolean;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
+      emergency_sos_dispatches: {
+        Row: {
+          id: string;
+          college_id: string;
+          student_id: string;
+          sos_ticket_code: string;
+          latitude: number;
+          longitude: number;
+          building_reference: string;
+          emergency_type: EmergencySOSType;
+          ambulance_dispatched: boolean;
+          status: EmergencySOSStatus;
+          responder_notes: string | null;
+          triggered_at: string;
+          resolved_at: string | null;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          college_id: string;
+          student_id: string;
+          sos_ticket_code: string;
+          latitude: number;
+          longitude: number;
+          building_reference: string;
+          emergency_type?: EmergencySOSType;
+          ambulance_dispatched?: boolean;
+          status?: EmergencySOSStatus;
+          responder_notes?: string | null;
+          triggered_at?: string;
+          resolved_at?: string | null;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          college_id?: string;
+          student_id?: string;
+          sos_ticket_code?: string;
+          latitude?: number;
+          longitude?: number;
+          building_reference?: string;
+          emergency_type?: EmergencySOSType;
+          ambulance_dispatched?: boolean;
+          status?: EmergencySOSStatus;
+          responder_notes?: string | null;
+          triggered_at?: string;
+          resolved_at?: string | null;
+          created_at?: string;
         };
         Relationships: [];
       };

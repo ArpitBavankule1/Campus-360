@@ -807,6 +807,110 @@ export interface HostelAnalyticsSummary {
   blocks: { name: string; occupancy: number; total: number }[];
 }
 
+// ================================================================
+// Phase 24: Campus Health Center, Infirmary & Emergency Health SOS
+// ================================================================
+
+export type BloodGroup = 'A+' | 'A-' | 'B+' | 'B-' | 'AB+' | 'AB-' | 'O+' | 'O-';
+export type AppointmentStatus = 'scheduled' | 'completed' | 'cancelled' | 'no_show';
+export type MedicalLeaveStatus = 'pending' | 'approved' | 'rejected';
+export type EmergencySOSType = 'cardiac' | 'trauma' | 'asthma' | 'fainting' | 'general';
+export type EmergencySOSStatus = 'dispatched' | 'en_route' | 'attended' | 'resolved';
+
+export interface StudentHealthProfile {
+  id: string;
+  college_id: string;
+  student_id: string;
+  blood_group: BloodGroup;
+  allergies: string[];
+  chronic_conditions: string[];
+  emergency_contact_name: string;
+  emergency_contact_phone: string;
+  emergency_contact_relation: string;
+  insurance_policy_no?: string | null;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface HealthAppointment {
+  id: string;
+  college_id: string;
+  student_id: string;
+  doctor_name: string;
+  specialization: string;
+  appointment_date: string;
+  time_slot: string;
+  token_number: number;
+  symptoms: string;
+  status: AppointmentStatus;
+  prescription_notes?: string | null;
+  created_at: string;
+}
+
+export interface MedicalLeaveRequest {
+  id: string;
+  college_id: string;
+  student_id: string;
+  leave_code: string;
+  start_date: string;
+  end_date: string;
+  total_days: number;
+  reason: string;
+  doctor_certificate_url?: string | null;
+  attendance_waiver_granted: boolean;
+  verified_by?: string | null;
+  status: MedicalLeaveStatus;
+  created_at: string;
+}
+
+export interface DispensaryMedicine {
+  id: string;
+  college_id: string;
+  name: string;
+  generic_name: string;
+  dosage: string;
+  available_quantity: number;
+  unit: string;
+  requires_prescription: boolean;
+  is_in_stock: boolean;
+}
+
+export interface EmergencySOSDispatch {
+  id: string;
+  college_id: string;
+  student_id: string;
+  sos_ticket_code: string;
+  latitude: number;
+  longitude: number;
+  building_reference: string;
+  emergency_type: EmergencySOSType;
+  ambulance_dispatched: boolean;
+  status: EmergencySOSStatus;
+  responder_notes?: string | null;
+  triggered_at: string;
+  resolved_at?: string | null;
+}
+
+export interface CampusDoctorSchedule {
+  id: string;
+  name: string;
+  specialization: string;
+  qualifications: string;
+  opdDays: string;
+  opdTimings: string;
+  roomNumber: string;
+  activeStatus: "in_clinic" | "on_call" | "off_duty";
+  avatarUrl?: string;
+}
+
+export interface StudentHealthOverview {
+  profile: StudentHealthProfile;
+  activeAppointments: HealthAppointment[];
+  recentMedicalLeaves: MedicalLeaveRequest[];
+  healthStatus: "fit" | "under_care" | "critical_allergy";
+}
+
+
 
 
 
