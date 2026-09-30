@@ -16,6 +16,7 @@ import {
   BookOpen,
   Bed,
   HeartPulse,
+  Trophy,
 } from "lucide-react";
 import { cn } from "cn";
 
@@ -116,6 +117,16 @@ const actionItems: QuickActionItem[] = [
     iconColor: "text-rose-600 dark:text-rose-400",
     badge: "Phase 24",
     badgeBg: "bg-rose-500/15 text-rose-600 dark:text-rose-400 border-rose-500/30",
+  },
+  {
+    title: "Student Clubs & Societies",
+    description: "Join tech & cultural societies, reserve hackathon passes & track merit points",
+    href: "/clubs",
+    icon: Trophy,
+    iconBg: "bg-purple-500/10 dark:bg-purple-500/20",
+    iconColor: "text-purple-600 dark:text-purple-400",
+    badge: "Phase 25",
+    badgeBg: "bg-purple-500/15 text-purple-600 dark:text-purple-400 border-purple-500/30",
   },
   {
     title: "Notices & Circulars",

@@ -26,6 +26,7 @@ import {
   BookOpen,
   Bed,
   HeartPulse,
+  Trophy,
 } from "lucide-react";
 import { useAuth } from "@/components/layout/auth-provider";
 import { Badge } from "@/components/ui/badge";
@@ -94,6 +95,12 @@ const studentNavItems: NavItem[] = [
     href: "/health",
     icon: HeartPulse,
     badge: "Phase 24",
+  },
+  {
+    title: "Student Clubs & Societies",
+    href: "/clubs",
+    icon: Trophy,
+    badge: "Phase 25",
   },
   {
     title: "Campus Explorer",

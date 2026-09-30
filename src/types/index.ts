@@ -972,6 +972,7 @@ export interface StudentMeritActivity {
   certificate_url?: string | null;
   verified_by: string;
   awarded_at: string;
+  created_at?: string;
   club?: StudentClub;
 }
 
