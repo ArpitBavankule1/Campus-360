@@ -910,6 +910,79 @@ export interface StudentHealthOverview {
   healthStatus: "fit" | "under_care" | "critical_allergy";
 }
 
+// ================================================================
+// Phase 25: Student Clubs, Technical Societies & Activity Merit Ledgers
+// ================================================================
+
+export type ClubCategory = 'technical' | 'cultural' | 'sports' | 'literary' | 'social';
+export type ClubRole = 'member' | 'core_team' | 'lead' | 'treasurer';
+export type ActivityType = 'hackathon' | 'workshop' | 'cultural_performance' | 'sports_meet' | 'paper_presentation';
+
+export interface StudentClub {
+  id: string;
+  college_id: string;
+  name: string;
+  slug: string;
+  category: ClubCategory;
+  description: string;
+  logo_url?: string | null;
+  lead_student_name: string;
+  faculty_mentor_name: string;
+  member_count: number;
+  meeting_venue: string;
+  recruitment_open: boolean;
+  social_links?: Record<string, string>;
+  created_at?: string;
+}
+
+export interface ClubMembership {
+  id: string;
+  college_id: string;
+  club_id: string;
+  student_id: string;
+  role: ClubRole;
+  joined_at: string;
+  status: 'active' | 'alumni' | 'pending';
+  club?: StudentClub;
+}
+
+export interface ClubEventTicket {
+  id: string;
+  college_id: string;
+  event_id: string;
+  student_id: string;
+  ticket_code: string;
+  event_title: string;
+  venue: string;
+  seat_tier: string;
+  price: number;
+  is_verified: boolean;
+  checked_in_at?: string | null;
+  created_at: string;
+}
+
+export interface StudentMeritActivity {
+  id: string;
+  college_id: string;
+  student_id: string;
+  club_id?: string | null;
+  activity_title: string;
+  activity_type: ActivityType;
+  merit_points: number;
+  certificate_url?: string | null;
+  verified_by: string;
+  awarded_at: string;
+  club?: StudentClub;
+}
+
+export interface StudentClubOverview {
+  joinedClubs: ClubMembership[];
+  myEventTickets: ClubEventTicket[];
+  meritLedger: StudentMeritActivity[];
+  totalMeritPoints: number;
+}
+
+
 
 
 
