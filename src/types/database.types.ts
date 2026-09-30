@@ -82,6 +82,16 @@ export type EResourceType =
   | "conference"
   | "thesis";
 
+export type HostelGender = "boys" | "girls" | "coed";
+export type HostelRoomType = "single" | "double" | "triple" | "quad";
+export type AllocationStatus = "active" | "vacated" | "suspended";
+export type MealType = "breakfast" | "lunch" | "snacks" | "dinner";
+export type MessDayOfWeek = "monday" | "tuesday" | "wednesday" | "thursday" | "friday" | "saturday" | "sunday";
+export type OutPassStatus = "pending" | "approved" | "rejected" | "departed" | "returned" | "overdue";
+export type GrievanceCategory = "plumbing" | "electrical" | "carpentry" | "cleanliness" | "wifi" | "other";
+export type GrievancePriority = "low" | "medium" | "high" | "urgent";
+export type GrievanceStatus = "reported" | "assigned" | "in_progress" | "resolved";
+
 export interface Database {
   public: {
     Tables: {
@@ -1647,6 +1657,285 @@ export interface Database {
           department_id?: string | null;
           downloads_count?: number;
           is_open_access?: boolean;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
+      hostel_blocks: {
+        Row: {
+          id: string;
+          college_id: string;
+          name: string;
+          gender: HostelGender;
+          total_floors: number;
+          total_rooms: number;
+          warden_name: string;
+          warden_phone: string;
+          warden_email: string;
+          description: string | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          college_id: string;
+          name: string;
+          gender: HostelGender;
+          total_floors?: number;
+          total_rooms?: number;
+          warden_name: string;
+          warden_phone: string;
+          warden_email: string;
+          description?: string | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          college_id?: string;
+          name?: string;
+          gender?: HostelGender;
+          total_floors?: number;
+          total_rooms?: number;
+          warden_name?: string;
+          warden_phone?: string;
+          warden_email?: string;
+          description?: string | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
+      hostel_rooms: {
+        Row: {
+          id: string;
+          college_id: string;
+          block_id: string;
+          room_number: string;
+          floor: number;
+          capacity: number;
+          occupied_count: number;
+          room_type: HostelRoomType;
+          monthly_rent: number;
+          ac_enabled: boolean;
+          amenities: string[];
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          college_id: string;
+          block_id: string;
+          room_number: string;
+          floor: number;
+          capacity?: number;
+          occupied_count?: number;
+          room_type?: HostelRoomType;
+          monthly_rent?: number;
+          ac_enabled?: boolean;
+          amenities?: string[];
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          college_id?: string;
+          block_id?: string;
+          room_number?: string;
+          floor?: number;
+          capacity?: number;
+          occupied_count?: number;
+          room_type?: HostelRoomType;
+          monthly_rent?: number;
+          ac_enabled?: boolean;
+          amenities?: string[];
+          created_at?: string;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
+      hostel_allocations: {
+        Row: {
+          id: string;
+          college_id: string;
+          room_id: string;
+          student_id: string;
+          bed_number: string;
+          academic_year: string;
+          status: AllocationStatus;
+          allocated_at: string;
+          vacated_at: string | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          college_id: string;
+          room_id: string;
+          student_id: string;
+          bed_number: string;
+          academic_year: string;
+          status?: AllocationStatus;
+          allocated_at?: string;
+          vacated_at?: string | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          college_id?: string;
+          room_id?: string;
+          student_id?: string;
+          bed_number?: string;
+          academic_year?: string;
+          status?: AllocationStatus;
+          allocated_at?: string;
+          vacated_at?: string | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
+      hostel_mess_menus: {
+        Row: {
+          id: string;
+          college_id: string;
+          day_of_week: MessDayOfWeek;
+          meal_type: MealType;
+          timings: string;
+          items: string[];
+          special_item: string | null;
+          calories_approx: number;
+          dietary_tags: string[];
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          college_id: string;
+          day_of_week: MessDayOfWeek;
+          meal_type: MealType;
+          timings: string;
+          items: string[];
+          special_item?: string | null;
+          calories_approx?: number;
+          dietary_tags?: string[];
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          college_id?: string;
+          day_of_week?: MessDayOfWeek;
+          meal_type?: MealType;
+          timings?: string;
+          items?: string[];
+          special_item?: string | null;
+          calories_approx?: number;
+          dietary_tags?: string[];
+          created_at?: string;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
+      hostel_out_passes: {
+        Row: {
+          id: string;
+          college_id: string;
+          student_id: string;
+          pass_code: string;
+          destination: string;
+          reason: string;
+          departure_time: string;
+          expected_return: string;
+          actual_return: string | null;
+          parent_contact: string;
+          parent_consent_verified: boolean;
+          status: OutPassStatus;
+          warden_remarks: string | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          college_id: string;
+          student_id: string;
+          pass_code: string;
+          destination: string;
+          reason: string;
+          departure_time: string;
+          expected_return: string;
+          actual_return?: string | null;
+          parent_contact: string;
+          parent_consent_verified?: boolean;
+          status?: OutPassStatus;
+          warden_remarks?: string | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          college_id?: string;
+          student_id?: string;
+          pass_code?: string;
+          destination?: string;
+          reason?: string;
+          departure_time?: string;
+          expected_return?: string;
+          actual_return?: string | null;
+          parent_contact?: string;
+          parent_consent_verified?: boolean;
+          status?: OutPassStatus;
+          warden_remarks?: string | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
+      hostel_grievances: {
+        Row: {
+          id: string;
+          college_id: string;
+          student_id: string;
+          room_id: string | null;
+          category: GrievanceCategory;
+          priority: GrievancePriority;
+          title: string;
+          description: string;
+          status: GrievanceStatus;
+          assigned_to: string | null;
+          resolved_at: string | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          college_id: string;
+          student_id: string;
+          room_id?: string | null;
+          category: GrievanceCategory;
+          priority?: GrievancePriority;
+          title: string;
+          description: string;
+          status?: GrievanceStatus;
+          assigned_to?: string | null;
+          resolved_at?: string | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          college_id?: string;
+          student_id?: string;
+          room_id?: string | null;
+          category?: GrievanceCategory;
+          priority?: GrievancePriority;
+          title?: string;
+          description?: string;
+          status?: GrievanceStatus;
+          assigned_to?: string | null;
+          resolved_at?: string | null;
           created_at?: string;
           updated_at?: string;
         };
