@@ -97,6 +97,23 @@ graph TD
 - **Voucher QR Passes**: Verifiable circulation and hold codes (`CL-LIB-BRW-2026-XXXX` & `CL-LIB-RES-2026-XXXX`).
 - **Institutional E-Resources**: Integrated repository for IEEE transactions, ACM proceedings, and open access monographs.
 
+### 12. 🏠 Smart Campus Hostel, Residence & Mess Management (Phase 23)
+- **Room Allotment & Bed Allocation**: Live occupancy tracking across Boys, Girls, and International scholar residential halls.
+- **Dining Schedules & Meal QR Tokens**: 7-day nutritional rotation with calories, allergen tagging, and instant QR meal tokens (`CL-HST-MESS-2026-XXXX`).
+- **Verified Night Out-Passes**: Digital gate-pass workflow with mandatory parent telephonic verification and warden sign-offs (`CL-HST-PASS-2026-XXXX`).
+- **Rapid Maintenance Ticketing**: SLA-governed resolution tracking for electrical, plumbing, carpentry, and campus LAN grievances.
+
+### 13. 🏥 Campus Health Center, Infirmary & Emergency SOS (Phase 24)
+- **1-Tap Emergency Health SOS**: Instantaneous emergency beacon with campus GPS dispatching the campus ambulance and oxygen paramedic squad.
+- **Doctor OPD Consultations**: Schedule appointments with Chief Medical Officer, sports physiotherapist, and mental wellness counselors.
+- **Complimentary Pharmacy Dispensary**: Real-time stock transparency for over-the-counter essentials, ORS sachets, and prescribed medicines.
+- **Medical Sick Leave Attendance Waivers**: Automatic academic attendance percentage adjustment excusing verified sick leave hours.
+
+### 14. 🏆 Student Clubs, Societies & Activity Merit Ledger (Phase 25)
+- **Flagship Societies Directory**: Explore Coding & AI, Robotics, Dramatic Arts, Literary Debate, and Social Impact cells.
+- **Digital Event Admittance Passes**: Generate and scan high-resolution QR tickets for hackathons, symposiums, and cultural fests (`CL-CLB-TKT-2026-XXXX`).
+- **Co-Curricular Merit Ledger**: Verified honors credit score tracking toward Graduation Honors Degrees and academic transcript verification.
+
 ---
 
 ## 🛠️ Technology Stack
@@ -196,6 +213,15 @@ node scripts/verify-phase16.mjs
 
 # Phase 22: Smart Digital Library & Knowledge Commons
 node scripts/verify-phase22.mjs
+
+# Phase 23: Smart Campus Hostel & Residence Management
+node scripts/verify-phase23.mjs
+
+# Phase 24: Campus Health Center & Emergency SOS
+node scripts/verify-phase24.mjs
+
+# Phase 25: Student Clubs & Activity Merit Ledger
+node scripts/verify-phase25.mjs
 
 # Run production build validation
 npm run build
