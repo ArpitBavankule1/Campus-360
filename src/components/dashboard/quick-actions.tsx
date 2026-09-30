@@ -15,6 +15,7 @@ import {
   CreditCard,
   BookOpen,
   Bed,
+  HeartPulse,
 } from "lucide-react";
 import { cn } from "cn";
 
@@ -105,6 +106,16 @@ const actionItems: QuickActionItem[] = [
     iconColor: "text-amber-600 dark:text-amber-400",
     badge: "Phase 23",
     badgeBg: "bg-amber-500/15 text-amber-600 dark:text-amber-400 border-amber-500/30",
+  },
+  {
+    title: "Health Center & Infirmary",
+    description: "Doctor OPD appointments, emergency medical SOS & attendance leaves",
+    href: "/health",
+    icon: HeartPulse,
+    iconBg: "bg-rose-500/10 dark:bg-rose-500/20",
+    iconColor: "text-rose-600 dark:text-rose-400",
+    badge: "Phase 24",
+    badgeBg: "bg-rose-500/15 text-rose-600 dark:text-rose-400 border-rose-500/30",
   },
   {
     title: "Notices & Circulars",
