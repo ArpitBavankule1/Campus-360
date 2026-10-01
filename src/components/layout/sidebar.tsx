@@ -28,6 +28,7 @@ import {
   HeartPulse,
   Trophy,
   Bus,
+  Lightbulb,
 } from "lucide-react";
 import { useAuth } from "@/components/layout/auth-provider";
 import { Badge } from "@/components/ui/badge";
@@ -114,6 +115,12 @@ const studentNavItems: NavItem[] = [
     href: "/transport",
     icon: Bus,
     badge: "Phase 27",
+  },
+  {
+    title: "Research & Innovation",
+    href: "/research",
+    icon: Lightbulb,
+    badge: "Phase 28",
   },
   {
     title: "Campus Explorer",
