@@ -2368,6 +2368,272 @@ export interface Database {
         };
         Relationships: [];
       };
+
+      alumni_profiles: {
+        Row: {
+          id: string;
+          college_id: string;
+          user_id: string | null;
+          full_name: string;
+          email: string;
+          avatar_url: string | null;
+          graduating_year: number;
+          department: string;
+          degree: string;
+          current_role: string;
+          company: string;
+          industry: string;
+          location: string;
+          bio: string | null;
+          linkedin_url: string | null;
+          mentorship_available: boolean;
+          willing_to_refer: boolean;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          college_id: string;
+          user_id?: string | null;
+          full_name: string;
+          email: string;
+          avatar_url?: string | null;
+          graduating_year: number;
+          department: string;
+          degree?: string;
+          current_role: string;
+          company: string;
+          industry: string;
+          location: string;
+          bio?: string | null;
+          linkedin_url?: string | null;
+          mentorship_available?: boolean;
+          willing_to_refer?: boolean;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          college_id?: string;
+          user_id?: string | null;
+          full_name?: string;
+          email?: string;
+          avatar_url?: string | null;
+          graduating_year?: number;
+          department?: string;
+          degree?: string;
+          current_role?: string;
+          company?: string;
+          industry?: string;
+          location?: string;
+          bio?: string | null;
+          linkedin_url?: string | null;
+          mentorship_available?: boolean;
+          willing_to_refer?: boolean;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
+
+      alumni_mentorship_sessions: {
+        Row: {
+          id: string;
+          college_id: string;
+          alumni_id: string;
+          student_id: string;
+          student_name: string;
+          student_email: string;
+          topic: string;
+          session_type: string;
+          scheduled_at: string;
+          duration_minutes: number;
+          meeting_url: string | null;
+          notes: string | null;
+          status: string;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          college_id: string;
+          alumni_id: string;
+          student_id: string;
+          student_name: string;
+          student_email: string;
+          topic: string;
+          session_type?: string;
+          scheduled_at: string;
+          duration_minutes?: number;
+          meeting_url?: string | null;
+          notes?: string | null;
+          status?: string;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          college_id?: string;
+          alumni_id?: string;
+          student_id?: string;
+          student_name?: string;
+          student_email?: string;
+          topic?: string;
+          session_type?: string;
+          scheduled_at?: string;
+          duration_minutes?: number;
+          meeting_url?: string | null;
+          notes?: string | null;
+          status?: string;
+          created_at?: string;
+        };
+        Relationships: [];
+      };
+
+      alumni_job_referrals: {
+        Row: {
+          id: string;
+          college_id: string;
+          alumni_id: string;
+          alumni_name: string;
+          company: string;
+          role_title: string;
+          job_type: string;
+          experience_level: string;
+          location: string;
+          salary_range: string | null;
+          application_deadline: string;
+          referral_code: string;
+          apply_url: string | null;
+          description: string;
+          is_active: boolean;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          college_id: string;
+          alumni_id: string;
+          alumni_name: string;
+          company: string;
+          role_title: string;
+          job_type: string;
+          experience_level?: string;
+          location: string;
+          salary_range?: string | null;
+          application_deadline: string;
+          referral_code: string;
+          apply_url?: string | null;
+          description: string;
+          is_active?: boolean;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          college_id?: string;
+          alumni_id?: string;
+          alumni_name?: string;
+          company?: string;
+          role_title?: string;
+          job_type?: string;
+          experience_level?: string;
+          location?: string;
+          salary_range?: string | null;
+          application_deadline?: string;
+          referral_code?: string;
+          apply_url?: string | null;
+          description?: string;
+          is_active?: boolean;
+          created_at?: string;
+        };
+        Relationships: [];
+      };
+
+      alumni_donations: {
+        Row: {
+          id: string;
+          college_id: string;
+          donor_name: string;
+          donor_email: string;
+          graduating_year: number | null;
+          campaign: string;
+          amount: number;
+          currency: string;
+          pledge_status: string;
+          transaction_ref: string;
+          receipt_code: string;
+          is_anonymous: boolean;
+          message: string | null;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          college_id: string;
+          donor_name: string;
+          donor_email: string;
+          graduating_year?: number | null;
+          campaign: string;
+          amount: number;
+          currency?: string;
+          pledge_status?: string;
+          transaction_ref: string;
+          receipt_code: string;
+          is_anonymous?: boolean;
+          message?: string | null;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          college_id?: string;
+          donor_name?: string;
+          donor_email?: string;
+          graduating_year?: number | null;
+          campaign?: string;
+          amount?: number;
+          currency?: string;
+          pledge_status?: string;
+          transaction_ref?: string;
+          receipt_code?: string;
+          is_anonymous?: boolean;
+          message?: string | null;
+          created_at?: string;
+        };
+        Relationships: [];
+      };
+
+      alumni_digital_passes: {
+        Row: {
+          id: string;
+          college_id: string;
+          alumni_id: string;
+          pass_code: string;
+          issue_date: string;
+          valid_until: string;
+          privileges: Json;
+          is_active: boolean;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          college_id: string;
+          alumni_id: string;
+          pass_code: string;
+          issue_date?: string;
+          valid_until?: string;
+          privileges?: Json;
+          is_active?: boolean;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          college_id?: string;
+          alumni_id?: string;
+          pass_code?: string;
+          issue_date?: string;
+          valid_until?: string;
+          privileges?: Json;
+          is_active?: boolean;
+          created_at?: string;
+        };
+        Relationships: [];
+      };
     };
     Views: {
       [_ in never]: never;
