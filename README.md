@@ -114,6 +114,25 @@ graph TD
 - **Digital Event Admittance Passes**: Generate and scan high-resolution QR tickets for hackathons, symposiums, and cultural fests (`CL-CLB-TKT-2026-XXXX`).
 - **Co-Curricular Merit Ledger**: Verified honors credit score tracking toward Graduation Honors Degrees and academic transcript verification.
 
+### 15. 🎓 Alumni Network, Mentorship Nexus & Endowment Giving (Phase 26)
+- **Global Alumni Directory**: Search 1,420+ distinguished alumni across Google DeepMind, Stripe, and NVIDIA by batch, industry, and city.
+- **1-on-1 Mentorship Booking**: Schedule 45-minute virtual guidance sessions for CV critiques, technical mock interviews, and graduate school advice.
+- **Fast-Track Job Referrals**: Direct alumni-sponsored corporate recruitment postings with verifiable referral codes (`REF-XXXX-XXXX`).
+- **Institutional Endowment Campaigns**: Tax-exempt giving ledgers for STEM scholarships, robotics maker labs, and emergency student hardship funds.
+- **Lifelong Digital Alumni Pass**: High-resolution holographic pass with QR gate authorization (`CL-ALUM-PASS-2026-XXXX`).
+
+### 16. ⚡ Smart Campus Transport, EV Shuttle Fleet & Digital Parking (Phase 27)
+- **Live EV Shuttle Radar**: Real-time GPS tracking and dynamic ETA countdowns across Green Horizon Circular and Night Transit loops.
+- **Contactless Bus Boarding Passes**: Digital semester passes with cryptographic QR tokens (`CL-TRN-PASS-2026-XXXX`).
+- **Smart Parking Bay Sensors**: Real-time bay occupancy metrics across Faculty, Scholar, and High-Speed EV Rapid charging plazas.
+- **Campus Carpooling Community**: Peer commuter matching between city hubs and campus gates with carbon offset tracking.
+
+### 17. 🔬 Research Publications, Innovation Grants & IPR Hub (Phase 28)
+- **Peer-Reviewed Publications Repository**: Indexed publications across Scopus, IEEE Xplore, and Nature with instant BibTeX and citation copy tools.
+- **Sponsored Grants Outlay Ledger**: Multi-crore research project funding tracking across DST, SERB, and ISRO with tranche milestones.
+- **Intellectual Property (IPR) Registry**: Official patent and industrial design filing pipeline with institutional numbers (`CL-IPR-PAT-2026-XXXX`).
+- **Deep-Tech Incubation Showcase**: Student and faculty venture portfolio with funding stages, seed grant disbursements, and pitch decks.
+
 ---
 
 ## 🛠️ Technology Stack
@@ -222,6 +241,15 @@ node scripts/verify-phase24.mjs
 
 # Phase 25: Student Clubs & Activity Merit Ledger
 node scripts/verify-phase25.mjs
+
+# Phase 26: Alumni Network & Mentorship Nexus
+node scripts/verify-phase26.mjs
+
+# Phase 27: Smart Campus Transport & EV Shuttle Fleet
+node scripts/verify-phase27.mjs
+
+# Phase 28: Research Publications, Grants & IPR Hub
+node scripts/verify-phase28.mjs
 
 # Run production build validation
 npm run build
