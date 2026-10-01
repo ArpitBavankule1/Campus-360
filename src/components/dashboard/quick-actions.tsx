@@ -17,6 +17,7 @@ import {
   Bed,
   HeartPulse,
   Trophy,
+  Bus,
 } from "lucide-react";
 import { cn } from "cn";
 
@@ -137,6 +138,16 @@ const actionItems: QuickActionItem[] = [
     iconColor: "text-indigo-600 dark:text-indigo-400",
     badge: "Phase 26",
     badgeBg: "bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 border-indigo-500/30",
+  },
+  {
+    title: "Smart Campus Transport & EV",
+    description: "Live EV shuttle radar, digital QR bus passes & parking bay occupancy",
+    href: "/transport",
+    icon: Bus,
+    iconBg: "bg-emerald-500/10 dark:bg-emerald-500/20",
+    iconColor: "text-emerald-600 dark:text-emerald-400",
+    badge: "Phase 27",
+    badgeBg: "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border-emerald-500/30",
   },
   {
     title: "Notices & Circulars",

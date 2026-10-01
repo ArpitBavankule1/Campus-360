@@ -32,6 +32,7 @@ import {
   HeartPulse,
   Siren,
   Trophy,
+  Bus,
 } from "lucide-react";
 import {
   MOCK_LOCATIONS,
@@ -107,6 +108,7 @@ export function CommandPalette() {
     { id: "p-health", title: "Campus Health Center & SOS", subtitle: "Doctor OPD, emergency ambulance & medical leaves", category: "Navigation", href: "/health", icon: HeartPulse },
     { id: "p-clubs", title: "Student Clubs & Societies", subtitle: "Tech societies, hackathon passes & merit points", category: "Navigation", href: "/clubs", icon: Trophy },
     { id: "p-alumni", title: "Alumni Network & Mentorship", subtitle: "1-on-1 mentoring, referrals & endowment giving", category: "Navigation", href: "/alumni", icon: GraduationCap },
+    { id: "p-transport", title: "Smart Campus Transport & EV", subtitle: "Shuttle live radar, QR bus passes & parking", category: "Navigation", href: "/transport", icon: Bus },
     { id: "p-explore", title: "Campus Explorer", subtitle: "Directory of buildings & facilities", category: "Navigation", href: "/explore", icon: Compass },
     { id: "p-map", title: "Interactive 3D Campus Map", subtitle: "Real-time geographical pinpoints", category: "Navigation", href: "/map", icon: MapPin },
     { id: "p-time", title: "Class Timetable", subtitle: "Day-wise lecture routines", category: "Navigation", href: "/timetable", icon: CalendarDays },
