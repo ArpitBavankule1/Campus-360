@@ -129,6 +129,16 @@ const actionItems: QuickActionItem[] = [
     badgeBg: "bg-purple-500/15 text-purple-600 dark:text-purple-400 border-purple-500/30",
   },
   {
+    title: "Alumni & Mentorship",
+    description: "Book 1-on-1 industry mentorships, job referrals & campus giving",
+    href: "/alumni",
+    icon: GraduationCap,
+    iconBg: "bg-indigo-500/10 dark:bg-indigo-500/20",
+    iconColor: "text-indigo-600 dark:text-indigo-400",
+    badge: "Phase 26",
+    badgeBg: "bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 border-indigo-500/30",
+  },
+  {
     title: "Notices & Circulars",
     description: "Official notifications, examination routines & circulars",
     href: "/notices",
