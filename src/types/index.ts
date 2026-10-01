@@ -1368,11 +1368,109 @@ export interface ResearchOverviewStats {
   startups: InnovationStartup[];
 }
 
+// ================================================================
+// Phase 29 — International Scholars & Global Mobility Hub
+// ================================================================
 
+export type ExchangeSemesterTerm =
+  | "Fall 2026"
+  | "Spring 2027"
+  | "Summer Research 2027"
+  | "Full Academic Year 2026-27";
 
+export type ScholarshipCoverage =
+  | "Full Tuition + Living"
+  | "Full Tuition Only"
+  | "Travel & Research Grant"
+  | "Partial Subsidy";
 
+export type VisaCategory =
+  | "F-1 / J-1 (USA)"
+  | "Tier 4 / Student Visa (UK)"
+  | "Schengen Student (EU)"
+  | "Student Pass (Singapore)"
+  | "Australian Student 500";
 
+export type CreditTransferStatus = "pending" | "approved" | "rejected" | "under_review";
 
+export interface PartnerUniversity {
+  id: string;
+  college_id: string;
+  university_name: string;
+  country: string;
+  city: string;
+  qs_world_ranking: number;
+  programs_offered: string[];
+  min_gpa_required: number;
+  exchange_slots: number;
+  tuition_waiver: boolean;
+  application_deadline: string;
+  semester_term: ExchangeSemesterTerm;
+  campus_website?: string | null;
+  description: string;
+  created_at?: string;
+  updated_at?: string;
+}
 
+export interface InternationalScholarship {
+  id: string;
+  college_id: string;
+  fellowship_title: string;
+  sponsoring_body: string;
+  coverage_type: ScholarshipCoverage;
+  award_amount_usd: number;
+  target_countries: string[];
+  eligibility_criteria: string;
+  application_deadline: string;
+  open_slots: number;
+  status: "open" | "closed" | "reviewing";
+  created_at?: string;
+}
 
+export interface CreditTransferRequest {
+  id: string;
+  college_id: string;
+  student_id: string;
+  student_name: string;
+  host_university: string;
+  foreign_course_code: string;
+  foreign_course_title: string;
+  credits_earned: number;
+  equivalent_domestic_course: string;
+  equivalent_credits: number;
+  grade_earned: string;
+  syllabus_document_url?: string | null;
+  status: CreditTransferStatus;
+  evaluator_remarks?: string | null;
+  submitted_at: string;
+  evaluated_at?: string | null;
+}
 
+export interface TravelClearancePass {
+  id: string;
+  college_id: string;
+  student_id: string;
+  student_name: string;
+  pass_code: string;
+  destination_country: string;
+  host_institution: string;
+  passport_number_masked: string;
+  visa_type: VisaCategory;
+  valid_from: string;
+  valid_until: string;
+  dean_approval_status: "pending" | "approved" | "denied";
+  digital_qr_token: string;
+  created_at: string;
+}
+
+export interface GlobalMobilityOverviewStats {
+  totalPartners: number;
+  totalExchangeSlots: number;
+  totalScholarshipsValue: number;
+  activeScholarsAbroad: number;
+  pendingClearances: number;
+  partnerUniversities: PartnerUniversity[];
+  scholarships: InternationalScholarship[];
+  creditTransfers: CreditTransferRequest[];
+  travelPasses: TravelClearancePass[];
+}
