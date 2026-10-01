@@ -2634,6 +2634,276 @@ export interface Database {
         };
         Relationships: [];
       };
+
+      transport_routes: {
+        Row: {
+          id: string;
+          college_id: string;
+          route_name: string;
+          route_code: string;
+          shuttle_type: string;
+          start_point: string;
+          end_point: string;
+          stops: Json;
+          operating_hours: string;
+          frequency_mins: number;
+          status: string;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          college_id: string;
+          route_name: string;
+          route_code: string;
+          shuttle_type: string;
+          start_point: string;
+          end_point: string;
+          stops?: Json;
+          operating_hours?: string;
+          frequency_mins?: number;
+          status?: string;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          college_id?: string;
+          route_name?: string;
+          route_code?: string;
+          shuttle_type?: string;
+          start_point?: string;
+          end_point?: string;
+          stops?: Json;
+          operating_hours?: string;
+          frequency_mins?: number;
+          status?: string;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
+
+      transport_schedules: {
+        Row: {
+          id: string;
+          route_id: string;
+          bus_number: string;
+          driver_name: string;
+          driver_phone: string;
+          departure_time: string;
+          current_stop: string;
+          live_eta_mins: number;
+          live_status: string;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          route_id: string;
+          bus_number: string;
+          driver_name: string;
+          driver_phone: string;
+          departure_time: string;
+          current_stop: string;
+          live_eta_mins?: number;
+          live_status?: string;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          route_id?: string;
+          bus_number?: string;
+          driver_name?: string;
+          driver_phone?: string;
+          departure_time?: string;
+          current_stop?: string;
+          live_eta_mins?: number;
+          live_status?: string;
+          created_at?: string;
+        };
+        Relationships: [];
+      };
+
+      transport_passes: {
+        Row: {
+          id: string;
+          college_id: string;
+          scholar_id: string;
+          scholar_name: string;
+          pass_type: string;
+          pass_code: string;
+          route_id: string | null;
+          valid_from: string;
+          valid_to: string;
+          status: string;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          college_id: string;
+          scholar_id: string;
+          scholar_name: string;
+          pass_type: string;
+          pass_code: string;
+          route_id?: string | null;
+          valid_from?: string;
+          valid_to?: string;
+          status?: string;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          college_id?: string;
+          scholar_id?: string;
+          scholar_name?: string;
+          pass_type?: string;
+          pass_code?: string;
+          route_id?: string | null;
+          valid_from?: string;
+          valid_to?: string;
+          status?: string;
+          created_at?: string;
+        };
+        Relationships: [];
+      };
+
+      parking_zones: {
+        Row: {
+          id: string;
+          college_id: string;
+          zone_name: string;
+          zone_code: string;
+          category: string;
+          total_bays: number;
+          occupied_bays: number;
+          hourly_rate: number;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          college_id: string;
+          zone_name: string;
+          zone_code: string;
+          category: string;
+          total_bays: number;
+          occupied_bays?: number;
+          hourly_rate?: number;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          college_id?: string;
+          zone_name?: string;
+          zone_code?: string;
+          category?: string;
+          total_bays?: number;
+          occupied_bays?: number;
+          hourly_rate?: number;
+          created_at?: string;
+        };
+        Relationships: [];
+      };
+
+      parking_reservations: {
+        Row: {
+          id: string;
+          college_id: string;
+          user_id: string;
+          user_name: string;
+          zone_id: string;
+          bay_number: string;
+          vehicle_plate: string;
+          vehicle_type: string;
+          reserved_from: string;
+          reserved_until: string;
+          pass_code: string;
+          status: string;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          college_id: string;
+          user_id: string;
+          user_name: string;
+          zone_id: string;
+          bay_number: string;
+          vehicle_plate: string;
+          vehicle_type: string;
+          reserved_from: string;
+          reserved_until: string;
+          pass_code: string;
+          status?: string;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          college_id?: string;
+          user_id?: string;
+          user_name?: string;
+          zone_id?: string;
+          bay_number?: string;
+          vehicle_plate?: string;
+          vehicle_type?: string;
+          reserved_from?: string;
+          reserved_until?: string;
+          pass_code?: string;
+          status?: string;
+          created_at?: string;
+        };
+        Relationships: [];
+      };
+
+      carpool_listings: {
+        Row: {
+          id: string;
+          college_id: string;
+          driver_id: string;
+          driver_name: string;
+          driver_role: string;
+          departure_location: string;
+          destination_campus: string;
+          departure_time: string;
+          seats_available: number;
+          price_per_seat: number;
+          vehicle_model: string;
+          contact_phone: string;
+          is_active: boolean;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          college_id: string;
+          driver_id: string;
+          driver_name: string;
+          driver_role?: string;
+          departure_location: string;
+          destination_campus?: string;
+          departure_time: string;
+          seats_available: number;
+          price_per_seat?: number;
+          vehicle_model: string;
+          contact_phone: string;
+          is_active?: boolean;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          college_id?: string;
+          driver_id?: string;
+          driver_name?: string;
+          driver_role?: string;
+          departure_location?: string;
+          destination_campus?: string;
+          departure_time?: string;
+          seats_available?: number;
+          price_per_seat?: number;
+          vehicle_model?: string;
+          contact_phone?: string;
+          is_active?: boolean;
+          created_at?: string;
+        };
+        Relationships: [];
+      };
     };
     Views: {
       [_ in never]: never;

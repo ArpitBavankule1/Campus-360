@@ -1120,6 +1120,131 @@ export interface AlumniOverviewStats {
   latestReferrals: AlumniJobReferral[];
 }
 
+// ================================================================
+// Phase 27 — Smart Campus Transport, EV Shuttles & Digital Parking
+// ================================================================
+
+export type ShuttleType =
+  | "electric_bus"
+  | "mini_van"
+  | "express_shuttle"
+  | "night_transit";
+
+export type TransportPassType =
+  | "semester_unlimited"
+  | "monthly_commuter"
+  | "faculty_express"
+  | "single_day_guest";
+
+export type ParkingCategory =
+  | "faculty"
+  | "scholar"
+  | "visitor"
+  | "ev_charging";
+
+export type VehicleType = "car" | "two_wheeler" | "ev";
+
+export interface TransportRoute {
+  id: string;
+  college_id: string;
+  route_name: string;
+  route_code: string;
+  shuttle_type: ShuttleType;
+  start_point: string;
+  end_point: string;
+  stops: { name: string; eta_mins: number; landmark?: string }[];
+  operating_hours: string;
+  frequency_mins: number;
+  status: "active" | "delayed" | "off_duty";
+  created_at?: string;
+}
+
+export interface TransportSchedule {
+  id: string;
+  route_id: string;
+  bus_number: string;
+  driver_name: string;
+  driver_phone: string;
+  departure_time: string;
+  current_stop: string;
+  live_eta_mins: number;
+  live_status: "on_time" | "approaching" | "delayed" | "completed";
+  created_at?: string;
+  route?: TransportRoute;
+}
+
+export interface TransportPass {
+  id: string;
+  college_id: string;
+  scholar_id: string;
+  scholar_name: string;
+  pass_type: TransportPassType;
+  pass_code: string;
+  route_id?: string | null;
+  valid_from: string;
+  valid_to: string;
+  status: "active" | "expired" | "suspended";
+  created_at?: string;
+  route?: TransportRoute;
+}
+
+export interface ParkingZone {
+  id: string;
+  college_id: string;
+  zone_name: string;
+  zone_code: string;
+  category: ParkingCategory;
+  total_bays: number;
+  occupied_bays: number;
+  hourly_rate: number;
+  created_at?: string;
+}
+
+export interface ParkingReservation {
+  id: string;
+  college_id: string;
+  user_id: string;
+  user_name: string;
+  zone_id: string;
+  bay_number: string;
+  vehicle_plate: string;
+  vehicle_type: VehicleType;
+  reserved_from: string;
+  reserved_until: string;
+  pass_code: string;
+  status: "active" | "completed" | "cancelled";
+  created_at?: string;
+  zone?: ParkingZone;
+}
+
+export interface CarpoolListing {
+  id: string;
+  college_id: string;
+  driver_id: string;
+  driver_name: string;
+  driver_role: "student" | "faculty" | "staff";
+  departure_location: string;
+  destination_campus: string;
+  departure_time: string;
+  seats_available: number;
+  price_per_seat: number;
+  vehicle_model: string;
+  contact_phone: string;
+  is_active: boolean;
+  created_at?: string;
+}
+
+export interface TransportOverviewStats {
+  activeShuttles: number;
+  averageWaitTimeMins: number;
+  parkingAvailableBays: number;
+  totalParkingBays: number;
+  activeCarpools: number;
+  routes: TransportRoute[];
+  schedules: TransportSchedule[];
+}
+
+
 
 
 
