@@ -69,6 +69,15 @@ jobs:
       - name: Verify Phase 25 (Student Clubs & Activity Merit Ledger)
         run: node scripts/verify-phase25.mjs
 
+      - name: Verify Phase 26 (Alumni Network & Mentorship Nexus)
+        run: node scripts/verify-phase26.mjs
+
+      - name: Verify Phase 27 (Smart Campus Transport & EV Shuttles)
+        run: node scripts/verify-phase27.mjs
+
+      - name: Verify Phase 28 (Research Publications & Innovation Hub)
+        run: node scripts/verify-phase28.mjs
+
       - name: Verify Master Security & Anti-Injection Suite
         run: node scripts/verify-security.mjs
 
