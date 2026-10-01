@@ -34,6 +34,7 @@ import {
   Trophy,
   Bus,
   Lightbulb,
+  Globe,
 } from "lucide-react";
 import {
   MOCK_LOCATIONS,
@@ -111,6 +112,7 @@ export function CommandPalette() {
     { id: "p-alumni", title: "Alumni Network & Mentorship", subtitle: "1-on-1 mentoring, referrals & endowment giving", category: "Navigation", href: "/alumni", icon: GraduationCap },
     { id: "p-transport", title: "Smart Campus Transport & EV", subtitle: "Shuttle live radar, QR bus passes & parking", category: "Navigation", href: "/transport", icon: Bus },
     { id: "p-research", title: "Research Publications & Innovation", subtitle: "Indexed journals, sponsored grants & patents", category: "Navigation", href: "/research", icon: Lightbulb },
+    { id: "p-intl", title: "International Scholars & Global Mobility", subtitle: "ETH & NUS exchange slots, scholarships & credit transfer", category: "Navigation", href: "/international", icon: Globe },
     { id: "p-explore", title: "Campus Explorer", subtitle: "Directory of buildings & facilities", category: "Navigation", href: "/explore", icon: Compass },
     { id: "p-map", title: "Interactive 3D Campus Map", subtitle: "Real-time geographical pinpoints", category: "Navigation", href: "/map", icon: MapPin },
     { id: "p-time", title: "Class Timetable", subtitle: "Day-wise lecture routines", category: "Navigation", href: "/timetable", icon: CalendarDays },

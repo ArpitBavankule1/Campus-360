@@ -19,6 +19,7 @@ import {
   Trophy,
   Bus,
   Lightbulb,
+  Globe,
 } from "lucide-react";
 import { cn } from "cn";
 
@@ -158,6 +159,16 @@ const actionItems: QuickActionItem[] = [
     iconBg: "bg-blue-500/10 dark:bg-blue-500/20",
     iconColor: "text-blue-600 dark:text-blue-400",
     badge: "Phase 28",
+    badgeBg: "bg-blue-500/15 text-blue-600 dark:text-blue-400 border-blue-500/30",
+  },
+  {
+    title: "International & Global Mobility",
+    description: "ETH & NUS exchange slots, global scholarships & credit transfer ledger",
+    href: "/international",
+    icon: Globe,
+    iconBg: "bg-blue-500/10 dark:bg-blue-500/20",
+    iconColor: "text-blue-600 dark:text-blue-400",
+    badge: "Phase 29",
     badgeBg: "bg-blue-500/15 text-blue-600 dark:text-blue-400 border-blue-500/30",
   },
   {

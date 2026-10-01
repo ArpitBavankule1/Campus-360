@@ -29,6 +29,7 @@ import {
   Trophy,
   Bus,
   Lightbulb,
+  Globe,
 } from "lucide-react";
 import { useAuth } from "@/components/layout/auth-provider";
 import { Badge } from "@/components/ui/badge";
@@ -121,6 +122,12 @@ const studentNavItems: NavItem[] = [
     href: "/research",
     icon: Lightbulb,
     badge: "Phase 28",
+  },
+  {
+    title: "International & Exchange",
+    href: "/international",
+    icon: Globe,
+    badge: "Phase 29",
   },
   {
     title: "Campus Explorer",
