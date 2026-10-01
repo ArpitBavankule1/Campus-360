@@ -30,6 +30,7 @@ import {
   Bus,
   Lightbulb,
   Globe,
+  Leaf,
 } from "lucide-react";
 import { useAuth } from "@/components/layout/auth-provider";
 import { Badge } from "@/components/ui/badge";
@@ -128,6 +129,12 @@ const studentNavItems: NavItem[] = [
     href: "/international",
     icon: Globe,
     badge: "Phase 29",
+  },
+  {
+    title: "Campus Sustainability",
+    href: "/sustainability",
+    icon: Leaf,
+    badge: "Phase 30",
   },
   {
     title: "Campus Explorer",

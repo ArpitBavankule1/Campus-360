@@ -35,6 +35,7 @@ import {
   Bus,
   Lightbulb,
   Globe,
+  Leaf,
 } from "lucide-react";
 import {
   MOCK_LOCATIONS,
@@ -113,6 +114,7 @@ export function CommandPalette() {
     { id: "p-transport", title: "Smart Campus Transport & EV", subtitle: "Shuttle live radar, QR bus passes & parking", category: "Navigation", href: "/transport", icon: Bus },
     { id: "p-research", title: "Research Publications & Innovation", subtitle: "Indexed journals, sponsored grants & patents", category: "Navigation", href: "/research", icon: Lightbulb },
     { id: "p-intl", title: "International Scholars & Global Mobility", subtitle: "ETH & NUS exchange slots, scholarships & credit transfer", category: "Navigation", href: "/international", icon: Globe },
+    { id: "p-sustain", title: "Campus Sustainability & Solar Ledger", subtitle: "Rooftop solar PV generation, water reserves & eco credits", category: "Navigation", href: "/sustainability", icon: Leaf },
     { id: "p-explore", title: "Campus Explorer", subtitle: "Directory of buildings & facilities", category: "Navigation", href: "/explore", icon: Compass },
     { id: "p-map", title: "Interactive 3D Campus Map", subtitle: "Real-time geographical pinpoints", category: "Navigation", href: "/map", icon: MapPin },
     { id: "p-time", title: "Class Timetable", subtitle: "Day-wise lecture routines", category: "Navigation", href: "/timetable", icon: CalendarDays },

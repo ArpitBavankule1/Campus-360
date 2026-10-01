@@ -20,6 +20,7 @@ import {
   Bus,
   Lightbulb,
   Globe,
+  Leaf,
 } from "lucide-react";
 import { cn } from "cn";
 
@@ -170,6 +171,16 @@ const actionItems: QuickActionItem[] = [
     iconColor: "text-blue-600 dark:text-blue-400",
     badge: "Phase 29",
     badgeBg: "bg-blue-500/15 text-blue-600 dark:text-blue-400 border-blue-500/30",
+  },
+  {
+    title: "Campus Sustainability & Solar",
+    description: "Real-time solar PV generation, rainwater reserves & zero-waste audits",
+    href: "/sustainability",
+    icon: Leaf,
+    iconBg: "bg-emerald-500/10 dark:bg-emerald-500/20",
+    iconColor: "text-emerald-600 dark:text-emerald-400",
+    badge: "Phase 30",
+    badgeBg: "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border-emerald-500/30",
   },
   {
     title: "Notices & Circulars",
