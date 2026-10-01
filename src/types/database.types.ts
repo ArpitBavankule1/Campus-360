@@ -2904,6 +2904,202 @@ export interface Database {
         };
         Relationships: [];
       };
+
+      research_publications: {
+        Row: {
+          id: string;
+          college_id: string;
+          title: string;
+          authors: Json;
+          department: string;
+          journal_or_conference: string;
+          publication_date: string;
+          doi: string;
+          citation_count: number;
+          indexing: string;
+          open_access: boolean;
+          abstract: string;
+          pdf_url: string | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          college_id: string;
+          title: string;
+          authors?: Json;
+          department: string;
+          journal_or_conference: string;
+          publication_date: string;
+          doi: string;
+          citation_count?: number;
+          indexing: string;
+          open_access?: boolean;
+          abstract: string;
+          pdf_url?: string | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          college_id?: string;
+          title?: string;
+          authors?: Json;
+          department?: string;
+          journal_or_conference?: string;
+          publication_date?: string;
+          doi?: string;
+          citation_count?: number;
+          indexing?: string;
+          open_access?: boolean;
+          abstract?: string;
+          pdf_url?: string | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
+
+      research_grants: {
+        Row: {
+          id: string;
+          college_id: string;
+          project_title: string;
+          principal_investigator: string;
+          co_pis: Json;
+          funding_agency: string;
+          total_grant_amount: number;
+          disbursed_amount: number;
+          start_date: string;
+          end_date: string;
+          milestone_status: string;
+          deliverables_summary: string | null;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          college_id: string;
+          project_title: string;
+          principal_investigator: string;
+          co_pis?: Json;
+          funding_agency: string;
+          total_grant_amount: number;
+          disbursed_amount?: number;
+          start_date: string;
+          end_date: string;
+          milestone_status?: string;
+          deliverables_summary?: string | null;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          college_id?: string;
+          project_title?: string;
+          principal_investigator?: string;
+          co_pis?: Json;
+          funding_agency?: string;
+          total_grant_amount?: number;
+          disbursed_amount?: number;
+          start_date?: string;
+          end_date?: string;
+          milestone_status?: string;
+          deliverables_summary?: string | null;
+          created_at?: string;
+        };
+        Relationships: [];
+      };
+
+      patent_applications: {
+        Row: {
+          id: string;
+          college_id: string;
+          title: string;
+          inventors: Json;
+          application_number: string;
+          filing_date: string;
+          status: string;
+          ipr_type: string;
+          abstract: string;
+          commercial_partner: string | null;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          college_id: string;
+          title: string;
+          inventors?: Json;
+          application_number: string;
+          filing_date?: string;
+          status?: string;
+          ipr_type: string;
+          abstract: string;
+          commercial_partner?: string | null;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          college_id?: string;
+          title?: string;
+          inventors?: Json;
+          application_number?: string;
+          filing_date?: string;
+          status?: string;
+          ipr_type?: string;
+          abstract?: string;
+          commercial_partner?: string | null;
+          created_at?: string;
+        };
+        Relationships: [];
+      };
+
+      innovation_startups: {
+        Row: {
+          id: string;
+          college_id: string;
+          startup_name: string;
+          founder_name: string;
+          founder_role: string;
+          sector: string;
+          funding_stage: string;
+          incubation_space: string;
+          seed_grant_awarded: number;
+          pitch_deck_url: string | null;
+          website_url: string | null;
+          description: string;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          college_id: string;
+          startup_name: string;
+          founder_name: string;
+          founder_role?: string;
+          sector: string;
+          funding_stage?: string;
+          incubation_space?: string;
+          seed_grant_awarded?: number;
+          pitch_deck_url?: string | null;
+          website_url?: string | null;
+          description: string;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          college_id?: string;
+          startup_name?: string;
+          founder_name?: string;
+          founder_role?: string;
+          sector?: string;
+          funding_stage?: string;
+          incubation_space?: string;
+          seed_grant_awarded?: number;
+          pitch_deck_url?: string | null;
+          website_url?: string | null;
+          description?: string;
+          created_at?: string;
+        };
+        Relationships: [];
+      };
     };
     Views: {
       [_ in never]: never;

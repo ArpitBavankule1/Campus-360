@@ -1244,6 +1244,131 @@ export interface TransportOverviewStats {
   schedules: TransportSchedule[];
 }
 
+// ================================================================
+// Phase 28 — Research Publications, Innovation Grants & IPR Hub
+// ================================================================
+
+export type ResearchIndexing =
+  | "Scopus"
+  | "IEEE Xplore"
+  | "Springer"
+  | "ACM"
+  | "SCI"
+  | "Other";
+
+export type GrantAgency =
+  | "DST"
+  | "SERB"
+  | "ISRO"
+  | "DRDO"
+  | "Industry Sponsored"
+  | "EU Horizon"
+  | "Institutional Grant";
+
+export type PatentStatus =
+  | "filed"
+  | "published"
+  | "granted"
+  | "commercialized";
+
+export type IPRType =
+  | "Patent"
+  | "Copyright"
+  | "Industrial Design"
+  | "Trademark";
+
+export type StartupSector =
+  | "EdTech"
+  | "CleanTech"
+  | "HealthTech"
+  | "AI/ML"
+  | "Robotics"
+  | "FinTech"
+  | "BioTech";
+
+export type StartupFundingStage =
+  | "Idea"
+  | "Prototype"
+  | "Seed Funded"
+  | "Series A"
+  | "Revenue Generating";
+
+export interface ResearchPublication {
+  id: string;
+  college_id: string;
+  title: string;
+  authors: string[];
+  department: string;
+  journal_or_conference: string;
+  publication_date: string;
+  doi: string;
+  citation_count: number;
+  indexing: ResearchIndexing;
+  open_access: boolean;
+  abstract: string;
+  pdf_url?: string | null;
+  created_at?: string;
+}
+
+export interface ResearchGrant {
+  id: string;
+  college_id: string;
+  project_title: string;
+  principal_investigator: string;
+  co_pis: string[];
+  funding_agency: GrantAgency;
+  total_grant_amount: number;
+  disbursed_amount: number;
+  start_date: string;
+  end_date: string;
+  milestone_status: "ongoing" | "completed" | "under_review" | "extended";
+  deliverables_summary?: string | null;
+  created_at?: string;
+}
+
+export interface PatentApplication {
+  id: string;
+  college_id: string;
+  title: string;
+  inventors: string[];
+  application_number: string;
+  filing_date: string;
+  status: PatentStatus;
+  ipr_type: IPRType;
+  abstract: string;
+  commercial_partner?: string | null;
+  created_at?: string;
+}
+
+export interface InnovationStartup {
+  id: string;
+  college_id: string;
+  startup_name: string;
+  founder_name: string;
+  founder_role: "student" | "faculty" | "alumni" | "team";
+  sector: StartupSector;
+  funding_stage: StartupFundingStage;
+  incubation_space: string;
+  seed_grant_awarded: number;
+  pitch_deck_url?: string | null;
+  website_url?: string | null;
+  description: string;
+  created_at?: string;
+}
+
+export interface ResearchOverviewStats {
+  totalPublications: number;
+  totalCitations: number;
+  totalGrantFunding: number;
+  totalPatentsFiled: number;
+  incubatedStartupsCount: number;
+  publications: ResearchPublication[];
+  grants: ResearchGrant[];
+  patents: PatentApplication[];
+  startups: InnovationStartup[];
+}
+
+
 
 
 
