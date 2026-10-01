@@ -1474,3 +1474,84 @@ export interface GlobalMobilityOverviewStats {
   creditTransfers: CreditTransferRequest[];
   travelPasses: TravelClearancePass[];
 }
+
+// ================================================================
+// Phase 30 — Smart Campus Sustainability & Green Energy
+// ================================================================
+
+export type SolarArrayZone =
+  | "Engineering Block A & B"
+  | "Central Library Complex"
+  | "Indoor Sports Arena"
+  | "Scholars Residence Hall"
+  | "Administrative Tower";
+
+export type CommuteMode = "Bicycle" | "Walking" | "Campus EV Shuttle" | "Carpooling";
+
+export interface SolarTelemetry {
+  id: string;
+  college_id: string;
+  array_zone: SolarArrayZone;
+  peak_capacity_kwp: number;
+  current_generation_kw: number;
+  daily_total_kwh: number;
+  battery_storage_percent: number;
+  grid_export_kw: number;
+  carbon_offset_kg: number;
+  timestamp: string;
+}
+
+export interface WaterMetric {
+  id: string;
+  college_id: string;
+  reservoir_name: string;
+  capacity_kiloliters: number;
+  current_reserve_kiloliters: number;
+  greywater_recycled_liters_today: number;
+  water_quality_index: number;
+  tds_ppm: number;
+  ph_level: number;
+  updated_at: string;
+}
+
+export interface WasteAudit {
+  id: string;
+  college_id: string;
+  audit_week: string;
+  organic_compost_kg: number;
+  dry_recyclables_kg: number;
+  electronic_waste_kg: number;
+  landfill_waste_kg: number;
+  landfill_diversion_rate_percent: number;
+  auditor_officer: string;
+  remarks?: string | null;
+  created_at: string;
+}
+
+export interface EcoCredit {
+  id: string;
+  college_id: string;
+  student_id: string;
+  student_name: string;
+  commute_mode: CommuteMode;
+  distance_km: number;
+  co2_saved_kg: number;
+  eco_points_earned: number;
+  certificate_code: string;
+  logged_at: string;
+}
+
+export interface SustainabilityOverviewStats {
+  totalInstantGenerationKw: number;
+  totalDailyGenerationKwh: number;
+  totalCarbonOffsetKg: number;
+  averageBatteryStoragePercent: number;
+  totalWaterReservesKl: number;
+  campusDiversionRatePercent: number;
+  totalEcoPointsLogged: number;
+  solarTelemetry: SolarTelemetry[];
+  waterMetrics: WaterMetric[];
+  wasteAudits: WasteAudit[];
+  ecoCredits: EcoCredit[];
+}
+
