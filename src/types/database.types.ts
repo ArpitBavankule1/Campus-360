@@ -3477,7 +3477,186 @@ export interface Database {
         };
         Relationships: [];
       };
+
+      grievance_cases: {
+        Row: {
+          id: string;
+          college_id: string;
+          tracking_hash: string;
+          category: string;
+          title: string;
+          description: string;
+          is_anonymous: boolean;
+          complainant_masked_id: string;
+          urgency_level: string;
+          escalation_tier: string;
+          sla_deadline: string;
+          status: string;
+          evidence_attachments: unknown;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          college_id: string;
+          tracking_hash: string;
+          category: string;
+          title: string;
+          description: string;
+          is_anonymous?: boolean;
+          complainant_masked_id: string;
+          urgency_level?: string;
+          escalation_tier?: string;
+          sla_deadline: string;
+          status?: string;
+          evidence_attachments?: unknown;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          college_id?: string;
+          tracking_hash?: string;
+          category?: string;
+          title?: string;
+          description?: string;
+          is_anonymous?: boolean;
+          complainant_masked_id?: string;
+          urgency_level?: string;
+          escalation_tier?: string;
+          sla_deadline?: string;
+          status?: string;
+          evidence_attachments?: unknown;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
+
+      grievance_committee_members: {
+        Row: {
+          id: string;
+          college_id: string;
+          member_name: string;
+          designation: string;
+          committee_role: string;
+          contact_email: string;
+          office_location: string;
+          is_active: boolean;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          college_id: string;
+          member_name: string;
+          designation: string;
+          committee_role: string;
+          contact_email: string;
+          office_location: string;
+          is_active?: boolean;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          college_id?: string;
+          member_name?: string;
+          designation?: string;
+          committee_role?: string;
+          contact_email?: string;
+          office_location?: string;
+          is_active?: boolean;
+          created_at?: string;
+        };
+        Relationships: [];
+      };
+
+      grievance_hearings: {
+        Row: {
+          id: string;
+          college_id: string;
+          case_id: string;
+          docket_number: string;
+          hearing_date: string;
+          tribunal_venue: string;
+          presiding_officer: string;
+          quorum_present: unknown;
+          hearing_notes: string | null;
+          status: string;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          college_id: string;
+          case_id: string;
+          docket_number: string;
+          hearing_date: string;
+          tribunal_venue: string;
+          presiding_officer: string;
+          quorum_present?: unknown;
+          hearing_notes?: string | null;
+          status?: string;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          college_id?: string;
+          case_id?: string;
+          docket_number?: string;
+          hearing_date?: string;
+          tribunal_venue?: string;
+          presiding_officer?: string;
+          quorum_present?: unknown;
+          hearing_notes?: string | null;
+          status?: string;
+          created_at?: string;
+        };
+        Relationships: [];
+      };
+
+      grievance_resolution_orders: {
+        Row: {
+          id: string;
+          college_id: string;
+          case_id: string;
+          order_serial_code: string;
+          presiding_authority: string;
+          findings_summary: string;
+          mandatory_directives: string;
+          compliance_deadline: string;
+          is_statutory_binding: boolean;
+          digital_seal_hash: string;
+          issued_at: string;
+        };
+        Insert: {
+          id?: string;
+          college_id: string;
+          case_id: string;
+          order_serial_code: string;
+          presiding_authority: string;
+          findings_summary: string;
+          mandatory_directives: string;
+          compliance_deadline: string;
+          is_statutory_binding?: boolean;
+          digital_seal_hash: string;
+          issued_at?: string;
+        };
+        Update: {
+          id?: string;
+          college_id?: string;
+          case_id?: string;
+          order_serial_code?: string;
+          presiding_authority?: string;
+          findings_summary?: string;
+          mandatory_directives?: string;
+          compliance_deadline?: string;
+          is_statutory_binding?: boolean;
+          digital_seal_hash?: string;
+          issued_at?: string;
+        };
+        Relationships: [];
+      };
     };
+
 
 
     Views: {

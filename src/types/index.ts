@@ -1555,3 +1555,99 @@ export interface SustainabilityOverviewStats {
   ecoCredits: EcoCredit[];
 }
 
+// ================================================================
+// Phase 31 — Campus Grievance Redressal & Student Ombudsman
+// ================================================================
+
+export type OmbudsmanCategory =
+  | "Anti-Ragging Squad"
+  | "Internal Complaints Committee (ICC)"
+  | "Academic Evaluation & Exams"
+  | "Hostel Amenities & Mess"
+  | "Discrimination & Harassment"
+  | "General Grievance";
+
+export type UrgencyLevel = "Critical Emergency" | "High Priority" | "Standard Review";
+
+export type EscalationTier =
+  | "Department Committee"
+  | "Proctorial Board"
+  | "Dean of Student Welfare"
+  | "Campus Ombudsman";
+
+export type OmbudsmanCaseStatus =
+  | "Submitted"
+  | "Under Hearing"
+  | "Directive Issued"
+  | "Resolved"
+  | "Dismissed";
+
+export interface GrievanceCase {
+  id: string;
+  college_id: string;
+  tracking_hash: string;
+  category: OmbudsmanCategory;
+  title: string;
+  description: string;
+  is_anonymous: boolean;
+  complainant_masked_id: string;
+  urgency_level: UrgencyLevel;
+  escalation_tier: EscalationTier;
+  sla_deadline: string;
+  status: OmbudsmanCaseStatus;
+  evidence_attachments: string[];
+  created_at: string;
+  updated_at?: string;
+}
+
+export interface OmbudsmanCommitteeMember {
+  id: string;
+  college_id: string;
+  member_name: string;
+  designation: string;
+  committee_role: string;
+  contact_email: string;
+  office_location: string;
+  is_active: boolean;
+  created_at?: string;
+}
+
+export interface GrievanceHearing {
+  id: string;
+  college_id: string;
+  case_id: string;
+  docket_number: string;
+  hearing_date: string;
+  tribunal_venue: string;
+  presiding_officer: string;
+  quorum_present: string[];
+  hearing_notes?: string | null;
+  status: "Scheduled" | "In Session" | "Concluded" | "Adjourned";
+  created_at?: string;
+}
+
+export interface GrievanceResolutionOrder {
+  id: string;
+  college_id: string;
+  case_id: string;
+  order_serial_code: string;
+  presiding_authority: string;
+  findings_summary: string;
+  mandatory_directives: string;
+  compliance_deadline: string;
+  is_statutory_binding: boolean;
+  digital_seal_hash: string;
+  issued_at: string;
+}
+
+export interface OmbudsmanOverviewStats {
+  totalCasesReported: number;
+  activeUnderHearing: number;
+  resolvedCases: number;
+  averageResolutionHours: number;
+  complianceRatePercent: number;
+  cases: GrievanceCase[];
+  committeeMembers: OmbudsmanCommitteeMember[];
+  hearings: GrievanceHearing[];
+  resolutionOrders: GrievanceResolutionOrder[];
+}
