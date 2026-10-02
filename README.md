@@ -133,6 +133,24 @@ graph TD
 - **Intellectual Property (IPR) Registry**: Official patent and industrial design filing pipeline with institutional numbers (`CL-IPR-PAT-2026-XXXX`).
 - **Deep-Tech Incubation Showcase**: Student and faculty venture portfolio with funding stages, seed grant disbursements, and pitch decks.
 
+### 18. 🌍 International Scholars, Exchange Programs & Global Mobility (Phase 29)
+- **Global Partner Universities Directory**: Bilateral exchange opportunities across top QS/THE institutions (ETH Zürich, NUS Singapore, TU Munich, University of Edinburgh).
+- **International Scholarships & Fellowships**: Dedicated funding application portal for European Erasmus+, Swiss NSF, and DAAD research grants.
+- **Academic Credit Transfer & Course Equivalency**: Course curriculum evaluation ledger mapping foreign ECTS/credits toward domestic degree graduation requirements.
+- **Verifiable Travel Clearance Passes**: Cryptographic QR voucher departure passes authorized by the Dean of International Affairs (`CL-GLB-CLR-2026-XXXX`).
+
+### 19. 🌱 Smart Campus Sustainability, Green Energy & Microgrid Telemetry (Phase 30)
+- **Live Rooftop Solar PV Telemetry**: Real-time kilowatt generation metrics across Academic Blocks, Central Library, and Sports Arena with microgrid battery storage tracking.
+- **Smart Campus Water Conservation**: Rainwater harvesting tank capacities, quality index (pH/TDS), and recycled greywater reclamation volumes.
+- **Solid Waste & Cafeteria Composting Audits**: Zero-waste campus metrics, cafeteria organic compost tonnage, and landfill diversion rates (>90%).
+- **Student Green Commute Leaderboard**: Carbon offset calculator for cycling, walking, and EV shuttle transit with verifiable Eco-Warrior certificates (`CL-ECO-CRD-2026-XXXX`).
+
+### 20. ⚖️ Campus Grievance Redressal, Anti-Ragging & Student Ombudsman (Phase 31)
+- **Statutory UGC/AICTE Grievance Ombudsman**: Independent tribunal presided over by Retired District Judge oversight with binding resolution orders (`CL-GRV-ORD-2026-XXXX`).
+- **24/7 Anti-Ragging Emergency Squad**: 1-tap rapid response panic beacon dispatching Chief Proctor and security night patrol squad with 3-minute campus ETA.
+- **Zero-Knowledge Anonymous Whistleblower Portal**: Statutorily protected confidential reporting with cryptographic tracking hashes (`ZKP-CASE-2026-XXXX`).
+- **Institutional 72-Hour Resolution SLA**: Live countdown tracking with multi-tier escalation matrix and in-camera recorded hearings docket.
+
 ---
 
 ## 🛠️ Technology Stack
@@ -250,6 +268,15 @@ node scripts/verify-phase27.mjs
 
 # Phase 28: Research Publications, Grants & IPR Hub
 node scripts/verify-phase28.mjs
+
+# Phase 29: International Scholars & Global Mobility Hub
+node scripts/verify-phase29.mjs
+
+# Phase 30: Smart Campus Sustainability & Green Energy
+node scripts/verify-phase30.mjs
+
+# Phase 31: Campus Grievance Redressal & Student Ombudsman
+node scripts/verify-phase31.mjs
 
 # Run production build validation
 npm run build
