@@ -21,6 +21,7 @@ import {
   Lightbulb,
   Globe,
   Leaf,
+  Scale,
 } from "lucide-react";
 import { cn } from "cn";
 
@@ -181,6 +182,16 @@ const actionItems: QuickActionItem[] = [
     iconColor: "text-emerald-600 dark:text-emerald-400",
     badge: "Phase 30",
     badgeBg: "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border-emerald-500/30",
+  },
+  {
+    title: "Grievance & Student Ombudsman",
+    description: "Confidential zero-knowledge grievance filing, anti-ragging & binding orders",
+    href: "/ombudsman",
+    icon: Scale,
+    iconBg: "bg-purple-500/10 dark:bg-purple-500/20",
+    iconColor: "text-purple-600 dark:text-purple-400",
+    badge: "Phase 31",
+    badgeBg: "bg-purple-500/15 text-purple-600 dark:text-purple-400 border-purple-500/30",
   },
   {
     title: "Notices & Circulars",
