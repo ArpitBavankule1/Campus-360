@@ -78,6 +78,15 @@ jobs:
       - name: Verify Phase 28 (Research Publications & Innovation Hub)
         run: node scripts/verify-phase28.mjs
 
+      - name: Verify Phase 29 (International Scholars & Global Mobility)
+        run: node scripts/verify-phase29.mjs
+
+      - name: Verify Phase 30 (Smart Campus Sustainability & Green Energy)
+        run: node scripts/verify-phase30.mjs
+
+      - name: Verify Phase 31 (Campus Grievance Redressal & Ombudsman)
+        run: node scripts/verify-phase31.mjs
+
       - name: Verify Master Security & Anti-Injection Suite
         run: node scripts/verify-security.mjs
 
