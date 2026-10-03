@@ -1760,3 +1760,100 @@ export interface SportsOverviewStats {
   equipmentLoans: EquipmentLoan[];
 }
 
+// ================================================================
+// Phase 33 — Campus Incubation, Startup Accelerator & Maker Space
+// ================================================================
+
+export type VentureSector =
+  | "DeepTech & AI"
+  | "Climate & CleanTech"
+  | "BioTech & HealthCare"
+  | "FinTech & Web3"
+  | "Robotics & Hardware"
+  | "EdTech & Consumer";
+
+export type VentureStage =
+  | "Ideation"
+  | "Prototyping"
+  | "Seed Funded"
+  | "Series A Scaled"
+  | "Graduated";
+
+export type VentureStatus =
+  | "Applied"
+  | "Incubated"
+  | "Accelerated"
+  | "Exited"
+  | "Rejected";
+
+export interface IncubationVenture {
+  id: string;
+  college_id: string;
+  venture_name: string;
+  sector: VentureSector;
+  founder_name: string;
+  founder_id: string;
+  founder_role: string;
+  pitch_deck_url?: string | null;
+  stage: VentureStage;
+  valuation_inr: number;
+  seed_grant_inr: number;
+  patents_filed: number;
+  status: VentureStatus;
+  created_at?: string;
+}
+
+export interface VentureFundingTranche {
+  id: string;
+  college_id: string;
+  venture_id: string;
+  tranche_name: string;
+  amount_inr: number;
+  investor_type: string;
+  disbursement_date: string;
+  milestone_verified: boolean;
+  disbursement_status: "Pending Audit" | "Approved" | "Disbursed" | "Withheld";
+  created_at?: string;
+}
+
+export interface MakerSpaceEquipment {
+  id: string;
+  college_id: string;
+  equipment_name: string;
+  equipment_type: string;
+  location_lab: string;
+  hourly_slot_capacity: number;
+  specs_summary: string;
+  is_operational: boolean;
+  created_at?: string;
+}
+
+export interface PitchSession {
+  id: string;
+  college_id: string;
+  session_code: string;
+  venture_id: string;
+  pitch_date: string;
+  angel_investor_panel: string[];
+  venue: string;
+  verdict:
+    | "Term Sheet Offered"
+    | "Seed Grant Approved"
+    | "Follow-up Diligence"
+    | "Under Deliberation"
+    | "Declined";
+  created_at?: string;
+}
+
+export interface IncubationOverviewStats {
+  totalIncubatedVentures: number;
+  totalGrantDisbursedInr: number;
+  activePrototypingJobs: number;
+  patentsFiledCount: number;
+  ventures: IncubationVenture[];
+  fundingTranches: VentureFundingTranche[];
+  makerEquipment: MakerSpaceEquipment[];
+  pitches: PitchSession[];
+}
+
+
