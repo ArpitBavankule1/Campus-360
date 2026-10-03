@@ -1651,3 +1651,112 @@ export interface OmbudsmanOverviewStats {
   hearings: GrievanceHearing[];
   resolutionOrders: GrievanceResolutionOrder[];
 }
+
+// ================================================================
+// Phase 32 — Smart Campus Sports Arena, Athletic Leagues & Gym
+// ================================================================
+
+export type SportType =
+  | "Badminton"
+  | "Basketball"
+  | "Tennis"
+  | "Football / Turf"
+  | "Cricket Nets"
+  | "Swimming Pool"
+  | "Table Tennis"
+  | "Squash";
+
+export type ArenaStatus = "Available" | "Booked Out" | "Maintenance";
+
+export type GymMembershipTier =
+  | "Student All-Access"
+  | "Faculty Executive"
+  | "Athlete High-Performance"
+  | "Day Pass";
+
+export type FitnessSlot =
+  | "Early Bird (06:00 - 08:00)"
+  | "Morning Peak (08:00 - 10:00)"
+  | "Evening Surge (17:00 - 19:30)"
+  | "Night Owl (19:30 - 22:00)";
+
+export type EquipmentLoanStatus =
+  | "Active Loan"
+  | "Returned On-Time"
+  | "Overdue"
+  | "Deposit Forfeited";
+
+export interface SportsArena {
+  id: string;
+  college_id: string;
+  arena_name: string;
+  sport_type: SportType;
+  location_venue: string;
+  total_courts: number;
+  court_surface: string;
+  hourly_rate: number;
+  is_floodlit: boolean;
+  opening_time: string;
+  closing_time: string;
+  current_status: ArenaStatus;
+  created_at?: string;
+}
+
+export interface AthleticLeague {
+  id: string;
+  college_id: string;
+  tournament_title: string;
+  sport_type: string;
+  organizer_department: string;
+  season_year: number;
+  start_date: string;
+  end_date: string;
+  participating_teams: number;
+  prize_pool_inr: number;
+  status: "Upcoming" | "Registration Open" | "Knockouts Ongoing" | "Completed";
+  created_at?: string;
+}
+
+export interface GymMembership {
+  id: string;
+  college_id: string;
+  scholar_id: string;
+  scholar_name: string;
+  pass_code: string;
+  tier: GymMembershipTier;
+  fitness_slot: FitnessSlot;
+  trainer_assigned?: string | null;
+  bmi_index?: number | null;
+  is_biometric_active: boolean;
+  valid_until: string;
+  created_at?: string;
+}
+
+export interface EquipmentLoan {
+  id: string;
+  college_id: string;
+  equipment_code: string;
+  item_name: string;
+  sport_type: string;
+  borrower_id: string;
+  borrower_name: string;
+  quantity: number;
+  checkout_time: string;
+  due_time: string;
+  deposit_inr: number;
+  item_condition: "Mint" | "Good" | "Fair" | "Damaged";
+  status: EquipmentLoanStatus;
+  created_at?: string;
+}
+
+export interface SportsOverviewStats {
+  totalArenas: number;
+  activeAthleticTournaments: number;
+  enrolledGymMembers: number;
+  activeEquipmentLoans: number;
+  arenas: SportsArena[];
+  leagues: AthleticLeague[];
+  gymMembers: GymMembership[];
+  equipmentLoans: EquipmentLoan[];
+}
+
