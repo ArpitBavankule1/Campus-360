@@ -1856,4 +1856,103 @@ export interface IncubationOverviewStats {
   pitches: PitchSession[];
 }
 
+// ================================================================
+// Phase 34 — Smart Campus Security, Visitor Passes & AI Lost & Found
+// ================================================================
+
+export type VisitingPurpose =
+  | "Guest Lecture & Academic Seminar"
+  | "Parent & Guardian Residence Visit"
+  | "Vendor & Logistics Delivery"
+  | "Corporate Campus Recruitment"
+  | "Official Statutory Inspection"
+  | "General Inquiry";
+
+export type VisitorPassStatus =
+  | "Pre-Registered"
+  | "Checked In"
+  | "Departed"
+  | "Expired"
+  | "Revoked";
+
+export type LostFoundCategory =
+  | "Electronics & Laptops"
+  | "Wallets & ID Cards"
+  | "Keys & Smart Badges"
+  | "Bags & Backpacks"
+  | "Watches & Jewellery"
+  | "Books & Documents"
+  | "Other Items";
+
+export type LostFoundStatus =
+  | "Unclaimed"
+  | "Verification Pending"
+  | "Claimed & Returned"
+  | "Auctioned / Disposed";
+
+export interface VisitorPass {
+  id: string;
+  college_id: string;
+  pass_code: string;
+  visitor_name: string;
+  visitor_phone: string;
+  visitor_id_proof: string;
+  visiting_purpose: VisitingPurpose;
+  host_person: string;
+  entry_gate: string;
+  valid_date: string;
+  status: VisitorPassStatus;
+  vehicle_number?: string | null;
+  issued_at: string;
+}
+
+export interface TurnstileLog {
+  id: string;
+  college_id: string;
+  checkpoint_name: string;
+  card_hash: string;
+  user_role: "student" | "faculty" | "visitor" | "contractor" | "security_staff";
+  access_result: string;
+  anomaly_flag: boolean;
+  tap_time: string;
+}
+
+export interface LostAndFoundItem {
+  id: string;
+  college_id: string;
+  item_code: string;
+  title: string;
+  category: LostFoundCategory;
+  found_location: string;
+  description: string;
+  image_url?: string | null;
+  status: LostFoundStatus;
+  claimed_by_id?: string | null;
+  reported_by: string;
+  reported_at: string;
+}
+
+export interface PatrolCheckpoint {
+  id: string;
+  college_id: string;
+  route_name: string;
+  checkpoint_marker: string;
+  guard_name: string;
+  last_patrolled_at: string;
+  status: "Normal Secure" | "Observation Logged" | "Incident Alerted";
+  created_at?: string;
+}
+
+export interface SecurityOverviewStats {
+  activeVisitorsOnCampus: number;
+  dailyTurnstileTaps: number;
+  unclaimedLostItems: number;
+  patrolRouteCompletionRate: number;
+  visitors: VisitorPass[];
+  turnstileLogs: TurnstileLog[];
+  lostItems: LostAndFoundItem[];
+  patrolCheckpoints: PatrolCheckpoint[];
+}
+
+
 
