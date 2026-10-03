@@ -87,6 +87,15 @@ jobs:
       - name: Verify Phase 31 (Campus Grievance Redressal & Ombudsman)
         run: node scripts/verify-phase31.mjs
 
+      - name: Verify Phase 32 (Smart Campus Sports Arena & Athletics)
+        run: node scripts/verify-phase32.mjs
+
+      - name: Verify Phase 33 (Campus Incubation & Startup Accelerator)
+        run: node scripts/verify-phase33.mjs
+
+      - name: Verify Phase 34 (Smart Campus Security & Command Hub)
+        run: node scripts/verify-phase34.mjs
+
       - name: Verify Master Security & Anti-Injection Suite
         run: node scripts/verify-security.mjs
 
