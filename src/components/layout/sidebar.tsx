@@ -32,6 +32,9 @@ import {
   Globe,
   Leaf,
   Scale,
+  Dumbbell,
+  Rocket,
+  ShieldCheck,
 } from "lucide-react";
 import { useAuth } from "@/components/layout/auth-provider";
 import { Badge } from "@/components/ui/badge";
@@ -142,6 +145,24 @@ const studentNavItems: NavItem[] = [
     href: "/ombudsman",
     icon: Scale,
     badge: "Phase 31",
+  },
+  {
+    title: "Sports & Athletics",
+    href: "/sports",
+    icon: Dumbbell,
+    badge: "Phase 32",
+  },
+  {
+    title: "Startup Incubation",
+    href: "/incubation",
+    icon: Rocket,
+    badge: "Phase 33",
+  },
+  {
+    title: "Campus Security & Gates",
+    href: "/security-hub",
+    icon: ShieldCheck,
+    badge: "Phase 34",
   },
   {
     title: "Campus Explorer",

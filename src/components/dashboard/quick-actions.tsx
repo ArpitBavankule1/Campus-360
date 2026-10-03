@@ -22,6 +22,9 @@ import {
   Globe,
   Leaf,
   Scale,
+  Dumbbell,
+  Rocket,
+  ShieldCheck,
 } from "lucide-react";
 import { cn } from "cn";
 
@@ -192,6 +195,36 @@ const actionItems: QuickActionItem[] = [
     iconColor: "text-purple-600 dark:text-purple-400",
     badge: "Phase 31",
     badgeBg: "bg-purple-500/15 text-purple-600 dark:text-purple-400 border-purple-500/30",
+  },
+  {
+    title: "Sports Arena & Athletics",
+    description: "Olympic courts booking, varsity leagues & biometric gym passes",
+    href: "/sports",
+    icon: Dumbbell,
+    iconBg: "bg-emerald-500/10 dark:bg-emerald-500/20",
+    iconColor: "text-emerald-600 dark:text-emerald-400",
+    badge: "Phase 32",
+    badgeBg: "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border-emerald-500/30",
+  },
+  {
+    title: "Startup Accelerator & Maker Space",
+    description: "Seed grant funding, rapid 3D prototyping & angel demo days",
+    href: "/incubation",
+    icon: Rocket,
+    iconBg: "bg-violet-500/10 dark:bg-violet-500/20",
+    iconColor: "text-violet-600 dark:text-violet-400",
+    badge: "Phase 33",
+    badgeBg: "bg-violet-500/15 text-violet-600 dark:text-violet-400 border-violet-500/30",
+  },
+  {
+    title: "Security & Visitor Command Hub",
+    description: "Digital visitor gate QR passes, turnstiles & AI lost and found",
+    href: "/security-hub",
+    icon: ShieldCheck,
+    iconBg: "bg-amber-500/10 dark:bg-amber-500/20",
+    iconColor: "text-amber-600 dark:text-amber-400",
+    badge: "Phase 34",
+    badgeBg: "bg-amber-500/15 text-amber-600 dark:text-amber-400 border-amber-500/30",
   },
   {
     title: "Notices & Circulars",
