@@ -96,6 +96,15 @@ jobs:
       - name: Verify Phase 34 (Smart Campus Security & Command Hub)
         run: node scripts/verify-phase34.mjs
 
+      - name: Verify Phase 35 (Smart Campus Cafeteria & Dining Wallets)
+        run: node scripts/verify-phase35.mjs
+
+      - name: Verify Phase 36 (Smart Campus Auditorium & Convention Hub)
+        run: node scripts/verify-phase36.mjs
+
+      - name: Verify Phase 37 (Smart Campus Scholarships & Financial Aid)
+        run: node scripts/verify-phase37.mjs
+
       - name: Verify Master Security & Anti-Injection Suite
         run: node scripts/verify-security.mjs
 
