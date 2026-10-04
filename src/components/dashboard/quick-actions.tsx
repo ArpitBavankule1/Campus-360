@@ -25,6 +25,9 @@ import {
   Dumbbell,
   Rocket,
   ShieldCheck,
+  UtensilsCrossed,
+  Theater,
+  Award,
 } from "lucide-react";
 import { cn } from "cn";
 
@@ -225,6 +228,36 @@ const actionItems: QuickActionItem[] = [
     iconColor: "text-amber-600 dark:text-amber-400",
     badge: "Phase 34",
     badgeBg: "bg-amber-500/15 text-amber-600 dark:text-amber-400 border-amber-500/30",
+  },
+  {
+    title: "Cafeteria & Dining Wallets",
+    description: "Contactless food pre-orders, dining smart wallet balance & meal tokens",
+    href: "/cafeteria",
+    icon: UtensilsCrossed,
+    iconBg: "bg-amber-500/10 dark:bg-amber-500/20",
+    iconColor: "text-amber-600 dark:text-amber-400",
+    badge: "Phase 35",
+    badgeBg: "bg-amber-500/15 text-amber-600 dark:text-amber-400 border-amber-500/30",
+  },
+  {
+    title: "Auditorium & Event Ticketing",
+    description: "Convention hall reservations, acoustic stage riders & digital tickets",
+    href: "/auditorium",
+    icon: Theater,
+    iconBg: "bg-purple-500/10 dark:bg-purple-500/20",
+    iconColor: "text-purple-600 dark:text-purple-400",
+    badge: "Phase 36",
+    badgeBg: "bg-purple-500/15 text-purple-600 dark:text-purple-400 border-purple-500/30",
+  },
+  {
+    title: "Scholarships & Financial Aid",
+    description: "Corporate CSR grants, institutional merit waivers & DBT tranches",
+    href: "/scholarships",
+    icon: Award,
+    iconBg: "bg-blue-500/10 dark:bg-blue-500/20",
+    iconColor: "text-blue-600 dark:text-blue-400",
+    badge: "Phase 37",
+    badgeBg: "bg-blue-500/15 text-blue-600 dark:text-blue-400 border-blue-500/30",
   },
   {
     title: "Notices & Circulars",

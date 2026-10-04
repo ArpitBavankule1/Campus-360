@@ -35,6 +35,9 @@ import {
   Dumbbell,
   Rocket,
   ShieldCheck,
+  UtensilsCrossed,
+  Theater,
+  Award,
 } from "lucide-react";
 import { useAuth } from "@/components/layout/auth-provider";
 import { Badge } from "@/components/ui/badge";
@@ -163,6 +166,24 @@ const studentNavItems: NavItem[] = [
     href: "/security-hub",
     icon: ShieldCheck,
     badge: "Phase 34",
+  },
+  {
+    title: "Cafeteria & Dining",
+    href: "/cafeteria",
+    icon: UtensilsCrossed,
+    badge: "Phase 35",
+  },
+  {
+    title: "Auditorium & Events",
+    href: "/auditorium",
+    icon: Theater,
+    badge: "Phase 36",
+  },
+  {
+    title: "Scholarships & Aid",
+    href: "/scholarships",
+    icon: Award,
+    badge: "Phase 37",
   },
   {
     title: "Campus Explorer",

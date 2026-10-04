@@ -40,6 +40,9 @@ import {
   Dumbbell,
   Rocket,
   ShieldCheck,
+  UtensilsCrossed,
+  Theater,
+  Award,
 } from "lucide-react";
 import {
   MOCK_LOCATIONS,
@@ -123,6 +126,9 @@ export function CommandPalette() {
     { id: "p-sports", title: "Sports Complex & Athletic Leagues", subtitle: "Olympic courts booking, varsity cups & gym passes", category: "Navigation", href: "/sports", icon: Dumbbell },
     { id: "p-incub", title: "Startup Foundry & Maker Accelerator", subtitle: "Seed grant funds, rapid prototyping labs & angel demo days", category: "Navigation", href: "/incubation", icon: Rocket },
     { id: "p-sec", title: "Campus Security & Command Hub", subtitle: "Visitor gate QR passes, turnstiles & AI lost and found", category: "Navigation", href: "/security-hub", icon: ShieldCheck },
+    { id: "p-cafe", title: "Smart Cafeteria & Food Wallets", subtitle: "Contactless meal pre-orders & QR counter tokens", category: "Navigation", href: "/cafeteria", icon: UtensilsCrossed },
+    { id: "p-aud", title: "Auditorium & Event Ticketing", subtitle: "Convention halls, stage reservations & passes", category: "Navigation", href: "/auditorium", icon: Theater },
+    { id: "p-schol", title: "Scholarships & Financial Aid", subtitle: "CSR grants, merit waivers & DBT disbursement", category: "Navigation", href: "/scholarships", icon: Award },
     { id: "p-explore", title: "Campus Explorer", subtitle: "Directory of buildings & facilities", category: "Navigation", href: "/explore", icon: Compass },
     { id: "p-map", title: "Interactive 3D Campus Map", subtitle: "Real-time geographical pinpoints", category: "Navigation", href: "/map", icon: MapPin },
     { id: "p-time", title: "Class Timetable", subtitle: "Day-wise lecture routines", category: "Navigation", href: "/timetable", icon: CalendarDays },
