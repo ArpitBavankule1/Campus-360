@@ -2061,6 +2061,106 @@ export interface CafeteriaOverviewStats {
   recentOrders: MealOrder[];
 }
 
+// ================================================================
+// Phase 36 — Smart Campus Auditorium, Cultural Convention Center & Event Ticketing
+// ================================================================
+
+export type AuditoriumStatus = "Available" | "In Session" | "Under Maintenance";
+
+export type AuditoriumOrganizerRole =
+  | "Student Club Lead"
+  | "Faculty Coordinator"
+  | "Dean Office"
+  | "External Guest Speaker";
+
+export type AuditoriumBookingStatus =
+  | "Confirmed"
+  | "Pending Approval"
+  | "Cancelled";
+
+export type SeatTier =
+  | "Orchestra Premium"
+  | "Executive Mezzanine"
+  | "General Balcony"
+  | "VIP Dignitary";
+
+export type StageEquipmentType =
+  | "Wireless Lapel Mics"
+  | "Digital Mixer 32-Ch"
+  | "Line Array PA Speakers"
+  | "Moving Head LED Rigs"
+  | "4K Telepresence Cameras";
+
+export type EquipmentRiderStatus =
+  | "Dispatched"
+  | "Installed & Tested"
+  | "Returned";
+
+export interface AuditoriumHall {
+  id: string;
+  college_id: string;
+  hall_name: string;
+  seating_capacity: number;
+  venue_building: string;
+  acoustic_rating: string;
+  stage_dimensions: string;
+  projector_type: string;
+  current_status: AuditoriumStatus;
+  created_at?: string;
+}
+
+export interface AuditoriumReservation {
+  id: string;
+  college_id: string;
+  booking_code: string;
+  hall_name: string;
+  event_title: string;
+  organizer_name: string;
+  organizer_role: AuditoriumOrganizerRole;
+  event_date: string;
+  start_time: string;
+  end_time: string;
+  expected_attendees: number;
+  booking_status: AuditoriumBookingStatus;
+  created_at?: string;
+}
+
+export interface EventTicket {
+  id: string;
+  college_id: string;
+  ticket_code: string;
+  event_title: string;
+  hall_name: string;
+  attendee_name: string;
+  seat_number: string;
+  tier: SeatTier;
+  is_checked_in: boolean;
+  issued_at: string;
+}
+
+export interface StageEquipmentRider {
+  id: string;
+  college_id: string;
+  reservation_id?: string;
+  equipment_type: StageEquipmentType;
+  quantity: number;
+  technician_assigned: string;
+  status: EquipmentRiderStatus;
+  created_at?: string;
+}
+
+export interface AuditoriumOverviewStats {
+  totalAuditoriums: number;
+  totalSeatingCapacity: number;
+  activeEventsToday: number;
+  totalTicketsIssued: number;
+  halls: AuditoriumHall[];
+  reservations: AuditoriumReservation[];
+  tickets: EventTicket[];
+  equipmentRiders: StageEquipmentRider[];
+}
+
+
 
 
 
