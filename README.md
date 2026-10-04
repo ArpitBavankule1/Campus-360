@@ -169,6 +169,25 @@ graph TD
 - **AI Lost & Found Property Repository**: Machine-learning perceptual item matching with secure counter verification claims (`LNF-APEX-2026-XXXX`).
 - **24x7 Security Guard Patrol Telemetry**: Encrypted NFC checkpoint verification covering campus perimeter walls and hostel quads.
 
+### 24. 🍲 Smart Campus Cafeteria, Dining Wallets & Contactless Ordering (Phase 35)
+- **Multi-Cuisine Campus Food Court**: Real-time kitchen status, stall ratings, and prep time telemetry across North Indian, South Indian, Italian, and Healthy Bowls.
+- **Digital Student Dining Wallet**: Instant balance recharge, monthly institutional meal subsidies, and automated low-balance safeguards.
+- **Contactless Pre-Order & Token Engine**: Express pickup slot scheduler and cryptographic meal collection vouchers (`TOKEN-XXXXXX` / `CL-DINE-2026-XXXX`).
+- **Dietary & Nutritional Transparency**: Calorie metrics, allergen warnings, and pure-veg / vegan / Jain option tagging.
+
+### 25. 🎭 Smart Campus Auditorium, Convention Center & Event Ticketing (Phase 36)
+- **Grand Auditorium & Amphitheater Venues**: Seating capacity allocation, Dolby Atmos acoustics, and 4K digital projection stage management.
+- **Stage Reservation Engine**: Interactive booking dockets for hackathon keynotes, symposia, and inter-collegiate cultural festivals (`RES-AUD-2026-XXXX`).
+- **Cryptographic Event Admittance Passes**: Tiered seating allocation (Orchestra, Balcony, VIP Dignitary) with digital QR verification (`CL-AUD-PASS-2026-XXXX`).
+- **AV Stage Equipment Riders**: Automated dispatch for Shure wireless lapel microphones, Behringer digital mixers, and JBL line arrays with sound engineer assignment.
+
+### 26. 🎓 Smart Campus Scholarships, Financial Aid & Merit Endowment Ledger (Phase 37)
+- **Merit & Need-Based Scholarship Directory**: Institutional gold fellowships, Google DeepMind STEM grants, corporate CSR waivers, and alumni endowments.
+- **Transparent Eligibility Evaluation**: Cumulative CGPA thresholds, family income ceilings, and digital statement-of-purpose submissions (`SCHOL-APP-2026-XXXX`).
+- **Direct Benefit Transfer (DBT) Escrow Ledger**: Tranche disbursement tracking with bank UTR settlement numbers and escrow processing status (`DBT-TRN-2026-XXXX`).
+- **Verifiable Cryptographic Award Certificates**: Tamper-proof institutional honor certificates signed by the Dean of Academic Welfare (`CL-SCHOL-CERT-2026-XXXX`).
+
+
 ---
 
 ## 🛠️ Technology Stack
@@ -304,6 +323,15 @@ node scripts/verify-phase33.mjs
 
 # Phase 34: Smart Campus Security, Visitor Passes & AI Lost & Found
 node scripts/verify-phase34.mjs
+
+# Phase 35: Smart Campus Cafeteria, Dining Wallets & Food Ordering
+node scripts/verify-phase35.mjs
+
+# Phase 36: Smart Campus Auditorium & Convention Hub
+node scripts/verify-phase36.mjs
+
+# Phase 37: Smart Campus Scholarships & Financial Aid
+node scripts/verify-phase37.mjs
 
 # Run production build validation
 npm run build
