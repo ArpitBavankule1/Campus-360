@@ -2160,6 +2160,101 @@ export interface AuditoriumOverviewStats {
   equipmentRiders: StageEquipmentRider[];
 }
 
+// ================================================================
+// Phase 37 — Smart Campus Scholarships, Financial Aid & Merit Endowment Ledger
+// ================================================================
+
+export type ScholarshipProvider =
+  | "Institutional Merit"
+  | "Corporate CSR"
+  | "Alumni Endowment"
+  | "Government DBT"
+  | "Sports Excellence";
+
+export type ScholarshipSchemeStatus =
+  | "Applications Open"
+  | "Scrutiny Phase"
+  | "Disbursed"
+  | "Archived";
+
+export type ScholarshipApplicationStatus =
+  | "Submitted"
+  | "Documents Verified"
+  | "Dean Approved"
+  | "Disbursed"
+  | "Rejected";
+
+export type TrancheStatus = "Credited" | "Escrow Processing" | "On Hold";
+
+export interface ScholarshipScheme {
+  id: string;
+  college_id: string;
+  scheme_name: string;
+  provider_type: ScholarshipProvider;
+  amount_per_scholar_inr: number;
+  total_budget_inr: number;
+  disbursed_budget_inr: number;
+  min_cgpa: number;
+  max_family_income_lpa: number;
+  application_deadline: string;
+  status: ScholarshipSchemeStatus;
+  created_at?: string;
+}
+
+export interface ScholarshipApplication {
+  id: string;
+  college_id: string;
+  application_code: string;
+  scheme_name: string;
+  scholar_id: string;
+  scholar_name: string;
+  department: string;
+  current_cgpa: number;
+  annual_family_income_inr: number;
+  status: ScholarshipApplicationStatus;
+  statement_of_purpose?: string | null;
+  created_at: string;
+}
+
+export interface DisbursementTranche {
+  id: string;
+  college_id: string;
+  tranche_code: string;
+  scholar_id: string;
+  scholar_name: string;
+  scheme_name: string;
+  tranche_number: number;
+  amount_inr: number;
+  bank_ref_no: string;
+  disbursement_date: string;
+  status: TrancheStatus;
+  created_at?: string;
+}
+
+export interface ScholarshipCertificate {
+  id: string;
+  college_id: string;
+  certificate_code: string;
+  scholar_name: string;
+  scheme_name: string;
+  academic_year: string;
+  award_title: string;
+  sanction_authority: string;
+  issued_at: string;
+}
+
+export interface ScholarshipOverviewStats {
+  totalScholarshipFundingInr: number;
+  totalDisbursedInr: number;
+  activeSchemesCount: number;
+  scholarsBenefitedCount: number;
+  schemes: ScholarshipScheme[];
+  applications: ScholarshipApplication[];
+  disbursements: DisbursementTranche[];
+  certificates: ScholarshipCertificate[];
+}
+
+
 
 
 
