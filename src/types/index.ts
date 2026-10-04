@@ -1954,5 +1954,113 @@ export interface SecurityOverviewStats {
   patrolCheckpoints: PatrolCheckpoint[];
 }
 
+// ================================================================
+// Phase 35 — Smart Campus Cafeteria, Dining Wallets & Contactless Food Ordering
+// ================================================================
+
+export type CuisineType =
+  | "North Indian & Thali"
+  | "South Indian Tiffin"
+  | "Continental & Italian"
+  | "Asian & Wok"
+  | "Fresh Juice & Bakery"
+  | "Healthy Protein Bowls"
+  | "Specialty Coffee & Tea";
+
+export type MealCategory =
+  | "Breakfast"
+  | "Lunch Specials"
+  | "Snacks & Beverages"
+  | "Healthy Bowls"
+  | "Dinner";
+
+export type DietaryTag =
+  | "Pure Veg"
+  | "Vegan"
+  | "Egg"
+  | "Non-Veg"
+  | "Jain Option";
+
+export type OrderStatus =
+  | "Preparing"
+  | "Ready for Pickup"
+  | "Completed"
+  | "Cancelled";
+
+export type PaymentMethod =
+  | "Dining Wallet"
+  | "UPI Instant"
+  | "Campus Card";
+
+export interface DiningVendor {
+  id: string;
+  college_id: string;
+  vendor_name: string;
+  cuisine_type: CuisineType;
+  location_stall: string;
+  opening_time: string;
+  closing_time: string;
+  rating: number;
+  is_accepting_orders: boolean;
+  average_prep_time_mins: number;
+  created_at?: string;
+}
+
+export interface MenuItem {
+  id: string;
+  college_id: string;
+  vendor_id: string;
+  vendor_name?: string;
+  item_name: string;
+  category: MealCategory;
+  price_inr: number;
+  dietary_tag: DietaryTag;
+  calories: number;
+  is_in_stock: boolean;
+  prep_time_mins: number;
+  created_at?: string;
+}
+
+export interface DiningWallet {
+  id: string;
+  college_id: string;
+  scholar_id: string;
+  scholar_name: string;
+  wallet_balance_inr: number;
+  monthly_subsidy_inr: number;
+  auto_reload_enabled: boolean;
+  qr_payment_token: string;
+  last_topup_date: string;
+  created_at?: string;
+}
+
+export interface MealOrder {
+  id: string;
+  college_id: string;
+  order_code: string;
+  scholar_id: string;
+  scholar_name: string;
+  vendor_name: string;
+  items_summary: string;
+  total_amount_inr: number;
+  pickup_slot: string;
+  order_status: OrderStatus;
+  payment_method: PaymentMethod;
+  token_pass_code: string;
+  created_at: string;
+}
+
+export interface CafeteriaOverviewStats {
+  activeVendors: number;
+  availableMenuItems: number;
+  activeOrdersInKitchen: number;
+  totalMealsServedToday: number;
+  vendors: DiningVendor[];
+  menuItems: MenuItem[];
+  wallet: DiningWallet;
+  recentOrders: MealOrder[];
+}
+
+
 
 
