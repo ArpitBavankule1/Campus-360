@@ -8,9 +8,9 @@ import {
   containsXSS,
   sanitizeInput,
 } from "@/lib/security/sanitize";
-import { ScholarshipApplication } from "@/types";
+import { GrantApplication } from "@/types";
 
-const activeApplications: ScholarshipApplication[] = [
+const activeApplications: GrantApplication[] = [
   ...MOCK_SCHOLARSHIP_APPLICATIONS,
 ];
 
@@ -90,7 +90,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const newApp: ScholarshipApplication = {
+    const newApp: GrantApplication = {
       id: `app-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`,
       college_id: "c1111111-1111-4111-8111-111111111111",
       application_code: generateScholarshipAppCode(),

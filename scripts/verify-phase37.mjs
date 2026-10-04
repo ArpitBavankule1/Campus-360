@@ -77,11 +77,11 @@ check(
   )
 );
 check(
-  "ScholarshipScheme, ScholarshipApplication, DisbursementTranche, ScholarshipCertificate exported",
+  "ScholarshipScheme, GrantApplication, DisbursementTranche, ScholarshipCertificate exported",
   fileContains(
     "src/types/index.ts",
     "export interface ScholarshipScheme",
-    "export interface ScholarshipApplication",
+    "export interface GrantApplication",
     "export interface DisbursementTranche",
     "export interface ScholarshipCertificate",
     "export interface ScholarshipOverviewStats"

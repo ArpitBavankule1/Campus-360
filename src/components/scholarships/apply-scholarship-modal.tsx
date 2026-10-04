@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { ScholarshipScheme, ScholarshipApplication } from "@/types";
+import { ScholarshipScheme, GrantApplication } from "@/types";
 import {
   Dialog,
   DialogContent,
@@ -12,14 +12,13 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import { GraduationCap, CheckCircle2, ShieldCheck } from "lucide-react";
 
 interface ApplyScholarshipModalProps {
   scheme: ScholarshipScheme | null;
   isOpen: boolean;
   onClose: () => void;
-  onSuccess: (application: ScholarshipApplication) => void;
+  onSuccess: (application: GrantApplication) => void;
 }
 
 export function ApplyScholarshipModal({
@@ -35,7 +34,7 @@ export function ApplyScholarshipModal({
   const [annualFamilyIncomeInr, setAnnualFamilyIncomeInr] = useState("540000");
   const [statementOfPurpose, setStatementOfPurpose] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submittedApp, setSubmittedApp] = useState<ScholarshipApplication | null>(null);
+  const [submittedApp, setSubmittedApp] = useState<GrantApplication | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -182,12 +181,12 @@ export function ApplyScholarshipModal({
 
             <div className="space-y-1.5">
               <Label className="text-xs">Statement of Need / Academic Goals</Label>
-              <Textarea
+              <textarea
                 rows={2}
                 value={statementOfPurpose}
-                onChange={(e) => setStatementOfPurpose(e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setStatementOfPurpose(e.target.value)}
                 placeholder="Briefly state academic achievements or financial need..."
-                className="text-xs"
+                className="w-full text-xs rounded-md border border-input bg-background p-2.5"
               />
             </div>
 

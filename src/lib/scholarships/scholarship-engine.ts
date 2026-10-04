@@ -5,7 +5,7 @@
 
 import {
   ScholarshipScheme,
-  ScholarshipApplication,
+  GrantApplication,
   DisbursementTranche,
   ScholarshipCertificate,
   ScholarshipOverviewStats,
@@ -28,7 +28,7 @@ export function generateCertificateCode(): string {
 
 export function calculateScholarshipOverview(
   schemes: ScholarshipScheme[] = MOCK_SCHOLARSHIP_SCHEMES,
-  applications: ScholarshipApplication[] = MOCK_SCHOLARSHIP_APPLICATIONS,
+  applications: GrantApplication[] = MOCK_SCHOLARSHIP_APPLICATIONS,
   disbursements: DisbursementTranche[] = MOCK_DISBURSEMENTS,
   certificates: ScholarshipCertificate[] = MOCK_SCHOLARSHIP_CERTIFICATES
 ): ScholarshipOverviewStats {
@@ -105,7 +105,7 @@ export const MOCK_SCHOLARSHIP_SCHEMES: ScholarshipScheme[] = [
   },
 ];
 
-export const MOCK_SCHOLARSHIP_APPLICATIONS: ScholarshipApplication[] = [
+export const MOCK_SCHOLARSHIP_APPLICATIONS: GrantApplication[] = [
   {
     id: "app-11111111-1111-4111-8111-111111111111",
     college_id: "c1111111-1111-4111-8111-111111111111",

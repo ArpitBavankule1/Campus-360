@@ -1987,7 +1987,7 @@ export type OrderStatus =
   | "Completed"
   | "Cancelled";
 
-export type PaymentMethod =
+export type DiningPaymentMethod =
   | "Dining Wallet"
   | "UPI Instant"
   | "Campus Card";
@@ -2045,7 +2045,7 @@ export interface MealOrder {
   total_amount_inr: number;
   pickup_slot: string;
   order_status: OrderStatus;
-  payment_method: PaymentMethod;
+  payment_method: DiningPaymentMethod;
   token_pass_code: string;
   created_at: string;
 }
@@ -2177,7 +2177,7 @@ export type ScholarshipSchemeStatus =
   | "Disbursed"
   | "Archived";
 
-export type ScholarshipApplicationStatus =
+export type GrantApplicationStatus =
   | "Submitted"
   | "Documents Verified"
   | "Dean Approved"
@@ -2201,7 +2201,7 @@ export interface ScholarshipScheme {
   created_at?: string;
 }
 
-export interface ScholarshipApplication {
+export interface GrantApplication {
   id: string;
   college_id: string;
   application_code: string;
@@ -2211,7 +2211,7 @@ export interface ScholarshipApplication {
   department: string;
   current_cgpa: number;
   annual_family_income_inr: number;
-  status: ScholarshipApplicationStatus;
+  status: GrantApplicationStatus;
   statement_of_purpose?: string | null;
   created_at: string;
 }
@@ -2249,7 +2249,7 @@ export interface ScholarshipOverviewStats {
   activeSchemesCount: number;
   scholarsBenefitedCount: number;
   schemes: ScholarshipScheme[];
-  applications: ScholarshipApplication[];
+  applications: GrantApplication[];
   disbursements: DisbursementTranche[];
   certificates: ScholarshipCertificate[];
 }

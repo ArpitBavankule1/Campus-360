@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import {
   ScholarshipScheme,
-  ScholarshipApplication,
+  GrantApplication,
   DisbursementTranche,
   ScholarshipCertificate,
 } from "@/types";
@@ -38,7 +38,7 @@ export default function ScholarshipsPortalPage() {
   >("schemes");
 
   const [schemes] = useState<ScholarshipScheme[]>(MOCK_SCHOLARSHIP_SCHEMES);
-  const [applications, setApplications] = useState<ScholarshipApplication[]>(
+  const [applications, setApplications] = useState<GrantApplication[]>(
     MOCK_SCHOLARSHIP_APPLICATIONS
   );
   const [disbursements] = useState<DisbursementTranche[]>(MOCK_DISBURSEMENTS);
@@ -71,7 +71,7 @@ export default function ScholarshipsPortalPage() {
     setIsApplyModalOpen(true);
   };
 
-  const handleApplicationSuccess = (newApp: ScholarshipApplication) => {
+  const handleApplicationSuccess = (newApp: GrantApplication) => {
     setApplications([newApp, ...applications]);
   };
 
