@@ -43,6 +43,8 @@ import {
   UtensilsCrossed,
   Theater,
   Award,
+  Vote,
+  Printer,
 } from "lucide-react";
 import {
   MOCK_LOCATIONS,
@@ -129,6 +131,9 @@ export function CommandPalette() {
     { id: "p-cafe", title: "Smart Cafeteria & Food Wallets", subtitle: "Contactless meal pre-orders & QR counter tokens", category: "Navigation", href: "/cafeteria", icon: UtensilsCrossed },
     { id: "p-aud", title: "Auditorium & Event Ticketing", subtitle: "Convention halls, stage reservations & passes", category: "Navigation", href: "/auditorium", icon: Theater },
     { id: "p-schol", title: "Scholarships & Financial Aid", subtitle: "CSR grants, merit waivers & DBT disbursement", category: "Navigation", href: "/scholarships", icon: Award },
+    { id: "p-convoc", title: "Convocation & Degree Credentials", subtitle: "Verifiable degrees, convocation regalia & employer verification", category: "Navigation", href: "/convocation", icon: GraduationCap },
+    { id: "p-elec", title: "Student Elections & E-Voting", subtitle: "Candidate manifestos, anonymous voting & turnout telemetry", category: "Navigation", href: "/elections", icon: Vote },
+    { id: "p-print", title: "Cloud Printing & Thesis Binding", subtitle: "Campus print spooling, free page quota & hardcover binding", category: "Navigation", href: "/printing", icon: Printer },
     { id: "p-explore", title: "Campus Explorer", subtitle: "Directory of buildings & facilities", category: "Navigation", href: "/explore", icon: Compass },
     { id: "p-map", title: "Interactive 3D Campus Map", subtitle: "Real-time geographical pinpoints", category: "Navigation", href: "/map", icon: MapPin },
     { id: "p-time", title: "Class Timetable", subtitle: "Day-wise lecture routines", category: "Navigation", href: "/timetable", icon: CalendarDays },

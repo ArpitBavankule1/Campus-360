@@ -28,6 +28,8 @@ import {
   UtensilsCrossed,
   Theater,
   Award,
+  Vote,
+  Printer,
 } from "lucide-react";
 import { cn } from "cn";
 
@@ -258,6 +260,36 @@ const actionItems: QuickActionItem[] = [
     iconColor: "text-blue-600 dark:text-blue-400",
     badge: "Phase 37",
     badgeBg: "bg-blue-500/15 text-blue-600 dark:text-blue-400 border-blue-500/30",
+  },
+  {
+    title: "Convocation & Degree Credentials",
+    description: "Verifiable digital degrees, convocation regalia & employer verification gateway",
+    href: "/convocation",
+    icon: GraduationCap,
+    iconBg: "bg-indigo-500/10 dark:bg-indigo-500/20",
+    iconColor: "text-indigo-600 dark:text-indigo-400",
+    badge: "Phase 38",
+    badgeBg: "bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 border-indigo-500/30",
+  },
+  {
+    title: "Student Elections & E-Voting",
+    description: "Gymkhana council candidate manifestos, anonymous ZKP voting & turnout telemetry",
+    href: "/elections",
+    icon: Vote,
+    iconBg: "bg-violet-500/10 dark:bg-violet-500/20",
+    iconColor: "text-violet-600 dark:text-violet-400",
+    badge: "Phase 39",
+    badgeBg: "bg-violet-500/15 text-violet-600 dark:text-violet-400 border-violet-500/30",
+  },
+  {
+    title: "Cloud Printing & Thesis Binding",
+    description: "Distributed campus kiosk print spooler, 500-page semester quota & hardcover binding",
+    href: "/printing",
+    icon: Printer,
+    iconBg: "bg-cyan-500/10 dark:bg-cyan-500/20",
+    iconColor: "text-cyan-600 dark:text-cyan-400",
+    badge: "Phase 40",
+    badgeBg: "bg-cyan-500/15 text-cyan-600 dark:text-cyan-400 border-cyan-500/30",
   },
   {
     title: "Notices & Circulars",

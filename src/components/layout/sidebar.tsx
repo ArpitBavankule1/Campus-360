@@ -38,6 +38,8 @@ import {
   UtensilsCrossed,
   Theater,
   Award,
+  Vote,
+  Printer,
 } from "lucide-react";
 import { useAuth } from "@/components/layout/auth-provider";
 import { Badge } from "@/components/ui/badge";
@@ -184,6 +186,24 @@ const studentNavItems: NavItem[] = [
     href: "/scholarships",
     icon: Award,
     badge: "Phase 37",
+  },
+  {
+    title: "Convocation & Degrees",
+    href: "/convocation",
+    icon: GraduationCap,
+    badge: "Phase 38",
+  },
+  {
+    title: "Student Elections",
+    href: "/elections",
+    icon: Vote,
+    badge: "Phase 39",
+  },
+  {
+    title: "Printing & Binding",
+    href: "/printing",
+    icon: Printer,
+    badge: "Phase 40",
   },
   {
     title: "Campus Explorer",
