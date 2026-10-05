@@ -2254,6 +2254,317 @@ export interface ScholarshipOverviewStats {
   certificates: ScholarshipCertificate[];
 }
 
+// ================================================================
+// Phase 38 — Smart Campus Digital Credentialing, Academic Convocation & Verifiable Degree Ledger
+// ================================================================
+
+export type DegreeType =
+  | "Bachelor of Technology"
+  | "Master of Technology"
+  | "Doctor of Philosophy"
+  | "Master of Business Admin"
+  | "Honorary Doctorate";
+
+export type HonorsClassification =
+  | "First Class with Distinction"
+  | "First Class Honours"
+  | "Dean's Gold Medalist"
+  | "Chancellor's Citation";
+
+export type CeremonyStatus = "Scheduled" | "In Procession" | "Concluded";
+
+export type GownSize = "Small (S)" | "Medium (M)" | "Large (L)" | "Extra Large (XL)";
+
+export type CredentialStatus =
+  | "Issued & Cryptographically Signed"
+  | "Pending Convocation"
+  | "Revoked";
+
+export type VerificationStatus =
+  | "Verified & Authentic"
+  | "Record Under Audit"
+  | "Invalid Hash";
+
+export interface DegreeCredential {
+  id: string;
+  college_id: string;
+  credential_code: string;
+  scholar_id: string;
+  scholar_name: string;
+  degree_type: DegreeType;
+  department: string;
+  graduation_year: number;
+  cgpa: number;
+  honors_classification: HonorsClassification;
+  cryptographic_hash: string;
+  credential_status: CredentialStatus;
+  conferred_at: string;
+  created_at?: string;
+}
+
+export interface ConvocationCeremony {
+  id: string;
+  college_id: string;
+  edition_title: string;
+  academic_session: string;
+  chief_guest_name: string;
+  chief_guest_designation: string;
+  ceremony_date: string;
+  ceremony_time: string;
+  venue_auditorium: string;
+  total_degrees_awarded: number;
+  regalia_dress_code: string;
+  ceremony_status: CeremonyStatus;
+  created_at?: string;
+}
+
+export interface ConvocationRegistration {
+  id: string;
+  college_id: string;
+  registration_code: string;
+  scholar_id: string;
+  scholar_name: string;
+  ceremony_id?: string;
+  degree_awarded: string;
+  gown_size: GownSize;
+  guest_pass_count: number;
+  allocated_seat_number: string;
+  admittance_pass_code: string;
+  is_gown_collected: boolean;
+  is_checked_in: boolean;
+  registered_at: string;
+}
+
+export interface CredentialVerificationRequest {
+  id: string;
+  college_id: string;
+  verification_code: string;
+  credential_code: string;
+  requester_organization: string;
+  requester_contact_email: string;
+  verification_purpose: string;
+  verification_status: VerificationStatus;
+  verified_at: string;
+}
+
+export interface ConvocationOverviewStats {
+  totalDegreesIssued: number;
+  registeredScholarsCount: number;
+  goldMedalistsCount: number;
+  employerVerificationsCount: number;
+  credentials: DegreeCredential[];
+  ceremony: ConvocationCeremony;
+  registrations: ConvocationRegistration[];
+  recentVerifications: CredentialVerificationRequest[];
+}
+
+// ================================================================
+// Phase 39 — Smart Campus Student Elections, E-Voting & Campus Democracy Portal
+// ================================================================
+
+export type ElectionPost =
+  | "President"
+  | "Vice President"
+  | "General Secretary Academic"
+  | "General Secretary Cultural"
+  | "General Secretary Sports"
+  | "General Secretary Technical";
+
+export type ElectionStatus =
+  | "Nomination Phase"
+  | "Campaigning"
+  | "Voting Live"
+  | "Counting Votes"
+  | "Results Certified";
+
+export type CandidateApprovalStatus =
+  | "Approved & Vetted"
+  | "Under Scrutiny"
+  | "Disqualified";
+
+export interface StudentElection {
+  id: string;
+  college_id: string;
+  election_title: string;
+  academic_session: string;
+  election_commissioner: string;
+  nomination_deadline: string;
+  voting_starts_at: string;
+  voting_ends_at: string;
+  status: ElectionStatus;
+  total_eligible_voters: number;
+  total_votes_cast: number;
+  created_at?: string;
+}
+
+export interface ElectionCandidate {
+  id: string;
+  college_id: string;
+  election_id?: string;
+  candidate_name: string;
+  scholar_id: string;
+  department: string;
+  year_of_study: number;
+  post_contested: ElectionPost;
+  manifesto_slogan: string;
+  key_initiatives: string[];
+  campaign_tagline: string;
+  approval_status: CandidateApprovalStatus;
+  vote_count: number;
+  created_at?: string;
+}
+
+export interface BallotVote {
+  id: string;
+  college_id: string;
+  election_id?: string;
+  ballot_receipt_code: string;
+  post_contested: ElectionPost;
+  candidate_id?: string;
+  cryptographic_token_hash: string;
+  cast_timestamp: string;
+}
+
+export interface ElectionResultDocket {
+  id: string;
+  college_id: string;
+  election_id?: string;
+  certificate_code: string;
+  post_contested: ElectionPost;
+  winner_candidate_name: string;
+  winning_margin_votes: number;
+  total_votes_polled: number;
+  voter_turnout_pct: number;
+  certified_by: string;
+  certified_at: string;
+}
+
+export interface ElectionsOverviewStats {
+  totalEligibleVoters: number;
+  totalVotesPolled: number;
+  voterTurnoutPercentage: number;
+  approvedCandidatesCount: number;
+  election: StudentElection;
+  candidates: ElectionCandidate[];
+  results: ElectionResultDocket[];
+}
+
+// ================================================================
+// Phase 40 — Smart Campus Cloud Printing, Document Xerox & Thesis Binding Hub
+// ================================================================
+
+export type PrintStationStatus =
+  | "Online & Ready"
+  | "Paper Tray Low"
+  | "Out of Toner"
+  | "Under Maintenance";
+
+export type PrintColorMode = "Monochrome B&W" | "High-Res Color";
+
+export type PrintDuplexMode = "Single-Sided" | "Double-Sided Duplex";
+
+export type PrintJobStatus =
+  | "Queued in Cloud"
+  | "Processing"
+  | "Ready for Kiosk Pickup"
+  | "Printed & Collected"
+  | "Purged";
+
+export type ThesisCoverType =
+  | "Hardcover Royal Navy (Gold Foil)"
+  | "Hardcover Emerald Green (Silver Foil)"
+  | "Softcover Spiral Binding"
+  | "Deluxe Leatherette Archival";
+
+export type ThesisBindingStatus =
+  | "Submitted for Binding"
+  | "Cover Embossing"
+  | "Quality Inspected"
+  | "Ready for Library Deposit";
+
+export type DepartmentSignoffStatus =
+  | "Pending Guide Signoff"
+  | "Approved by Guide"
+  | "Approved by HOD";
+
+export interface PrintStation {
+  id: string;
+  college_id: string;
+  kiosk_name: string;
+  campus_building: string;
+  floor_location: string;
+  status: PrintStationStatus;
+  paper_level_pct: number;
+  toner_level_pct: number;
+  supported_sizes: string[];
+  is_color_capable: boolean;
+  is_duplex_capable: boolean;
+  queue_jobs_count: number;
+  created_at?: string;
+}
+
+export interface StudentPrintWallet {
+  id: string;
+  college_id: string;
+  scholar_id: string;
+  scholar_name: string;
+  semester_free_quota_pages: number;
+  free_pages_remaining: number;
+  wallet_balance_inr: number;
+  total_pages_printed: number;
+  last_used_at: string;
+  created_at?: string;
+}
+
+export interface PrintJob {
+  id: string;
+  college_id: string;
+  job_code: string;
+  scholar_id: string;
+  scholar_name: string;
+  document_name: string;
+  page_count: number;
+  color_mode: PrintColorMode;
+  duplex_mode: PrintDuplexMode;
+  total_cost_inr: number;
+  pickup_kiosk_name: string;
+  status: PrintJobStatus;
+  release_pin: string;
+  release_token_hash: string;
+  submitted_at: string;
+}
+
+export interface ThesisBindingOrder {
+  id: string;
+  college_id: string;
+  order_code: string;
+  scholar_id: string;
+  scholar_name: string;
+  department: string;
+  thesis_title: string;
+  degree_program: string;
+  cover_type: ThesisCoverType;
+  copies_requested: number;
+  embossing_text: string;
+  binding_status: ThesisBindingStatus;
+  department_signoff_status: DepartmentSignoffStatus;
+  target_delivery_date: string;
+  total_fee_inr: number;
+  created_at: string;
+}
+
+export interface PrintingOverviewStats {
+  activeKiosksCount: number;
+  totalJobsPrintedToday: number;
+  totalPagesPrintedToday: number;
+  activeThesisBindingsCount: number;
+  stations: PrintStation[];
+  wallet: StudentPrintWallet;
+  recentJobs: PrintJob[];
+  thesisOrders: ThesisBindingOrder[];
+}
+
+
 
 
 
