@@ -105,6 +105,15 @@ jobs:
       - name: Verify Phase 37 (Smart Campus Scholarships & Financial Aid)
         run: node scripts/verify-phase37.mjs
 
+      - name: Verify Phase 38 (Convocation & Degree Credentials)
+        run: node scripts/verify-phase38.mjs
+
+      - name: Verify Phase 39 (Student Elections & E-Voting)
+        run: node scripts/verify-phase39.mjs
+
+      - name: Verify Phase 40 (Cloud Printing & Thesis Binding)
+        run: node scripts/verify-phase40.mjs
+
       - name: Verify Master Security & Anti-Injection Suite
         run: node scripts/verify-security.mjs
 
