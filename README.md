@@ -205,8 +205,11 @@ graph TD
 - **Hardcover Thesis & Dissertation Binding**: Institutional gold-foil spine embossing, hardcover archival finishes, and departmental HOD sign-off dockets (`CL-THESIS-2026-XXXX`).
 - **Contactless Kiosk Release Security**: Encrypted 6-digit release PINs and scan-to-print QR tokens preventing unattended document exposure.
 
-
-
+### 30. 🧠 Smart Campus Mental Health, Psychological Counseling & Peer Support Sanctuary (Phase 41)
+- **Confidential 1-on-1 Psychological Tele-Therapy**: Private appointments with licensed clinical psychologists (Ph.D./MD) specializing in CBT, stress reduction, and academic performance (`CL-WELL-2026-XXXX`).
+- **Anonymous Peer Support Circles**: Peer-facilitated mutual aid groups covering exam burnout, tech imposter syndrome, and hostel transitions with identity blinding.
+- **Daily Emotional Pulse & Coping Guidance**: 1-to-5 emotional battery tracking with sleep metrics, stress trigger tags, and tailored mindfulness micro-exercises.
+- **24x7 Campus & National Emergency Crisis Lifelines**: Instant round-the-clock telephone and on-campus counselor response connecting to Tele-MANAS, KIRAN, and Apex SOS.
 
 ---
 
@@ -361,6 +364,9 @@ node scripts/verify-phase39.mjs
 
 # Phase 40: Smart Campus Cloud Printing & Thesis Binding
 node scripts/verify-phase40.mjs
+
+# Phase 41: Smart Campus Mental Health & Psychological Counseling Sanctuary
+node scripts/verify-phase41.mjs
 
 # Run production build validation
 npm run build
