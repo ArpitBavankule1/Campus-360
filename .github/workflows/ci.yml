@@ -114,6 +114,9 @@ jobs:
       - name: Verify Phase 40 (Cloud Printing & Thesis Binding)
         run: node scripts/verify-phase40.mjs
 
+      - name: Verify Phase 41 (Mental Health & Counseling Sanctuary)
+        run: node scripts/verify-phase41.mjs
+
       - name: Verify Master Security & Anti-Injection Suite
         run: node scripts/verify-security.mjs
 
