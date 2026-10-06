@@ -40,6 +40,7 @@ import {
   Award,
   Vote,
   Printer,
+  HeartHandshake,
 } from "lucide-react";
 import { useAuth } from "@/components/layout/auth-provider";
 import { Badge } from "@/components/ui/badge";
@@ -204,6 +205,12 @@ const studentNavItems: NavItem[] = [
     href: "/printing",
     icon: Printer,
     badge: "Phase 40",
+  },
+  {
+    title: "Counseling & Wellness",
+    href: "/counseling",
+    icon: HeartHandshake,
+    badge: "Phase 41",
   },
   {
     title: "Campus Explorer",

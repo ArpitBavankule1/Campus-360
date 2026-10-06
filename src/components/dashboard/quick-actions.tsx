@@ -30,6 +30,7 @@ import {
   Award,
   Vote,
   Printer,
+  HeartHandshake,
 } from "lucide-react";
 import { cn } from "cn";
 
@@ -290,6 +291,16 @@ const actionItems: QuickActionItem[] = [
     iconColor: "text-cyan-600 dark:text-cyan-400",
     badge: "Phase 40",
     badgeBg: "bg-cyan-500/15 text-cyan-600 dark:text-cyan-400 border-cyan-500/30",
+  },
+  {
+    title: "Counseling & Mental Health",
+    description: "Confidential 1-on-1 psychological tele-therapy, anonymous peer support circles & mood check-in",
+    href: "/counseling",
+    icon: HeartHandshake,
+    iconBg: "bg-violet-500/10 dark:bg-violet-500/20",
+    iconColor: "text-violet-600 dark:text-violet-400",
+    badge: "Phase 41",
+    badgeBg: "bg-violet-500/15 text-violet-600 dark:text-violet-400 border-violet-500/30",
   },
   {
     title: "Notices & Circulars",
