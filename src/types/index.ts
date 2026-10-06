@@ -2564,9 +2564,108 @@ export interface PrintingOverviewStats {
   thesisOrders: ThesisBindingOrder[];
 }
 
+// ================================================================
+// Phase 41 — Smart Campus Mental Health, Psychological Counseling & Peer Support Sanctuary
+// ================================================================
 
+export type CounselingSessionType =
+  | "One-on-One Tele-Therapy"
+  | "In-Person Clinic Visit"
+  | "Stress & Academic Anxiety"
+  | "Urgent Crisis Counseling";
 
+export type CounselingStatus =
+  | "Confirmed"
+  | "In Session"
+  | "Completed"
+  | "Rescheduled";
 
+export type CounselingMode =
+  | "Confidential Video Call"
+  | "Infirmary Wellness Suite"
+  | "Anonymous Voice Line";
 
+export type CircleTheme =
+  | "Exam Stress & Burnout"
+  | "Imposter Syndrome & Tech Pressure"
+  | "Hostel Homesickness & Transition"
+  | "Mindfulness & Sleep Hygiene";
 
+export type CircleStatus =
+  | "Open for Joining"
+  | "Session in Progress"
+  | "Full Capacity";
 
+export type MoodTag =
+  | "Great"
+  | "Calm"
+  | "Overwhelmed"
+  | "Anxious"
+  | "Exhausted";
+
+export interface CounselingSession {
+  id: string;
+  college_id: string;
+  session_code: string;
+  scholar_id: string;
+  scholar_name: string;
+  counselor_name: string;
+  counselor_specialization: string;
+  session_type: CounselingSessionType;
+  scheduled_date: string;
+  scheduled_time_slot: string;
+  mode: CounselingMode;
+  status: CounselingStatus;
+  confidential_notes_encrypted: boolean;
+  access_pass_token: string;
+  created_at?: string;
+}
+
+export interface PeerSupportCircle {
+  id: string;
+  college_id: string;
+  circle_name: string;
+  theme: CircleTheme;
+  facilitator_name: string;
+  schedule_info: string;
+  meeting_venue: string;
+  max_participants: number;
+  enrolled_count: number;
+  is_anonymous: boolean;
+  status: CircleStatus;
+  created_at?: string;
+}
+
+export interface MoodCheckin {
+  id: string;
+  college_id: string;
+  scholar_id: string;
+  mood_score: number; // 1 to 5
+  mood_tag: MoodTag;
+  sleep_hours: number;
+  stress_factors: string[];
+  coping_exercise: string;
+  created_at: string;
+}
+
+export interface CrisisHelpline {
+  id: string;
+  college_id: string;
+  service_name: string;
+  phone_number: string;
+  availability: string;
+  coverage_scope: string;
+  is_toll_free: boolean;
+  created_at?: string;
+}
+
+export interface CounselingOverviewStats {
+  totalConfirmedSessions: number;
+  activePeerCirclesCount: number;
+  todayMoodAverage: number;
+  emergencyHelplinesCount: number;
+  sessions: CounselingSession[];
+  circles: PeerSupportCircle[];
+  moodCheckins: MoodCheckin[];
+  helplines: CrisisHelpline[];
+}
