@@ -2669,3 +2669,126 @@ export interface CounselingOverviewStats {
   moodCheckins: MoodCheckin[];
   helplines: CrisisHelpline[];
 }
+
+// ==========================================
+// Phase 42: Smart Campus Admissions, Program Application & Seat Allocation Gateway
+// ==========================================
+
+export type ProgramDegreeLevel =
+  | "Undergraduate (B.Tech)"
+  | "Postgraduate (M.Tech)"
+  | "Master of Business Administration (MBA)"
+  | "Master of Science (M.Sc)"
+  | "Doctor of Philosophy (Ph.D.)";
+
+export type AdmissionApplicationStatus =
+  | "submitted"
+  | "document_verified"
+  | "shortlisted"
+  | "seat_allotted"
+  | "provisional_admitted"
+  | "rejected";
+
+export type QuotaCategory =
+  | "All India Open (General)"
+  | "OBC-NCL"
+  | "SC"
+  | "ST"
+  | "EWS"
+  | "Defense & PwD"
+  | "Supernumerary International";
+
+export type CounselingRound =
+  | "Round 1 (Merit Allocation)"
+  | "Round 2 (Upgradation Round)"
+  | "Round 3 (Special Round)"
+  | "Spot & Mop-Up Round";
+
+export type CampusTourMode = "In-Person Welcome Center" | "Virtual 360 Video Tour";
+
+export interface AcademicProgram {
+  id: string;
+  college_id: string;
+  program_code: string;
+  program_name: string;
+  department: string;
+  degree_level: ProgramDegreeLevel;
+  duration_years: number;
+  total_seats: number;
+  available_seats: number;
+  annual_tuition_inr: number;
+  eligibility_cutoff: string;
+  accreditation: string;
+  application_deadline: string;
+  is_admissions_open: boolean;
+  brochure_url?: string;
+  created_at?: string;
+}
+
+export interface AdmissionApplication {
+  id: string;
+  college_id: string;
+  application_number: string;
+  candidate_name: string;
+  email: string;
+  phone: string;
+  program_code: string;
+  program_name: string;
+  quota_category: QuotaCategory;
+  entrance_exam: string;
+  entrance_score_rank: string;
+  qualifying_percentage: number;
+  statement_of_purpose: string;
+  status: AdmissionApplicationStatus;
+  allotment_token?: string | null;
+  provisional_letter_id?: string | null;
+  application_fee_paid: boolean;
+  applied_at: string;
+  created_at?: string;
+}
+
+export interface SeatAllotmentDocket {
+  id: string;
+  college_id: string;
+  allotment_number: string;
+  candidate_name: string;
+  application_number: string;
+  program_code: string;
+  program_name: string;
+  counseling_round: CounselingRound;
+  allotted_category: QuotaCategory;
+  merit_rank: number;
+  acceptance_deadline: string;
+  seat_lock_deposit_inr: number;
+  is_seat_accepted: boolean;
+  provisional_letter_url: string;
+  created_at?: string;
+}
+
+export interface CampusTourBooking {
+  id: string;
+  college_id: string;
+  booking_code: string;
+  candidate_name: string;
+  email: string;
+  phone: string;
+  preferred_date: string;
+  time_slot: string;
+  tour_mode: CampusTourMode;
+  assigned_counselor: string;
+  guests_count: number;
+  status: "confirmed" | "completed" | "rescheduled";
+  created_at?: string;
+}
+
+export interface AdmissionsOverviewStats {
+  totalProgramsCount: number;
+  totalIntakeSeats: number;
+  totalApplicationsReceived: number;
+  totalSeatsAllotted: number;
+  programs: AcademicProgram[];
+  applications: AdmissionApplication[];
+  allotments: SeatAllotmentDocket[];
+  tourBookings: CampusTourBooking[];
+}
+
