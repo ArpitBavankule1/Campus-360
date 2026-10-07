@@ -31,6 +31,7 @@ import {
   Vote,
   Printer,
   HeartHandshake,
+  UserPlus,
 } from "lucide-react";
 import { cn } from "cn";
 
@@ -301,6 +302,16 @@ const actionItems: QuickActionItem[] = [
     iconColor: "text-violet-600 dark:text-violet-400",
     badge: "Phase 41",
     badgeBg: "bg-violet-500/15 text-violet-600 dark:text-violet-400 border-violet-500/30",
+  },
+  {
+    title: "Admissions & Merit Enrollment",
+    description: "Academic program application pipeline, merit counseling rounds & seat allotment dockets",
+    href: "/admissions",
+    icon: UserPlus,
+    iconBg: "bg-blue-500/10 dark:bg-blue-500/20",
+    iconColor: "text-blue-600 dark:text-blue-400",
+    badge: "Phase 42",
+    badgeBg: "bg-blue-500/15 text-blue-600 dark:text-blue-400 border-blue-500/30",
   },
   {
     title: "Notices & Circulars",
