@@ -211,6 +211,12 @@ graph TD
 - **Daily Emotional Pulse & Coping Guidance**: 1-to-5 emotional battery tracking with sleep metrics, stress trigger tags, and tailored mindfulness micro-exercises.
 - **24x7 Campus & National Emergency Crisis Lifelines**: Instant round-the-clock telephone and on-campus counselor response connecting to Tele-MANAS, KIRAN, and Apex SOS.
 
+### 31. 🎓 Smart Campus Admissions, Program Applications & Merit Counseling Gateway (Phase 42)
+- **Academic Programs Directory & AICTE/UGC Intake Matrix**: Accredited B.Tech, M.Tech, MBA, and Ph.D. degrees with entrance cutoffs (JEE/GATE/CAT), annual tuition, and duration metrics.
+- **Prospective Student Application Pipeline**: End-to-end online registrations with verifiable application tracking tokens (`CL-ADM-APP-2026-XXXX`) and quota categories.
+- **Merit Seat Allotment & Counseling Dockets**: Centralized counseling rounds (Round 1, Round 2, Spot Mop-Up) with verifiable seat allotment tokens (`CL-ADM-SEAT-2026-XXXX`) and escrow lock workflows.
+- **Campus Welcome Tours & Admissions Counselor Desks**: Guided 1-on-1 consultations with Deanery and in-person or virtual 360 tour scheduling (`CL-ADM-TOUR-2026-XXXX`).
+
 ---
 
 ## 🛠️ Technology Stack
@@ -367,6 +373,9 @@ node scripts/verify-phase40.mjs
 
 # Phase 41: Smart Campus Mental Health & Psychological Counseling Sanctuary
 node scripts/verify-phase41.mjs
+
+# Phase 42: Smart Campus Admissions, Program Applications & Merit Counseling Gateway
+node scripts/verify-phase42.mjs
 
 # Run production build validation
 npm run build
