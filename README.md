@@ -217,6 +217,12 @@ graph TD
 - **Merit Seat Allotment & Counseling Dockets**: Centralized counseling rounds (Round 1, Round 2, Spot Mop-Up) with verifiable seat allotment tokens (`CL-ADM-SEAT-2026-XXXX`) and escrow lock workflows.
 - **Campus Welcome Tours & Admissions Counselor Desks**: Guided 1-on-1 consultations with Deanery and in-person or virtual 360 tour scheduling (`CL-ADM-TOUR-2026-XXXX`).
 
+### 32. 👨‍👩‍👧 Smart Campus Parent & Guardian Connect, Ward Telemetry & Proctor Gateway (Phase 43)
+- **Ward Academic & Attendance Telemetry**: Live semester attendance tracking, exam CGPA grade reports, and statutory 75% minimum threshold alerts with course-by-course breakdowns.
+- **Hostel Out-Pass Parent Authorization**: Verifiable one-tap digital guardian consent for overnight hostel leave and weekend out-passes with cryptographic tokens (`CL-PAR-PASS-2026-XXXX`).
+- **Parent-Teacher Meeting (PTM) & Proctor Appointment Scheduler**: Reserve 1-on-1 virtual or in-person consultation slots with departmental proctors and faculty mentors (`CL-PTM-SLOT-2026-XXXX`).
+- **Institutional Administrative Advisories & Fee Accounts**: Official circulars, semester exam admittance standing, and direct secure messaging channel to the student's designated faculty proctor.
+
 ---
 
 ## 🛠️ Technology Stack
@@ -376,6 +382,9 @@ node scripts/verify-phase41.mjs
 
 # Phase 42: Smart Campus Admissions, Program Applications & Merit Counseling Gateway
 node scripts/verify-phase42.mjs
+
+# Phase 43: Smart Campus Parent & Guardian Connect Gateway
+node scripts/verify-phase43.mjs
 
 # Run production build validation
 npm run build
