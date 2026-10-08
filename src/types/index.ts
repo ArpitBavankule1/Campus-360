@@ -2792,3 +2792,114 @@ export interface AdmissionsOverviewStats {
   tourBookings: CampusTourBooking[];
 }
 
+// --- Phase 43: Smart Campus Parent & Guardian Connect ---
+
+export type GuardianRelationship =
+  | "Father"
+  | "Mother"
+  | "Legal Guardian"
+  | "Host Family";
+
+export type GuardianOutpassStatus = "pending" | "approved" | "rejected";
+
+export type PTMConsultationMode =
+  | "Virtual Google Meet"
+  | "In-Person Proctor Cabin";
+
+export type PTMSlotStatus = "scheduled" | "completed" | "cancelled";
+
+export type FeeClearanceStatus = "cleared" | "due" | "partially_paid";
+
+export interface CourseAttendanceRecord {
+  courseCode: string;
+  courseTitle: string;
+  facultyName: string;
+  totalConducted: number;
+  totalAttended: number;
+  attendancePercentage: number;
+  isBelowMandate: boolean; // <75% statutory mandate
+}
+
+export interface GuardianProfile {
+  id: string;
+  college_id: string;
+  guardian_name: string;
+  email: string;
+  phone: string;
+  relationship: GuardianRelationship;
+  emergency_contact: string;
+  residential_address?: string;
+  is_identity_verified: boolean;
+  created_at?: string;
+}
+
+export interface WardTelemetry {
+  id: string;
+  college_id: string;
+  guardian_id: string;
+  student_id: string;
+  student_name: string;
+  roll_number: string;
+  department: string;
+  academic_year: number;
+  semester: number;
+  cumulative_cgpa: number;
+  overall_attendance_pct: number;
+  theory_attendance_pct: number;
+  practical_attendance_pct: number;
+  fee_dues_inr: number;
+  fee_status: FeeClearanceStatus;
+  assigned_proctor_name: string;
+  assigned_proctor_email: string;
+  hostel_room: string;
+  courseBreakdown: CourseAttendanceRecord[];
+  created_at?: string;
+}
+
+export interface GuardianOutpassApproval {
+  id: string;
+  college_id: string;
+  ward_id: string;
+  student_name: string;
+  roll_number: string;
+  destination_city: string;
+  leave_start_date: string;
+  return_expected_date: string;
+  reason: string;
+  outpass_token: string;
+  guardian_status: GuardianOutpassStatus;
+  warden_status: "awaiting_guardian" | "approved_by_warden" | "rejected_by_warden";
+  guardian_action_at?: string | null;
+  guardian_remarks?: string | null;
+  created_at?: string;
+}
+
+export interface PTMConsultationSlot {
+  id: string;
+  college_id: string;
+  ward_id: string;
+  faculty_proctor_name: string;
+  faculty_proctor_designation: string;
+  consultation_mode: PTMConsultationMode;
+  scheduled_date: string;
+  time_slot: string;
+  agenda: string;
+  booking_token: string;
+  status: PTMSlotStatus;
+  meeting_link?: string;
+  proctor_notes?: string;
+  created_at?: string;
+}
+
+export interface ParentPortalOverviewStats {
+  guardian: GuardianProfile;
+  ward: WardTelemetry;
+  pendingOutpassCount: number;
+  totalOutpasses: number;
+  outpasses: GuardianOutpassApproval[];
+  ptmSlots: PTMConsultationSlot[];
+  overallAttendancePct: number;
+  isAttendanceCritical: boolean;
+}
+
+
