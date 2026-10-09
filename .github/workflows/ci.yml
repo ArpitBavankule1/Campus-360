@@ -123,6 +123,9 @@ jobs:
       - name: Verify Phase 43 (Parent & Guardian Connect Gateway)
         run: node scripts/verify-phase43.mjs
 
+      - name: Verify Phase 44 (Teaching Assistantships & Fellowships)
+        run: node scripts/verify-phase44.mjs
+
       - name: Verify Master Security & Anti-Injection Suite
         run: node scripts/verify-security.mjs
 
