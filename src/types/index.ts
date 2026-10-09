@@ -2902,4 +2902,135 @@ export interface ParentPortalOverviewStats {
   isAttendanceCritical: boolean;
 }
 
+// ================================================================
+// Phase 44 — Smart Campus Teaching Assistantships, Graduate Fellowships & Work-Study Ledger
+// ================================================================
+
+export type FellowshipType =
+  | "teaching_assistant"
+  | "research_assistant"
+  | "lab_demonstrator"
+  | "work_study"
+  | "maker_proctor";
+
+export type FellowshipApplicationStatus =
+  | "submitted"
+  | "shortlisted"
+  | "interview_scheduled"
+  | "appointed"
+  | "rejected";
+
+export type TimesheetApprovalStatus =
+  | "draft"
+  | "submitted"
+  | "faculty_approved"
+  | "rejected";
+
+export type DutyCategory =
+  | "tutorial_conduct"
+  | "laboratory_supervision"
+  | "grading_assessments"
+  | "office_hours"
+  | "research_experiments";
+
+export type DisbursementStatus =
+  | "pending"
+  | "escrow_locked"
+  | "disbursed"
+  | "on_hold";
+
+export interface FellowshipPosition {
+  id: string;
+  college_id: string;
+  title: string;
+  position_type: FellowshipType;
+  department: string;
+  course_code?: string;
+  course_name?: string;
+  faculty_supervisor_name: string;
+  faculty_supervisor_email: string;
+  monthly_stipend_inr: number;
+  required_hours_per_week: number;
+  open_slots: number;
+  filled_slots: number;
+  min_cgpa_requirement: number;
+  prerequisite_course_grade?: string;
+  description: string;
+  responsibilities: string[];
+  academic_term: string;
+  application_deadline: string;
+  is_active: boolean;
+  created_at?: string;
+}
+
+export interface FellowshipApplication {
+  id: string;
+  college_id: string;
+  position_id: string;
+  student_id: string;
+  student_name: string;
+  roll_number: string;
+  department: string;
+  student_cgpa: number;
+  course_grade: string;
+  statement_of_purpose: string;
+  portfolio_url?: string;
+  weekly_availability_hours: number;
+  application_token: string;
+  status: FellowshipApplicationStatus;
+  appointment_token?: string;
+  appointed_at?: string;
+  faculty_feedback?: string;
+  position?: FellowshipPosition;
+  created_at?: string;
+}
+
+export interface FellowshipTimesheet {
+  id: string;
+  college_id: string;
+  application_id: string;
+  student_name: string;
+  roll_number: string;
+  week_start_date: string;
+  week_end_date: string;
+  hours_logged: number;
+  duty_type: DutyCategory;
+  duty_summary: string;
+  supervisor_feedback?: string;
+  approval_status: TimesheetApprovalStatus;
+  approved_by_supervisor?: string;
+  approved_at?: string;
+  created_at?: string;
+}
+
+export interface FellowshipDisbursement {
+  id: string;
+  college_id: string;
+  student_id: string;
+  student_name: string;
+  roll_number: string;
+  fellowship_title: string;
+  disbursement_month: string;
+  gross_stipend_inr: number;
+  attendance_deductions_inr: number;
+  net_stipend_inr: number;
+  dbt_bank_account_mask: string;
+  utr_transaction_number: string;
+  voucher_token: string;
+  status: DisbursementStatus;
+  disbursed_at: string;
+  created_at?: string;
+}
+
+export interface FellowshipOverviewStats {
+  totalPositions: number;
+  activeAppointments: number;
+  totalMonthlyStipendOutlay: number;
+  pendingTimesheetApprovals: number;
+  positions: FellowshipPosition[];
+  applications: FellowshipApplication[];
+  timesheets: FellowshipTimesheet[];
+  disbursements: FellowshipDisbursement[];
+}
+
 
