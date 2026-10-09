@@ -223,6 +223,13 @@ graph TD
 - **Parent-Teacher Meeting (PTM) & Proctor Appointment Scheduler**: Reserve 1-on-1 virtual or in-person consultation slots with departmental proctors and faculty mentors (`CL-PTM-SLOT-2026-XXXX`).
 - **Institutional Administrative Advisories & Fee Accounts**: Official circulars, semester exam admittance standing, and direct secure messaging channel to the student's designated faculty proctor.
 
+### 33. 🎓 Smart Campus Teaching Assistantships, Graduate Fellowships & Work-Study Ledger (Phase 44)
+- **Departmental Fellowship & TA/RA Openings**: Course-linked Teaching Assistantships (CS201, ECE304), Deep Learning Research Fellowships, Central Library Work-Study, and Additive Prototyping Maker Space proctorships with monthly stipend allocations (₹10,000–₹22,000/mo).
+- **Scholar Application & Candidate Vetting**: End-to-end applications with statement of purpose, prerequisite grade verification, and verifiable tracking tokens (`CL-FEL-APP-2026-XXXX`).
+- **Weekly Duty Timesheet & Supervisor Sign-Off**: Mandatory weekly log submissions for laboratory supervision, tutorial recitations, and assessment grading with faculty approval workflows.
+- **Direct Benefit Transfer (DBT) Stipend Payroll**: Bank-integrated escrow ledger with UTR settlement codes (`UTR-2026XXXX-APEX-XXXXX`) and cryptographic voucher tokens (`CL-STIP-2026-XXXX`).
+- **Holographic Appointment Passes**: Deanery-authorized appointment credentials with dynamic QR verification (`CL-FEL-APPT-2026-XXXX`) granting Tier-1 server cluster and 24/7 laboratory access.
+
 ---
 
 ## 🛠️ Technology Stack
@@ -385,6 +392,9 @@ node scripts/verify-phase42.mjs
 
 # Phase 43: Smart Campus Parent & Guardian Connect Gateway
 node scripts/verify-phase43.mjs
+
+# Phase 44: Smart Campus Teaching Assistantships, Graduate Fellowships & Work-Study Ledger
+node scripts/verify-phase44.mjs
 
 # Run production build validation
 npm run build
