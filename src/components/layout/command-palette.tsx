@@ -48,6 +48,7 @@ import {
   HeartHandshake,
   UserPlus,
   UserCheck,
+  FileText,
 } from "lucide-react";
 import {
   MOCK_LOCATIONS,
@@ -140,6 +141,7 @@ export function CommandPalette() {
     { id: "p-counsel", title: "Mental Health & Counseling", subtitle: "Confidential therapy, peer support circles & crisis SOS", category: "Navigation", href: "/counseling", icon: HeartHandshake },
     { id: "p-admissions", title: "Admissions & Merit Enrollment", subtitle: "Program applications, counseling rounds & seat allotment", category: "Navigation", href: "/admissions", icon: UserPlus },
     { id: "p-parents", title: "Parent & Guardian Connect", subtitle: "Ward attendance telemetry, out-pass approvals & PTM consultations", category: "Navigation", href: "/parents", icon: UserCheck },
+    { id: "p-fellowships", title: "Fellowships & Teaching Assistantships", subtitle: "TA/RA openings, weekly duty timesheets & stipend DBT", category: "Navigation", href: "/fellowships", icon: FileText },
     { id: "p-explore", title: "Campus Explorer", subtitle: "Directory of buildings & facilities", category: "Navigation", href: "/explore", icon: Compass },
     { id: "p-map", title: "Interactive 3D Campus Map", subtitle: "Real-time geographical pinpoints", category: "Navigation", href: "/map", icon: MapPin },
     { id: "p-time", title: "Class Timetable", subtitle: "Day-wise lecture routines", category: "Navigation", href: "/timetable", icon: CalendarDays },

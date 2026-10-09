@@ -43,6 +43,7 @@ import {
   HeartHandshake,
   UserPlus,
   UserCheck,
+  FileText,
 } from "lucide-react";
 import { useAuth } from "@/components/layout/auth-provider";
 import { Badge } from "@/components/ui/badge";
@@ -225,6 +226,12 @@ const studentNavItems: NavItem[] = [
     href: "/parents",
     icon: UserCheck,
     badge: "Phase 43",
+  },
+  {
+    title: "Fellowships & TA Hub",
+    href: "/fellowships",
+    icon: FileText,
+    badge: "Phase 44",
   },
   {
     title: "Campus Explorer",
