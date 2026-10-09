@@ -394,3 +394,124 @@ export function calculateCompletedHours(timesheets: FellowshipTimesheet[]): numb
     .filter((t) => t.approval_status === "faculty_approved")
     .reduce((acc, curr) => acc + curr.hours_logged, 0);
 }
+
+// In-memory collections for active session state
+let positionsStore = [...MOCK_FELLOWSHIP_POSITIONS];
+let applicationsStore = [...MOCK_FELLOWSHIP_APPLICATIONS];
+let timesheetsStore = [...MOCK_FELLOWSHIP_TIMESHEETS];
+let disbursementsStore = [...MOCK_FELLOWSHIP_DISBURSEMENTS];
+
+export function getFellowshipPositions(
+  typeFilter: FellowshipType | "all" = "all",
+  departmentFilter: string = "all",
+  query: string = ""
+): FellowshipPosition[] {
+  return filterFellowshipPositions(positionsStore, typeFilter, departmentFilter, query);
+}
+
+export function getFellowshipApplications(studentId?: string): FellowshipApplication[] {
+  if (!studentId) return applicationsStore;
+  return applicationsStore.filter((app) => app.student_id === studentId);
+}
+
+export function submitFellowshipApplication(payload: {
+  position_id: string;
+  student_name: string;
+  roll_number: string;
+  department: string;
+  student_cgpa: number;
+  course_grade: string;
+  statement_of_purpose: string;
+  portfolio_url?: string;
+  weekly_availability_hours?: number;
+}): FellowshipApplication {
+  const position = positionsStore.find((p) => p.id === payload.position_id);
+  const newApp: FellowshipApplication = {
+    id: `app-${Date.now()}`,
+    college_id: "col-apex-001",
+    position_id: payload.position_id,
+    student_id: "stu-aarav-2024",
+    student_name: payload.student_name,
+    roll_number: payload.roll_number,
+    department: payload.department,
+    student_cgpa: payload.student_cgpa,
+    course_grade: payload.course_grade,
+    statement_of_purpose: payload.statement_of_purpose,
+    portfolio_url: payload.portfolio_url,
+    weekly_availability_hours: payload.weekly_availability_hours || 12,
+    application_token: generateFellowshipAppToken(),
+    status: "submitted",
+    position: position,
+    created_at: new Date().toISOString(),
+  };
+  applicationsStore.unshift(newApp);
+  return newApp;
+}
+
+export function getFellowshipTimesheets(applicationId?: string): FellowshipTimesheet[] {
+  if (!applicationId) return timesheetsStore;
+  return timesheetsStore.filter((t) => t.application_id === applicationId);
+}
+
+export function submitFellowshipTimesheet(payload: {
+  application_id: string;
+  student_name: string;
+  roll_number: string;
+  week_start_date: string;
+  week_end_date: string;
+  hours_logged: number;
+  duty_type: any;
+  duty_summary: string;
+}): FellowshipTimesheet {
+  const newTimesheet: FellowshipTimesheet = {
+    id: `time-${Date.now()}`,
+    college_id: "col-apex-001",
+    application_id: payload.application_id,
+    student_name: payload.student_name,
+    roll_number: payload.roll_number,
+    week_start_date: payload.week_start_date,
+    week_end_date: payload.week_end_date,
+    hours_logged: payload.hours_logged,
+    duty_type: payload.duty_type,
+    duty_summary: payload.duty_summary,
+    approval_status: "submitted",
+    created_at: new Date().toISOString(),
+  };
+  timesheetsStore.unshift(newTimesheet);
+  return newTimesheet;
+}
+
+export function updateFellowshipTimesheetStatus(
+  id: string,
+  status: "faculty_approved" | "rejected",
+  supervisorFeedback?: string
+): FellowshipTimesheet | null {
+  const sheet = timesheetsStore.find((t) => t.id === id);
+  if (!sheet) return null;
+  sheet.approval_status = status;
+  sheet.supervisor_feedback = supervisorFeedback || (status === "faculty_approved" ? "Duty approved by supervisor" : "Returned for clarification");
+  if (status === "faculty_approved") {
+    sheet.approved_by_supervisor = "Dr. Vikram Seth";
+    sheet.approved_at = new Date().toISOString();
+  }
+  return sheet;
+}
+
+export function getFellowshipDisbursements(studentId?: string): FellowshipDisbursement[] {
+  if (!studentId) return disbursementsStore;
+  return disbursementsStore.filter((d) => d.student_id === studentId);
+}
+
+export function getFellowshipOverviewStats(): FellowshipOverviewStats {
+  return {
+    totalPositions: positionsStore.length,
+    activeAppointments: applicationsStore.filter((a) => a.status === "appointed").length,
+    totalMonthlyStipendOutlay: disbursementsStore.reduce((acc, curr) => acc + curr.net_stipend_inr, 0) * 12,
+    pendingTimesheetApprovals: timesheetsStore.filter((t) => t.approval_status === "submitted").length,
+    positions: positionsStore,
+    applications: applicationsStore,
+    timesheets: timesheetsStore,
+    disbursements: disbursementsStore,
+  };
+}
+
