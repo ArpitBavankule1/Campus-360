@@ -3033,4 +3033,134 @@ export interface FellowshipOverviewStats {
   disbursements: FellowshipDisbursement[];
 }
 
+// ================================================================
+// Phase 45 — Smart Campus Industry MoUs, Corporate CSR & Sponsored Research Partnerships Hub
+// ================================================================
+
+export type MoUTier = "strategic" | "core" | "affiliate" | "startup_incubator";
+
+export type GrantType =
+  | "sponsored_research"
+  | "corporate_csr"
+  | "faculty_chair"
+  | "student_hackathon";
+
+export type GrantStatus =
+  | "proposed"
+  | "under_review"
+  | "awarded"
+  | "active"
+  | "completed";
+
+export type LabAccessTier =
+  | "open_campus"
+  | "students_and_faculty"
+  | "research_fellows_only"
+  | "restricted_clearance";
+
+export type LicenseType = "exclusive" | "non_exclusive" | "evaluation_only";
+
+export type LicenseStatus =
+  | "inquiry"
+  | "term_sheet"
+  | "executed"
+  | "royalty_bearing"
+  | "terminated";
+
+export interface IndustryMoU {
+  id: string;
+  college_id?: string;
+  partner_name: string;
+  partner_logo?: string;
+  partner_tier: MoUTier;
+  industry_sector: string;
+  mou_token: string;
+  valid_from: string;
+  valid_to: string;
+  scope: string;
+  key_objectives: string[];
+  executive_sponsor: string;
+  nodal_faculty_coordinator: string;
+  financial_commitment_inr: number;
+  status: "active" | "pending_renewal" | "expired" | "under_draft";
+  signed_document_url?: string;
+  is_active: boolean;
+  created_at?: string;
+}
+
+export interface SponsoredGrantMilestone {
+  title: string;
+  target_date: string;
+  delivered: boolean;
+  completion_pct: number;
+}
+
+export interface SponsoredGrant {
+  id: string;
+  college_id?: string;
+  project_title: string;
+  mou_id?: string;
+  sponsor_name: string;
+  grant_type: GrantType;
+  principal_investigator: string;
+  co_investigators: string[];
+  department: string;
+  grant_amount_inr: number;
+  disbursed_amount_inr: number;
+  grant_token: string;
+  milestones: SponsoredGrantMilestone[];
+  deliverables: string[];
+  status: GrantStatus;
+  start_date: string;
+  end_date: string;
+  created_at?: string;
+}
+
+export interface IndustryLab {
+  id: string;
+  college_id?: string;
+  lab_name: string;
+  mou_id?: string;
+  industry_partner: string;
+  facility_location: string;
+  sponsored_equipment: string[];
+  compute_quota_teraflops: number;
+  access_tier: LabAccessTier;
+  active_scholars: number;
+  lab_director: string;
+  status: "operational" | "under_commissioning" | "maintenance" | "decommissioned";
+  created_at?: string;
+}
+
+export interface TechnologyLicense {
+  id: string;
+  college_id?: string;
+  patent_title: string;
+  patent_number?: string;
+  inventors: string[];
+  licensee_org: string;
+  licensing_token: string;
+  trl_level: number;
+  license_type: LicenseType;
+  royalty_terms: string;
+  upfront_fee_inr: number;
+  filing_date: string;
+  status: LicenseStatus;
+  created_at?: string;
+}
+
+export interface PartnershipsOverviewStats {
+  totalActiveMoUs: number;
+  totalCommittedCapitalInr: number;
+  activeSponsoredGrants: number;
+  totalGrantFundingInr: number;
+  coBrandedIndustryLabs: number;
+  patentsLicensedCount: number;
+  mous: IndustryMoU[];
+  grants: SponsoredGrant[];
+  labs: IndustryLab[];
+  licenses: TechnologyLicense[];
+}
+
+
 
