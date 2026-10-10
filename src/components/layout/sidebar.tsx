@@ -234,6 +234,12 @@ const studentNavItems: NavItem[] = [
     badge: "Phase 44",
   },
   {
+    title: "Industry MoUs & CSR Hub",
+    href: "/partnerships",
+    icon: Building2,
+    badge: "Phase 45",
+  },
+  {
     title: "Campus Explorer",
     href: "/explore",
     icon: Compass,
