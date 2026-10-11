@@ -3162,5 +3162,139 @@ export interface PartnershipsOverviewStats {
   licenses: TechnologyLicense[];
 }
 
+// ================================================================
+// Phase 46 — Smart Campus Continuing Education, Executive MDP & Micro-Credentials Hub
+// ================================================================
 
+export type ProgramType =
+  | "executive_mdp"
+  | "faculty_fdp"
+  | "industry_masterclass"
+  | "certificate_bootcamp";
 
+export type PedagogyMode =
+  | "hybrid"
+  | "in_person_residential"
+  | "live_virtual";
+
+export type ProgramStatus =
+  | "enrolling"
+  | "in_progress"
+  | "completed"
+  | "upcoming";
+
+export type CompetencyDomain =
+  | "generative_ai"
+  | "cloud_devops"
+  | "cybersecurity"
+  | "quantum_computing"
+  | "fintech_blockchain"
+  | "esg_sustainability";
+
+export type EvaluationMode =
+  | "capstone_peer_review"
+  | "proctored_exam"
+  | "industry_hackathon";
+
+export type SponsorshipStatus =
+  | "sponsored_approved"
+  | "self_funded"
+  | "scholarship_waived";
+
+export type GradeClassification = "Distinction" | "Merit" | "Pass" | "Pending";
+
+export type FundingSource =
+  | "aicte_atal_grant"
+  | "institutional_endowment"
+  | "self_sustained";
+
+export interface ExecutiveProgram {
+  id: string;
+  college_id?: string;
+  program_code: string;
+  title: string;
+  program_type: ProgramType;
+  department: string;
+  lead_faculty_director: string;
+  co_instructors: string[];
+  target_audience: string;
+  duration_weeks: number;
+  credit_units: number;
+  pedagogy_mode: PedagogyMode;
+  fee_inr: number;
+  intake_capacity: number;
+  enrolled_count: number;
+  syllabus_modules: string[];
+  program_token: string;
+  start_date: string;
+  end_date: string;
+  status: ProgramStatus;
+  is_active: boolean;
+  created_at?: string;
+}
+
+export interface ProfessionalMicroCredential {
+  id: string;
+  college_id?: string;
+  credential_code: string;
+  badge_title: string;
+  competency_domain: CompetencyDomain;
+  issuing_board: string;
+  ceu_credits: number;
+  prerequisites: string[];
+  credential_token: string;
+  credential_hash: string;
+  evaluation_mode: EvaluationMode;
+  total_certified_scholars: number;
+  validity_years: number;
+  badge_icon_url?: string;
+  created_at?: string;
+}
+
+export interface CorporateNomination {
+  id: string;
+  college_id?: string;
+  program_id: string;
+  corporate_sponsor: string;
+  participant_name: string;
+  participant_email: string;
+  designation: string;
+  years_of_experience: number;
+  nomination_token: string;
+  sponsorship_status: SponsorshipStatus;
+  attendance_percentage: number;
+  capstone_submitted: boolean;
+  certificate_issued: boolean;
+  certificate_token?: string;
+  grade: GradeClassification;
+  program_title?: string;
+  created_at?: string;
+}
+
+export interface FacultyDevelopmentCohort {
+  id: string;
+  college_id?: string;
+  cohort_name: string;
+  program_id?: string;
+  coordinating_department: string;
+  aicte_atal_recognized: boolean;
+  funding_source: FundingSource;
+  participating_institutions_count: number;
+  faculty_fellows_enrolled: number;
+  grant_subsidy_inr: number;
+  lead_convenor: string;
+  status: "scheduled" | "active" | "concluded";
+  created_at?: string;
+}
+
+export interface ContinuingEducationOverviewStats {
+  totalPrograms: number;
+  activeEnrolledExecutives: number;
+  totalMicroCredentialsIssued: number;
+  corporatePartnersCount: number;
+  totalContinuingEducationCredits: number;
+  programs: ExecutiveProgram[];
+  credentials: ProfessionalMicroCredential[];
+  nominations: CorporateNomination[];
+  facultyCohorts: FacultyDevelopmentCohort[];
+}
