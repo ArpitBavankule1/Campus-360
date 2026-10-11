@@ -240,6 +240,12 @@ const studentNavItems: NavItem[] = [
     badge: "Phase 45",
   },
   {
+    title: "Continuing Education Hub",
+    href: "/continuing-ed",
+    icon: GraduationCap,
+    badge: "Phase 46",
+  },
+  {
     title: "Campus Explorer",
     href: "/explore",
     icon: Compass,

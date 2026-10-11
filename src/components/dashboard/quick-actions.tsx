@@ -347,6 +347,16 @@ const actionItems: QuickActionItem[] = [
     badgeBg: "bg-purple-500/15 text-purple-600 dark:text-purple-400 border-purple-500/30",
   },
   {
+    title: "Continuing Education & Executive MDPs",
+    description: "Executive MDP cohorts, AICTE-ATAL faculty tracks, micro-credentials & corporate nominations",
+    href: "/continuing-ed",
+    icon: GraduationCap,
+    iconBg: "bg-indigo-500/10 dark:bg-indigo-500/20",
+    iconColor: "text-indigo-600 dark:text-indigo-400",
+    badge: "Phase 46",
+    badgeBg: "bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 border-indigo-500/30",
+  },
+  {
     title: "Notices & Circulars",
     description: "Official notifications, examination routines & circulars",
     href: "/notices",
