@@ -129,6 +129,9 @@ jobs:
       - name: Verify Phase 45 (Industry MoUs & Sponsored Research Partnerships)
         run: node scripts/verify-phase45.mjs
 
+      - name: Verify Phase 46 (Continuing Education & Micro-Credentials Hub)
+        run: node scripts/verify-phase46.mjs
+
       - name: Verify Master Security & Anti-Injection Suite
         run: node scripts/verify-security.mjs
 
