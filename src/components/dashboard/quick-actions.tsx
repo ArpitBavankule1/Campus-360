@@ -357,6 +357,16 @@ const actionItems: QuickActionItem[] = [
     badgeBg: "bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 border-indigo-500/30",
   },
   {
+    title: "IQAC & Institutional Accreditation",
+    description: "NAAC 7 criteria self-study dossiers, AQAR annual returns, AAA audits & NIRF rankings",
+    href: "/iqac",
+    icon: Award,
+    iconBg: "bg-emerald-500/10 dark:bg-emerald-500/20",
+    iconColor: "text-emerald-600 dark:text-emerald-400",
+    badge: "Phase 47",
+    badgeBg: "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border-emerald-500/30",
+  },
+  {
     title: "Notices & Circulars",
     description: "Official notifications, examination routines & circulars",
     href: "/notices",

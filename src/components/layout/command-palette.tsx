@@ -144,6 +144,7 @@ export function CommandPalette() {
     { id: "p-fellowships", title: "Fellowships & Teaching Assistantships", subtitle: "TA/RA openings, weekly duty timesheets & stipend DBT", category: "Navigation", href: "/fellowships", icon: FileText },
     { id: "p-partnerships", title: "Industry MoUs & Research Partnerships", subtitle: "Corporate alliances, sponsored research grants & tech licensing", category: "Navigation", href: "/partnerships", icon: Building2 },
     { id: "p-continuing-ed", title: "Continuing Education & Executive MDPs", subtitle: "Executive cohorts, ATAL faculty tracks & micro-credentials", category: "Navigation", href: "/continuing-ed", icon: GraduationCap },
+    { id: "p-iqac", title: "IQAC & Institutional Accreditation", subtitle: "NAAC 7 criteria, AQAR annual reports, AAA audits & NIRF rankings", category: "Navigation", href: "/iqac", icon: Award },
     { id: "p-explore", title: "Campus Explorer", subtitle: "Directory of buildings & facilities", category: "Navigation", href: "/explore", icon: Compass },
     { id: "p-map", title: "Interactive 3D Campus Map", subtitle: "Real-time geographical pinpoints", category: "Navigation", href: "/map", icon: MapPin },
     { id: "p-time", title: "Class Timetable", subtitle: "Day-wise lecture routines", category: "Navigation", href: "/timetable", icon: CalendarDays },

@@ -246,6 +246,12 @@ const studentNavItems: NavItem[] = [
     badge: "Phase 46",
   },
   {
+    title: "IQAC & Accreditation",
+    href: "/iqac",
+    icon: ShieldCheck,
+    badge: "Phase 47",
+  },
+  {
     title: "Campus Explorer",
     href: "/explore",
     icon: Compass,
