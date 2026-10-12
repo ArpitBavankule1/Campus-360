@@ -3298,3 +3298,141 @@ export interface ContinuingEducationOverviewStats {
   nominations: CorporateNomination[];
   facultyCohorts: FacultyDevelopmentCohort[];
 }
+
+// --- Phase 47: Smart Campus Internal Quality Assurance Cell (IQAC) & Accreditation Types ---
+
+export type NaacCriterionCode =
+  | "CRITERION_1"
+  | "CRITERION_2"
+  | "CRITERION_3"
+  | "CRITERION_4"
+  | "CRITERION_5"
+  | "CRITERION_6"
+  | "CRITERION_7";
+
+export type MetricType = "quantitative" | "qualitative";
+
+export type AqarStatus =
+  | "draft"
+  | "peer_review"
+  | "executive_approved"
+  | "submitted_naac";
+
+export type AuditType =
+  | "academic"
+  | "administrative"
+  | "green_energy"
+  | "gender_equity"
+  | "financial_compliance";
+
+export type AuditStatus =
+  | "scheduled"
+  | "in_inspection"
+  | "completed"
+  | "atr_pending"
+  | "closed";
+
+export type AccreditationGrade =
+  | "A++"
+  | "A+"
+  | "A"
+  | "B++"
+  | "B+"
+  | "B"
+  | "C";
+
+export interface CriterionIndicator {
+  id: string;
+  metricCode: string;
+  description: string;
+  type: MetricType;
+  benchmarkTarget: number;
+  achievedScore: number;
+  unit?: string;
+  documentationVerified: boolean;
+}
+
+export interface IqacCriterionMetric {
+  id: string;
+  college_id?: string;
+  criterion_code: NaacCriterionCode;
+  criterion_title: string;
+  lead_evaluator: string;
+  max_weightage: number;
+  current_score: number;
+  target_score: number;
+  key_indicators: CriterionIndicator[];
+  ssr_readiness_percentage: number;
+  last_audited_at?: string;
+  status: "draft" | "in_progress" | "ready_for_review" | "validated";
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface IqacAqarReport {
+  id: string;
+  college_id?: string;
+  academic_year: string;
+  submission_token: string;
+  iqac_director: string;
+  overall_cgpa_projected: number;
+  projected_naac_grade: AccreditationGrade;
+  aqar_status: AqarStatus;
+  executive_signoff_date?: string | null;
+  executive_signoff_by?: string | null;
+  criteria_summary?: Record<string, number>;
+  document_attachment_url?: string;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface IqacAcademicAudit {
+  id: string;
+  college_id?: string;
+  audit_code: string;
+  audit_title: string;
+  audit_type: AuditType;
+  target_department: string;
+  lead_external_auditor: string;
+  external_auditor_affiliation: string;
+  internal_co_auditor: string;
+  scheduled_date: string;
+  completion_date?: string | null;
+  overall_compliance_score: number;
+  audit_status: AuditStatus;
+  key_observations: string[];
+  action_taken_report?: string | null;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface IqacBestPractice {
+  id: string;
+  college_id?: string;
+  practice_token: string;
+  practice_title: string;
+  criterion_alignment: string;
+  thematic_area: string;
+  contextual_background: string;
+  objectives: string;
+  practice_implementation: string;
+  evidence_of_success: string;
+  sdg_goals: string[];
+  beneficiaries_impacted: number;
+  institutional_status: "piloted" | "institutionalized" | "nationally_recognized";
+  created_at?: string;
+}
+
+export interface IqacOverviewStats {
+  projectedCgpa: number;
+  projectedGrade: AccreditationGrade;
+  ssrOverallReadiness: number;
+  aqarSubmittedCount: number;
+  auditsCompletedCount: number;
+  bestPracticesCount: number;
+  criteria: IqacCriterionMetric[];
+  aqarReports: IqacAqarReport[];
+  audits: IqacAcademicAudit[];
+  bestPractices: IqacBestPractice[];
+}
+
