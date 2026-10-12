@@ -132,6 +132,9 @@ jobs:
       - name: Verify Phase 46 (Continuing Education & Micro-Credentials Hub)
         run: node scripts/verify-phase46.mjs
 
+      - name: Verify Phase 47 (IQAC & Institutional Accreditation Gateway)
+        run: node scripts/verify-phase47.mjs
+
       - name: Verify Master Security & Anti-Injection Suite
         run: node scripts/verify-security.mjs
 
