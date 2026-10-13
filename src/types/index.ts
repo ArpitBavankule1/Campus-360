@@ -3436,3 +3436,132 @@ export interface IqacOverviewStats {
   bestPractices: IqacBestPractice[];
 }
 
+// --- Phase 48: Smart Campus National Institutional Ranking Framework (NIRF) & Benchmarking Types ---
+
+export type NirfCategory =
+  | 'Engineering'
+  | 'Overall'
+  | 'Research'
+  | 'Management'
+  | 'Innovation'
+  | 'State_Public_University';
+
+export type NirfParameterCode = 'TLR' | 'RPC' | 'GO' | 'OI' | 'PR';
+
+export type NirfParamStatus = 'verified' | 'in_review' | 'action_required' | 'completed';
+
+export type DossierStatus =
+  | 'draft'
+  | 'internal_audit'
+  | 'board_approved'
+  | 'submitted_to_moe'
+  | 'published';
+
+export type NirfAuditStatus = 'pending' | 'verified' | 'flagged';
+
+export type InstituteType =
+  | 'IIT'
+  | 'NIT'
+  | 'IIIT'
+  | 'BITS'
+  | 'Apex_Institute'
+  | 'State_Govt'
+  | 'Private_Deemed';
+
+export interface NirfSubMetric {
+  code: string;
+  title: string;
+  maxScore: number;
+  achievedScore: number;
+  unit: string;
+  benchmarkValue: string;
+  actualValue: string;
+}
+
+export interface NirfParameterMetric {
+  id: string;
+  college_id?: string;
+  code: NirfParameterCode;
+  name: string;
+  description: string;
+  max_weightage: number;
+  current_score: number;
+  projected_score: number;
+  sub_metrics: NirfSubMetric[];
+  lead_coordinator: string;
+  status: NirfParamStatus;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface NirfDossier {
+  id: string;
+  college_id?: string;
+  dossier_code: string;
+  academic_year: string;
+  category: NirfCategory;
+  composite_score: number;
+  projected_rank_range: string;
+  previous_year_rank?: number | null;
+  submitted_by: string;
+  approving_authority: string;
+  verification_hash: string;
+  status: DossierStatus;
+  dossier_metadata?: Record<string, unknown>;
+  submission_date?: string | null;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface NirfBenchmarkPeer {
+  id: string;
+  college_id?: string;
+  institute_name: string;
+  category: string;
+  academic_year: string;
+  current_rank: number;
+  tlr_score: number;
+  rpc_score: number;
+  go_score: number;
+  oi_score: number;
+  pr_score: number;
+  composite_score: number;
+  institute_type: InstituteType;
+  city: string;
+  state: string;
+  created_at?: string;
+}
+
+export interface NirfDataMetric {
+  id: string;
+  college_id?: string;
+  parameter_code: NirfParameterCode;
+  metric_code: string;
+  metric_title: string;
+  department: string;
+  reported_value: string;
+  benchmark_value: string;
+  weightage: number;
+  score_achieved: number;
+  verified_by: string;
+  audit_status: NirfAuditStatus;
+  evidence_url?: string;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface NirfOverviewStats {
+  compositeScore: number;
+  projectedEngineeringRank: number;
+  projectedOverallRank: number;
+  projectedResearchRank: number;
+  previousEngineeringRank: number;
+  dataReadinessPercentage: number;
+  totalVerifiedMetrics: number;
+  parameters: NirfParameterMetric[];
+  dossiers: NirfDossier[];
+  benchmarks: NirfBenchmarkPeer[];
+  metrics: NirfDataMetric[];
+}
+
+
