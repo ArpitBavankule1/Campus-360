@@ -249,6 +249,14 @@ graph TD
 - **Institutional Best Practices & SDG Alignment**: Distinctiveness documentation repository (`CL-BP-2026-XXXX`) tracking net-zero solar microgrids, AI adaptive learning, and multi-thousand scholar impact metrics.
 - **Cryptographic Institutional Compliance Verification**: Instant validation gateway for accreditation dockets, audit certifications, and institutional compliance credentials (`CL-IQAC-COMP-2026-XXXX`).
 
+### 37. 🏅 Smart Campus National Institutional Ranking Framework (NIRF), Institutional Benchmarking & Higher Education Ranking Intelligence Gateway (Phase 48)
+- **Ministry of Education 5 Core Parameters Telemetry**: Live metric evaluation across Teaching, Learning & Resources (TLR), Research & Professional Practice (RPC), Graduation Outcomes (GO), Outreach & Inclusivity (OI), and Perception (PR) with composite NIRF score calculation (82.85/100).
+- **Official Institutional Ranking Dossiers**: Audited annual submission dossiers across Engineering, Overall, and Research disciplines (`CL-NIRF-DOSS-2026-XXXX`) with cryptographic SHA-256 validation seals and Vice Chancellor executive approval workflows.
+- **Top-Tier Institutional Peer Benchmarking**: Comparative performance radar against Indian Institutes of Technology (IIT Bombay), National Institutes of Technology (NIT Trichy), and premier private universities (BITS Pilani, IIIT Hyderabad).
+- **Audited Department Data Contributions**: Granular faculty publications, semiconductor/6G patent disclosures, placement median salary audits, and interstate scholar demographic verification dockets.
+- **Cryptographic Institutional Ranking Verification**: Real-time Ministry of Education submission credentials validation gateway (`CL-NIRF-CERT-2026-XXXX`).
+
+
 ---
 
 ## 🛠️ Technology Stack
@@ -423,6 +431,9 @@ node scripts/verify-phase46.mjs
 
 # Phase 47: Smart Campus Internal Quality Assurance Cell (IQAC), NAAC Criteria & Institutional Accreditation Gateway
 node scripts/verify-phase47.mjs
+
+# Phase 48: Smart Campus National Institutional Ranking Framework (NIRF) & Benchmarking
+node scripts/verify-phase48.mjs
 
 # Run production build validation
 npm run build
