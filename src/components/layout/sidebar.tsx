@@ -252,6 +252,12 @@ const studentNavItems: NavItem[] = [
     badge: "Phase 47",
   },
   {
+    title: "NIRF Rankings & Intelligence",
+    href: "/nirf",
+    icon: Trophy,
+    badge: "Phase 48",
+  },
+  {
     title: "Campus Explorer",
     href: "/explore",
     icon: Compass,

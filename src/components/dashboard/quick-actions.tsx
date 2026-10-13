@@ -367,6 +367,16 @@ const actionItems: QuickActionItem[] = [
     badgeBg: "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border-emerald-500/30",
   },
   {
+    title: "NIRF Rankings & Institutional Intelligence",
+    description: "Ministry of Education 5 parameters telemetry, peer benchmarking matrix & audited ranking dossiers",
+    href: "/nirf",
+    icon: Trophy,
+    iconBg: "bg-amber-500/10 dark:bg-amber-500/20",
+    iconColor: "text-amber-600 dark:text-amber-400",
+    badge: "Phase 48",
+    badgeBg: "bg-amber-500/15 text-amber-600 dark:text-amber-400 border-amber-500/30",
+  },
+  {
     title: "Notices & Circulars",
     description: "Official notifications, examination routines & circulars",
     href: "/notices",
