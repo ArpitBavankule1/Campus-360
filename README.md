@@ -256,6 +256,13 @@ graph TD
 - **Audited Department Data Contributions**: Granular faculty publications, semiconductor/6G patent disclosures, placement median salary audits, and interstate scholar demographic verification dockets.
 - **Cryptographic Institutional Ranking Verification**: Real-time Ministry of Education submission credentials validation gateway (`CL-NIRF-CERT-2026-XXXX`).
 
+### 38. 🎓 Smart Campus National Board of Accreditation (NBA), Outcome-Based Education (OBE) & Washington Accord Tier-1 Gateway (Phase 49)
+- **Washington Accord Tier-1 Accredited Programs**: Institutional engineering degree programs (B.Tech CSE, ECE, MECH, AI&DS) accredited under Tier-1 criteria guaranteeing global degree recognition across USA, UK, Canada, Australia, Japan, and Singapore.
+- **12 NBA Graduate Attributes & Program Outcomes (POs)**: Dynamic assessment across Engineering Knowledge (PO1), Problem Analysis (PO2), Design of Solutions (PO3), Modern Tools (PO5), Ethics (PO8), and Lifelong Learning (PO12) alongside Program Specific Outcomes (PSOs).
+- **Course Outcome (CO) Attainment & Bloom's Taxonomy Matrix**: Multi-tier attainment engine combining Continuous Internal Evaluation (CIE: 30%), Semester End Examinations (SEE: 70%), and Student Course Exit Surveys (20%) mapped across Bloom's levels (Remember, Understand, Apply, Analyze, Evaluate, Create).
+- **Audited Self-Assessment Reports (SAR)**: 10 statutory NBA evaluation criteria dossiers (`CL-NBA-SAR-2026-XXXX`) with criteria mark allocations (1000 points total), academic council ratifications, and cryptographic SHA-256 integrity hashes.
+- **Cryptographic Accreditation & Expert Peer Verification**: Real-time National Board of Accreditation credentials verification gateway (`CL-NBA-CERT-2026-XXXX`) and peer evaluation team debrief tracking.
+
 
 ---
 
@@ -434,6 +441,9 @@ node scripts/verify-phase47.mjs
 
 # Phase 48: Smart Campus National Institutional Ranking Framework (NIRF) & Benchmarking
 node scripts/verify-phase48.mjs
+
+# Phase 49: Smart Campus National Board of Accreditation (NBA) & OBE Gateway
+node scripts/verify-phase49.mjs
 
 # Run production build validation
 npm run build
