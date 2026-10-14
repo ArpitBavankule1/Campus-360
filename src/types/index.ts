@@ -3564,4 +3564,166 @@ export interface NirfOverviewStats {
   metrics: NirfDataMetric[];
 }
 
+// --- Phase 49: Smart Campus National Board of Accreditation (NBA), Outcome-Based Education (OBE) & Washington Accord Tier-1 Gateway ---
+
+export type NbaProgramTier = 'Tier_1_Washington_Accord' | 'Tier_2';
+
+export type NbaAccreditationStatus =
+  | 'accredited_6_years'
+  | 'accredited_3_years'
+  | 'provisional'
+  | 'in_progress'
+  | 'applied';
+
+export type BloomLevel =
+  | 'Remember'
+  | 'Understand'
+  | 'Apply'
+  | 'Analyze'
+  | 'Evaluate'
+  | 'Create';
+
+export type AttainmentMethod =
+  | 'direct_internal'
+  | 'direct_external'
+  | 'indirect_survey'
+  | 'composite';
+
+export type PoAttainmentStatus =
+  | 'attained'
+  | 'substantially_attained'
+  | 'under_review'
+  | 'action_required';
+
+export type SarStatus =
+  | 'draft'
+  | 'internal_review'
+  | 'academic_council_approved'
+  | 'submitted_to_nba'
+  | 'accredited';
+
+export type NbaVisitStatus =
+  | 'scheduled'
+  | 'in_progress'
+  | 'completed'
+  | 'report_submitted';
+
+export interface NbaProgram {
+  id: string;
+  college_id?: string;
+  program_code: string;
+  program_name: string;
+  department: string;
+  degree_level: 'UG' | 'PG' | 'Doctoral';
+  tier: NbaProgramTier;
+  accreditation_status: NbaAccreditationStatus;
+  validity_start?: string | null;
+  validity_end?: string | null;
+  total_criteria_score: number;
+  sar_code: string;
+  program_coordinator: string;
+  hod_name: string;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface NbaProgramOutcome {
+  id: string;
+  college_id?: string;
+  program_id: string;
+  code: string;
+  title: string;
+  description: string;
+  target_attainment: number;
+  actual_attainment: number;
+  academic_year: string;
+  status: PoAttainmentStatus;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface NbaCourseOutcome {
+  id: string;
+  college_id?: string;
+  program_id: string;
+  course_code: string;
+  course_name: string;
+  co_code: string;
+  statement: string;
+  bloom_level: BloomLevel;
+  direct_attainment_pct: number;
+  indirect_attainment_pct: number;
+  final_attainment_score: number;
+  target_score: number;
+  academic_year: string;
+  semester: number;
+  faculty_in_charge: string;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface NbaCoPoMapping {
+  id: string;
+  college_id?: string;
+  course_outcome_id: string;
+  po_code: string;
+  correlation_level: 0 | 1 | 2 | 3;
+  justification?: string | null;
+  created_at?: string;
+}
+
+export interface NbaSarCriterionProgress {
+  criterionNumber: number;
+  name: string;
+  maxMarks: number;
+  awardedMarks: number;
+  status: 'completed' | 'in_progress' | 'pending';
+}
+
+export interface NbaSarDossier {
+  id: string;
+  college_id?: string;
+  program_id: string;
+  program_name?: string;
+  program_code?: string;
+  sar_code: string;
+  academic_year: string;
+  tier: NbaProgramTier;
+  total_eval_points: number;
+  criteria_progress: NbaSarCriterionProgress[];
+  verification_hash: string;
+  status: SarStatus;
+  submission_date?: string | null;
+  coordinator_name: string;
+  evaluator_remarks?: string | null;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface NbaEvaluationVisit {
+  id: string;
+  college_id?: string;
+  visit_code: string;
+  program_code: string;
+  team_chairperson: string;
+  member_evaluators: string[];
+  visit_dates: string;
+  status: NbaVisitStatus;
+  exit_meeting_summary?: string | null;
+  created_at?: string;
+}
+
+export interface NbaOverviewStats {
+  tier1AccreditedCount: number;
+  averageCriteriaScore: number;
+  overallAttainmentRate: number;
+  activeSarDossiers: number;
+  programs: NbaProgram[];
+  programOutcomes: NbaProgramOutcome[];
+  courseOutcomes: NbaCourseOutcome[];
+  sarDossiers: NbaSarDossier[];
+  visits: NbaEvaluationVisit[];
+}
+
+
 
