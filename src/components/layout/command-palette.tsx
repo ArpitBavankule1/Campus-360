@@ -146,6 +146,7 @@ export function CommandPalette() {
     { id: "p-continuing-ed", title: "Continuing Education & Executive MDPs", subtitle: "Executive cohorts, ATAL faculty tracks & micro-credentials", category: "Navigation", href: "/continuing-ed", icon: GraduationCap },
     { id: "p-iqac", title: "IQAC & Institutional Accreditation", subtitle: "NAAC 7 criteria, AQAR annual reports, AAA audits & NIRF rankings", category: "Navigation", href: "/iqac", icon: Award },
     { id: "p-nirf", title: "NIRF Rankings & Institutional Intelligence", subtitle: "MoE parameters telemetry, peer benchmarking & ranking dossiers", category: "Navigation", href: "/nirf", icon: Trophy },
+    { id: "p-nba", title: "NBA & Outcome-Based Education (OBE)", subtitle: "Tier-1 Washington Accord, graduate attributes & SAR peer reviews", category: "Navigation", href: "/nba", icon: Award },
     { id: "p-explore", title: "Campus Explorer", subtitle: "Directory of buildings & facilities", category: "Navigation", href: "/explore", icon: Compass },
     { id: "p-map", title: "Interactive 3D Campus Map", subtitle: "Real-time geographical pinpoints", category: "Navigation", href: "/map", icon: MapPin },
     { id: "p-time", title: "Class Timetable", subtitle: "Day-wise lecture routines", category: "Navigation", href: "/timetable", icon: CalendarDays },

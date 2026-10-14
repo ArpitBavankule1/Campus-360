@@ -258,6 +258,12 @@ const studentNavItems: NavItem[] = [
     badge: "Phase 48",
   },
   {
+    title: "NBA & OBE Accreditation",
+    href: "/nba",
+    icon: Award,
+    badge: "Phase 49",
+  },
+  {
     title: "Campus Explorer",
     href: "/explore",
     icon: Compass,

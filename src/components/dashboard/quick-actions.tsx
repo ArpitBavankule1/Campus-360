@@ -377,6 +377,16 @@ const actionItems: QuickActionItem[] = [
     badgeBg: "bg-amber-500/15 text-amber-600 dark:text-amber-400 border-amber-500/30",
   },
   {
+    title: "NBA & OBE Accreditation",
+    description: "Washington Accord Tier-1 graduate attributes (PO1–PO12), CO attainment & SAR peer review",
+    href: "/nba",
+    icon: Award,
+    iconBg: "bg-blue-500/10 dark:bg-blue-500/20",
+    iconColor: "text-blue-600 dark:text-blue-400",
+    badge: "Phase 49",
+    badgeBg: "bg-blue-500/15 text-blue-600 dark:text-blue-400 border-blue-500/30",
+  },
+  {
     title: "Notices & Circulars",
     description: "Official notifications, examination routines & circulars",
     href: "/notices",
