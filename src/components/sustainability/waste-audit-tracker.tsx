@@ -98,7 +98,7 @@ export function WasteAuditTracker({ audits }: WasteAuditTrackerProps) {
 
               {audit.remarks && (
                 <p className="text-xs text-muted-foreground bg-muted/30 p-2.5 rounded-xl border border-border/30 italic">
-                  "{audit.remarks}"
+                  &ldquo;{audit.remarks}&rdquo;
                 </p>
               )}
             </div>

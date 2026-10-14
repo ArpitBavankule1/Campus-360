@@ -167,8 +167,8 @@ export const INITIAL_PTM_SLOTS: PTMConsultationSlot[] = [
 ];
 
 // In-memory state for local mutations
-let outpassesStore = [...INITIAL_OUTPASS_APPROVALS];
-let ptmSlotsStore = [...INITIAL_PTM_SLOTS];
+const outpassesStore = [...INITIAL_OUTPASS_APPROVALS];
+const ptmSlotsStore = [...INITIAL_PTM_SLOTS];
 
 // --- Engine Methods ---
 

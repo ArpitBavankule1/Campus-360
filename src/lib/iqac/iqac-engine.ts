@@ -524,10 +524,10 @@ export const MOCK_BEST_PRACTICES: IqacBestPractice[] = [
 ];
 
 // In-Memory Session Stores
-let criteriaStore: IqacCriterionMetric[] = [...MOCK_IQAC_CRITERIA];
-let aqarStore: IqacAqarReport[] = [...MOCK_AQAR_REPORTS];
-let auditsStore: IqacAcademicAudit[] = [...MOCK_ACADEMIC_AUDITS];
-let bestPracticesStore: IqacBestPractice[] = [...MOCK_BEST_PRACTICES];
+const criteriaStore: IqacCriterionMetric[] = [...MOCK_IQAC_CRITERIA];
+const aqarStore: IqacAqarReport[] = [...MOCK_AQAR_REPORTS];
+const auditsStore: IqacAcademicAudit[] = [...MOCK_ACADEMIC_AUDITS];
+const bestPracticesStore: IqacBestPractice[] = [...MOCK_BEST_PRACTICES];
 
 // Calculation of Projected NAAC CGPA
 export function calculateProjectedCgpa(criteria: IqacCriterionMetric[]): {
@@ -721,7 +721,7 @@ export function updateCriterionMetric(
 export function verifyIqacComplianceToken(token: string): {
   valid: boolean;
   type: string;
-  data: any;
+  data: unknown;
 } {
   const trimmed = token.trim();
 

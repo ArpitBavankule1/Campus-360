@@ -501,9 +501,9 @@ export const MOCK_NIRF_DATA_METRICS: NirfDataMetric[] = [
 ];
 
 // In-Memory Storage for Mutations
-let parametersState: NirfParameterMetric[] = [...MOCK_NIRF_PARAMETERS];
+const parametersState: NirfParameterMetric[] = [...MOCK_NIRF_PARAMETERS];
 let dossiersState: NirfDossier[] = [...MOCK_NIRF_DOSSIERS];
-let benchmarksState: NirfBenchmarkPeer[] = [...MOCK_NIRF_BENCHMARKS];
+const benchmarksState: NirfBenchmarkPeer[] = [...MOCK_NIRF_BENCHMARKS];
 let metricsState: NirfDataMetric[] = [...MOCK_NIRF_DATA_METRICS];
 
 export function getNirfParameters(): NirfParameterMetric[] {

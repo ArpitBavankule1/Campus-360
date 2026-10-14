@@ -344,10 +344,10 @@ export const MOCK_FACULTY_COHORTS: FacultyDevelopmentCohort[] = [
 ];
 
 // In-Memory Session Stores (stateful across client mutations during server uptime)
-let programsStore: ExecutiveProgram[] = [...MOCK_EXECUTIVE_PROGRAMS];
-let credentialsStore: ProfessionalMicroCredential[] = [...MOCK_MICRO_CREDENTIALS];
-let nominationsStore: CorporateNomination[] = [...MOCK_CORPORATE_NOMINATIONS];
-let cohortsStore: FacultyDevelopmentCohort[] = [...MOCK_FACULTY_COHORTS];
+const programsStore: ExecutiveProgram[] = [...MOCK_EXECUTIVE_PROGRAMS];
+const credentialsStore: ProfessionalMicroCredential[] = [...MOCK_MICRO_CREDENTIALS];
+const nominationsStore: CorporateNomination[] = [...MOCK_CORPORATE_NOMINATIONS];
+const cohortsStore: FacultyDevelopmentCohort[] = [...MOCK_FACULTY_COHORTS];
 
 // Query Functions
 export function getContinuingEducationStats(): ContinuingEducationOverviewStats {

@@ -12,13 +12,22 @@ interface GymPassModalProps {
   onSuccess?: () => void;
 }
 
+interface GymPassResult {
+  scholar_name: string;
+  pass_code: string;
+  tier: string;
+  fitness_slot: string;
+  trainer_assigned: string;
+  valid_until: string;
+}
+
 export function GymPassModal({ isOpen, onClose, onSuccess }: GymPassModalProps) {
   const [scholarName, setScholarName] = useState("Aarav Sharma");
   const [scholarId, setScholarId] = useState("std-2026-CS-4821");
   const [fitnessSlot, setFitnessSlot] = useState("Evening Surge (17:00 - 19:30)");
   const [tier, setTier] = useState("Student All-Access");
   const [loading, setLoading] = useState(false);
-  const [membershipResult, setMembershipResult] = useState<any>(null);
+  const [membershipResult, setMembershipResult] = useState<GymPassResult | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   if (!isOpen) return null;

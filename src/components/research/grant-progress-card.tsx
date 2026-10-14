@@ -86,7 +86,7 @@ export function GrantProgressCard({ grant }: GrantProgressCardProps) {
 
         {grant.deliverables_summary && (
           <p className="text-xs text-muted-foreground/90 italic">
-            "{grant.deliverables_summary}"
+            &ldquo;{grant.deliverables_summary}&rdquo;
           </p>
         )}
       </div>

@@ -106,7 +106,7 @@ export function CommandPalette() {
       // eslint-disable-next-line react-hooks/set-state-in-effect -- reset selection when palette opens
       setSelectedIndex(0);
     } else {
-      // eslint-disable-next-line react-hooks/set-state-in-effect -- clear query when palette closes
+       
       setQuery("");
     }
   }, [isOpen]);

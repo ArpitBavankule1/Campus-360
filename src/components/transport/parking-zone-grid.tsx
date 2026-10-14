@@ -16,7 +16,7 @@ import { Button } from "@/components/ui/button";
 
 interface ParkingZoneGridProps {
   zones: ParkingZone[];
-  onReserveSuccess?: (resData: any) => void;
+  onReserveSuccess?: (resData: Record<string, unknown>) => void;
 }
 
 export function ParkingZoneGrid({
@@ -74,8 +74,9 @@ export function ParkingZoneGrid({
         setSelectedZone(null);
         setMessage(null);
       }, 2500);
-    } catch (err: any) {
-      setMessage(`❌ ${err.message}`);
+    } catch (err: unknown) {
+      const errorMsg = err instanceof Error ? err.message : "Reservation failed";
+      setMessage(`❌ ${errorMsg}`);
     } finally {
       setLoading(false);
     }

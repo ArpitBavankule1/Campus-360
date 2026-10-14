@@ -292,10 +292,10 @@ export const MOCK_TECHNOLOGY_LICENSES: TechnologyLicense[] = [
 ];
 
 // In-Memory Storage
-let mousStore: IndustryMoU[] = [...MOCK_INDUSTRY_MOUS];
-let grantsStore: SponsoredGrant[] = [...MOCK_SPONSORED_GRANTS];
-let labsStore: IndustryLab[] = [...MOCK_INDUSTRY_LABS];
-let licensesStore: TechnologyLicense[] = [...MOCK_TECHNOLOGY_LICENSES];
+const mousStore: IndustryMoU[] = [...MOCK_INDUSTRY_MOUS];
+const grantsStore: SponsoredGrant[] = [...MOCK_SPONSORED_GRANTS];
+const labsStore: IndustryLab[] = [...MOCK_INDUSTRY_LABS];
+const licensesStore: TechnologyLicense[] = [...MOCK_TECHNOLOGY_LICENSES];
 
 // Read Functions
 export function getIndustryMoUs(sector?: string, tier?: MoUTier): IndustryMoU[] {

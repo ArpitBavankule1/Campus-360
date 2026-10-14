@@ -10,6 +10,7 @@ import {
   FellowshipDisbursement,
   FellowshipOverviewStats,
   FellowshipType,
+  DutyCategory,
 } from "@/types";
 
 // --- Token Generators ---
@@ -396,10 +397,10 @@ export function calculateCompletedHours(timesheets: FellowshipTimesheet[]): numb
 }
 
 // In-memory collections for active session state
-let positionsStore = [...MOCK_FELLOWSHIP_POSITIONS];
-let applicationsStore = [...MOCK_FELLOWSHIP_APPLICATIONS];
-let timesheetsStore = [...MOCK_FELLOWSHIP_TIMESHEETS];
-let disbursementsStore = [...MOCK_FELLOWSHIP_DISBURSEMENTS];
+const positionsStore = [...MOCK_FELLOWSHIP_POSITIONS];
+const applicationsStore = [...MOCK_FELLOWSHIP_APPLICATIONS];
+const timesheetsStore = [...MOCK_FELLOWSHIP_TIMESHEETS];
+const disbursementsStore = [...MOCK_FELLOWSHIP_DISBURSEMENTS];
 
 export function getFellowshipPositions(
   typeFilter: FellowshipType | "all" = "all",
@@ -460,7 +461,7 @@ export function submitFellowshipTimesheet(payload: {
   week_start_date: string;
   week_end_date: string;
   hours_logged: number;
-  duty_type: any;
+  duty_type: DutyCategory;
   duty_summary: string;
 }): FellowshipTimesheet {
   const newTimesheet: FellowshipTimesheet = {

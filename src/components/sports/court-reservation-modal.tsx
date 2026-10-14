@@ -14,6 +14,16 @@ interface CourtReservationModalProps {
   onSuccess?: () => void;
 }
 
+interface CourtReservationResult {
+  arenaName?: string;
+  reservationToken: string;
+  reservedBy: string;
+  date: string;
+  timeSlot: string;
+  venue: string;
+  courtNumber?: string;
+}
+
 export function CourtReservationModal({
   arena,
   isOpen,
@@ -25,7 +35,7 @@ export function CourtReservationModal({
   const [timeSlot, setTimeSlot] = useState("17:00 - 18:30");
   const [courtNumber, setCourtNumber] = useState("1");
   const [loading, setLoading] = useState(false);
-  const [reservationResult, setReservationResult] = useState<any>(null);
+  const [reservationResult, setReservationResult] = useState<CourtReservationResult | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   if (!isOpen || !arena) return null;

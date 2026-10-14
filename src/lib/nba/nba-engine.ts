@@ -472,12 +472,12 @@ export const MOCK_NBA_VISITS: NbaEvaluationVisit[] = [
 ];
 
 // In-Memory Storage
-let programsState: NbaProgram[] = [...MOCK_NBA_PROGRAMS];
-let posState: NbaProgramOutcome[] = [...MOCK_PROGRAM_OUTCOMES];
+const programsState: NbaProgram[] = [...MOCK_NBA_PROGRAMS];
+const posState: NbaProgramOutcome[] = [...MOCK_PROGRAM_OUTCOMES];
 let cosState: NbaCourseOutcome[] = [...MOCK_COURSE_OUTCOMES];
-let mappingsState: NbaCoPoMapping[] = [...MOCK_CO_PO_MAPPINGS];
+const mappingsState: NbaCoPoMapping[] = [...MOCK_CO_PO_MAPPINGS];
 let sarsState: NbaSarDossier[] = [...MOCK_NBA_SAR_DOSSIERS];
-let visitsState: NbaEvaluationVisit[] = [...MOCK_NBA_VISITS];
+const visitsState: NbaEvaluationVisit[] = [...MOCK_NBA_VISITS];
 
 export function getNbaPrograms(): NbaProgram[] {
   return [...programsState];
