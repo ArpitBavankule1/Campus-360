@@ -138,6 +138,9 @@ jobs:
       - name: Verify Phase 48 (NIRF Rankings & Institutional Benchmarking)
         run: node scripts/verify-phase48.mjs
 
+      - name: Verify Phase 49 (NBA Accreditation & Outcome-Based Education)
+        run: node scripts/verify-phase49.mjs
+
       - name: Verify Master Security & Anti-Injection Suite
         run: node scripts/verify-security.mjs
 
