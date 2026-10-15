@@ -3725,5 +3725,159 @@ export interface NbaOverviewStats {
   visits: NbaEvaluationVisit[];
 }
 
+// --- Phase 50: Smart Campus QS World University Rankings, Times Higher Education (THE) & Global Sustainable Development (SDG Impact) Intelligence Gateway ---
+
+export type WorldRankingFrameworkCode = 'QS_WUR' | 'THE_WUR' | 'THE_IMPACT_SDG' | 'QS_ASIA' | 'ARWU_SHANGHAI';
+export type WorldRankingTrajectory = 'improved' | 'retained' | 'declined' | 'new_entry';
+export type WorldRankingMetricCategory = 
+  | 'Reputation' 
+  | 'Research_Citations' 
+  | 'Faculty_Student_Ratio' 
+  | 'Internationalization' 
+  | 'Employability' 
+  | 'Industry_Income' 
+  | 'Sustainability';
+
+export type WorldRankingDossierStatus = 
+  | 'draft' 
+  | 'under_internal_audit' 
+  | 'vice_chancellor_approved' 
+  | 'submitted_to_agency' 
+  | 'published';
+
+export type WorldRankingAuthenticityStatus = 
+  | 'VERIFIED_AUTHENTIC' 
+  | 'EXPIRED' 
+  | 'PROVISIONAL' 
+  | 'REVOKED';
+
+export interface WorldRankingFramework {
+  id: string;
+  college_id?: string;
+  framework_code: WorldRankingFrameworkCode;
+  framework_name: string;
+  edition_year: number;
+  overall_rank_display: string;
+  rank_numeric_min: number;
+  rank_numeric_max: number;
+  national_rank: number;
+  overall_score: number;
+  previous_year_rank?: string | null;
+  rank_trajectory: WorldRankingTrajectory;
+  methodology_url?: string | null;
+  coordinator_name: string;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface WorldRankingMetric {
+  id: string;
+  college_id?: string;
+  framework_id: string;
+  framework_code?: WorldRankingFrameworkCode;
+  metric_code: string;
+  metric_name: string;
+  category: WorldRankingMetricCategory;
+  weightage_pct: number;
+  raw_score: number;
+  normalized_score: number;
+  global_percentile: number;
+  audit_source: string;
+  edition_year: number;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface WorldRankingSdgImpact {
+  id: string;
+  college_id?: string;
+  sdg_number: number;
+  sdg_title: string;
+  the_impact_score: number;
+  global_sdg_rank: string;
+  national_sdg_rank: number;
+  key_initiative: string;
+  lead_department: string;
+  audited_kpi: string;
+  evidence_url?: string | null;
+  edition_year: number;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface WorldRankingDossier {
+  id: string;
+  college_id?: string;
+  dossier_code: string;
+  framework_code: string;
+  edition_year: number;
+  cycle_name: string;
+  status: WorldRankingDossierStatus;
+  data_submission_deadline: string;
+  verified_publications_count: number;
+  international_academic_peers_nominated: number;
+  international_employers_nominated: number;
+  lead_compiler_name: string;
+  vc_approval_date?: string | null;
+  integrity_hash: string;
+  notes?: string | null;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface WorldRankingBenchmark {
+  id: string;
+  college_id?: string;
+  peer_institution_name: string;
+  peer_country: string;
+  peer_qs_rank: number;
+  peer_the_rank: number;
+  citations_per_faculty: number;
+  international_student_pct: number;
+  faculty_student_ratio: number;
+  academic_reputation_score: number;
+  employer_reputation_score: number;
+  edition_year: number;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface WorldRankingVerification {
+  id: string;
+  college_id?: string;
+  certificate_code: string;
+  framework_code: string;
+  edition_year: number;
+  institution_legal_name: string;
+  rank_achieved_display: string;
+  issue_date: string;
+  valid_until: string;
+  authenticity_status: WorldRankingAuthenticityStatus;
+  issuer_agency: string;
+  digital_signature_hash: string;
+  verification_count: number;
+  last_verified_at?: string | null;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface WorldRankingSummaryStats {
+  qsWorldRank: string;
+  theWorldRank: string;
+  theImpactRank: string;
+  qsAsiaRank: string;
+  globalSdgPillarsCount: number;
+  activeDossiersCount: number;
+  citationsPerFaculty: number;
+  internationalStudentsRatio: number;
+  frameworks: WorldRankingFramework[];
+  metrics: WorldRankingMetric[];
+  sdgImpacts: WorldRankingSdgImpact[];
+  dossiers: WorldRankingDossier[];
+  benchmarks: WorldRankingBenchmark[];
+  verifications: WorldRankingVerification[];
+}
+
+
 
 
