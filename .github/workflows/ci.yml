@@ -141,6 +141,9 @@ jobs:
       - name: Verify Phase 49 (NBA Accreditation & Outcome-Based Education)
         run: node scripts/verify-phase49.mjs
 
+      - name: Verify Phase 50 (QS & THE World Rankings & SDG Impact)
+        run: node scripts/verify-phase50.mjs
+
       - name: Verify Master Security & Anti-Injection Suite
         run: node scripts/verify-security.mjs
 
