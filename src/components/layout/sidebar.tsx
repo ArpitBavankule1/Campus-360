@@ -264,6 +264,12 @@ const studentNavItems: NavItem[] = [
     badge: "Phase 49",
   },
   {
+    title: "QS & THE World Rankings",
+    href: "/world-rankings",
+    icon: Globe,
+    badge: "Phase 50",
+  },
+  {
     title: "Campus Explorer",
     href: "/explore",
     icon: Compass,

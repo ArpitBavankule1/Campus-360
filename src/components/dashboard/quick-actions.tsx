@@ -387,6 +387,16 @@ const actionItems: QuickActionItem[] = [
     badgeBg: "bg-blue-500/15 text-blue-600 dark:text-blue-400 border-blue-500/30",
   },
   {
+    title: "QS & THE World Rankings",
+    description: "Quacquarelli Symonds global standing (#242), Times Higher Education WUR & UN SDG 1-17 Impact",
+    href: "/world-rankings",
+    icon: Globe,
+    iconBg: "bg-indigo-500/10 dark:bg-indigo-500/20",
+    iconColor: "text-indigo-600 dark:text-indigo-400",
+    badge: "Phase 50",
+    badgeBg: "bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 border-indigo-500/30",
+  },
+  {
     title: "Notices & Circulars",
     description: "Official notifications, examination routines & circulars",
     href: "/notices",
