@@ -3878,6 +3878,145 @@ export interface WorldRankingSummaryStats {
   verifications: WorldRankingVerification[];
 }
 
+// ==========================================
+// Phase 51: Academic Bank of Credits (ABC) & APAAR ID Gateway (NEP 2020)
+// ==========================================
+
+export type CreditCategory =
+  | "major"
+  | "minor"
+  | "multidisciplinary"
+  | "aec"
+  | "sec"
+  | "vac"
+  | "internship_project";
+
+export type ApaarKycStatus = "verified" | "pending" | "rejected";
+
+export type NepExitLevel =
+  | "none"
+  | "certificate"
+  | "diploma"
+  | "degree"
+  | "honours_research";
+
+export type CreditVerificationStatus =
+  | "deposited"
+  | "verified_nad"
+  | "redeemed"
+  | "transferred"
+  | "locked";
+
+export type CreditTransferStatus =
+  | "submitted"
+  | "under_scrutiny"
+  | "approved_by_dean"
+  | "rejected";
+
+export type NepExitDocketStatus =
+  | "eligible"
+  | "application_filed"
+  | "docket_awarded"
+  | "deferred";
+
+export interface ApaarStudentRegistry {
+  id: string;
+  student_id: string;
+  apaar_id: string;
+  abc_account_id: string;
+  full_name: string;
+  enrollment_number: string;
+  department: string;
+  admission_year: number;
+  aadhar_linked: boolean;
+  digilocker_verified: boolean;
+  kyc_status: ApaarKycStatus;
+  total_credits_accumulated: number;
+  total_credits_redeemed: number;
+  current_credit_balance: number;
+  exit_pathway_eligible: NepExitLevel;
+  nad_certificate_uri?: string | null;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface AcademicCreditLedger {
+  id: string;
+  apaar_id: string;
+  course_code: string;
+  course_title: string;
+  course_category: CreditCategory;
+  awarding_institution: string;
+  awarding_university_code: string;
+  credits: number;
+  grade_earned: string;
+  grade_points: number;
+  semester_earned: string;
+  academic_year: string;
+  verification_status: CreditVerificationStatus;
+  nad_transaction_hash: string;
+  verification_token: string;
+  created_at?: string;
+}
+
+export interface CreditTransferApplication {
+  id: string;
+  apaar_id: string;
+  student_name: string;
+  source_institution: string;
+  course_code: string;
+  course_name: string;
+  credits_claimed: number;
+  target_equivalent_course_code: string;
+  target_equivalent_course_name: string;
+  evaluation_status: CreditTransferStatus;
+  equivalence_score: number;
+  transfer_docket_token: string;
+  scrutiny_remarks?: string | null;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface NepExitQualification {
+  id: string;
+  apaar_id: string;
+  student_name: string;
+  program_enrolled: string;
+  target_exit_level: Exclude<NepExitLevel, "none">;
+  required_credits: number;
+  completed_credits: number;
+  exit_status: NepExitDocketStatus;
+  qualification_docket_token: string;
+  academic_council_approval_ref?: string | null;
+  convocation_signoff_date?: string | null;
+  created_at?: string;
+}
+
+export interface DigiLockerNadSyncLog {
+  id: string;
+  batch_token: string;
+  synced_records_count: number;
+  sha256_merkle_root: string;
+  sync_status: "synced" | "in_progress" | "failed";
+  sync_timestamp: string;
+  operator_officer: string;
+}
+
+export interface AcademicCreditsSummaryStats {
+  totalApaarRegistered: number;
+  totalCreditsAccumulated: number;
+  digilockerVerifiedPct: number;
+  totalTransfersApproved: number;
+  totalNepExitDocketsAwarded: number;
+  latestNadBatchToken: string;
+  registries: ApaarStudentRegistry[];
+  ledgers: AcademicCreditLedger[];
+  transfers: CreditTransferApplication[];
+  exitQualifications: NepExitQualification[];
+  syncLogs: DigiLockerNadSyncLog[];
+}
+
+
 
 
 
