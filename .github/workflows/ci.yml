@@ -144,6 +144,9 @@ jobs:
       - name: Verify Phase 50 (QS & THE World Rankings & SDG Impact)
         run: node scripts/verify-phase50.mjs
 
+      - name: Verify Phase 51 (Academic Bank of Credits & APAAR Gateway)
+        run: node scripts/verify-phase51.mjs
+
       - name: Verify Master Security & Anti-Injection Suite
         run: node scripts/verify-security.mjs
 
