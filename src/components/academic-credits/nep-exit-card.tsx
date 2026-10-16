@@ -4,7 +4,6 @@ import React from "react";
 import { NepExitQualification } from "@/types";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
 import {
   GraduationCap,
   Award,
@@ -129,7 +128,12 @@ export function NepExitCard({ exitDocket }: NepExitCardProps) {
                 {exitDocket.completed_credits} / {exitDocket.required_credits} Credits ({pct}%)
               </span>
             </div>
-            <Progress value={pct} className="h-2 bg-muted" />
+            <div className="w-full bg-muted rounded-full h-2 overflow-hidden">
+              <div
+                className="bg-primary h-2 rounded-full transition-all duration-300"
+                style={{ width: `${pct}%` }}
+              />
+            </div>
           </div>
         </div>
 

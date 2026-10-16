@@ -14,7 +14,7 @@ import {
   ApaarKycStatus,
   NepExitLevel,
   CreditVerificationStatus,
-  CreditTransferStatus,
+  AbcCreditTransferStatus,
   NepExitDocketStatus,
 } from "@/types";
 
@@ -543,7 +543,7 @@ class AcademicCreditsStore {
 
   updateTransferStatus(
     id: string,
-    status: CreditTransferStatus,
+    status: AbcCreditTransferStatus,
     score?: number,
     remarks?: string
   ): CreditTransferApplication | undefined {

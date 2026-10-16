@@ -77,7 +77,7 @@ check(
     "export type ApaarKycStatus",
     "export type NepExitLevel",
     "export type CreditVerificationStatus",
-    "export type CreditTransferStatus"
+    "export type AbcCreditTransferStatus"
   )
 );
 check(

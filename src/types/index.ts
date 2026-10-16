@@ -3907,7 +3907,7 @@ export type CreditVerificationStatus =
   | "transferred"
   | "locked";
 
-export type CreditTransferStatus =
+export type AbcCreditTransferStatus =
   | "submitted"
   | "under_scrutiny"
   | "approved_by_dean"
@@ -3969,7 +3969,7 @@ export interface CreditTransferApplication {
   credits_claimed: number;
   target_equivalent_course_code: string;
   target_equivalent_course_name: string;
-  evaluation_status: CreditTransferStatus;
+  evaluation_status: AbcCreditTransferStatus;
   equivalence_score: number;
   transfer_docket_token: string;
   scrutiny_remarks?: string | null;
