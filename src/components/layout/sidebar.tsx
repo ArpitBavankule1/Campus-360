@@ -270,6 +270,12 @@ const studentNavItems: NavItem[] = [
     badge: "Phase 50",
   },
   {
+    title: "Academic Bank of Credits (ABC)",
+    href: "/academic-credits",
+    icon: CreditCard,
+    badge: "Phase 51",
+  },
+  {
     title: "Campus Explorer",
     href: "/explore",
     icon: Compass,

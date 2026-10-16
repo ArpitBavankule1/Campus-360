@@ -148,6 +148,7 @@ export function CommandPalette() {
     { id: "p-nirf", title: "NIRF Rankings & Institutional Intelligence", subtitle: "MoE parameters telemetry, peer benchmarking & ranking dossiers", category: "Navigation", href: "/nirf", icon: Trophy },
     { id: "p-nba", title: "NBA & Outcome-Based Education (OBE)", subtitle: "Tier-1 Washington Accord, graduate attributes & SAR peer reviews", category: "Navigation", href: "/nba", icon: Award },
     { id: "p-world-rankings", title: "QS & THE World University Rankings", subtitle: "Global standing (#242), peer benchmarking & UN SDG 1-17 impact", category: "Navigation", href: "/world-rankings", icon: Globe },
+    { id: "p-abc", title: "Academic Bank of Credits & APAAR ID", subtitle: "NEP 2020 credit ledger, inter-university transfer & DigiLocker NAD", category: "Navigation", href: "/academic-credits", icon: CreditCard },
     { id: "p-explore", title: "Campus Explorer", subtitle: "Directory of buildings & facilities", category: "Navigation", href: "/explore", icon: Compass },
     { id: "p-map", title: "Interactive 3D Campus Map", subtitle: "Real-time geographical pinpoints", category: "Navigation", href: "/map", icon: MapPin },
     { id: "p-time", title: "Class Timetable", subtitle: "Day-wise lecture routines", category: "Navigation", href: "/timetable", icon: CalendarDays },
