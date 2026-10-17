@@ -276,6 +276,12 @@ const studentNavItems: NavItem[] = [
     badge: "Phase 51",
   },
   {
+    title: "AICTE Regulatory Compliance",
+    href: "/aicte",
+    icon: Scale,
+    badge: "Phase 52",
+  },
+  {
     title: "Campus Explorer",
     href: "/explore",
     icon: Compass,
