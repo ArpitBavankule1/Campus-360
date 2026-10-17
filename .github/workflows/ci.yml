@@ -147,6 +147,9 @@ jobs:
       - name: Verify Phase 51 (Academic Bank of Credits & APAAR Gateway)
         run: node scripts/verify-phase51.mjs
 
+      - name: Verify Phase 52 (AICTE Regulatory Compliance & EoA Gateway)
+        run: node scripts/verify-phase52.mjs
+
       - name: Verify Master Security & Anti-Injection Suite
         run: node scripts/verify-security.mjs
 
