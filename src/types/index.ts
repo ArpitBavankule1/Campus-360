@@ -4016,6 +4016,139 @@ export interface AcademicCreditsSummaryStats {
   syncLogs: DigiLockerNadSyncLog[];
 }
 
+// ==========================================
+// Phase 52: AICTE Approval Process Handbook (APH) & Regulatory Compliance Gateway
+// ==========================================
+
+export type AicteProgramLevel =
+  | "undergraduate"
+  | "postgraduate"
+  | "diploma"
+  | "doctoral";
+
+export type AicteEoaStatus =
+  | "approved"
+  | "under_scrutiny"
+  | "deficiency_flagged"
+  | "applied";
+
+export type AicteAccreditationStatus =
+  | "tier_1_accredited"
+  | "accredited"
+  | "eligible"
+  | "not_accredited";
+
+export type AicteRoomType =
+  | "classroom"
+  | "tutorial_room"
+  | "laboratory"
+  | "computer_center"
+  | "library"
+  | "seminar_hall"
+  | "administrative"
+  | "amenities";
+
+export type AicteCommitteeType =
+  | "anti_ragging"
+  | "icc_posh"
+  | "sc_st_cell"
+  | "grievance_sgrc"
+  | "industry_cell";
+
+export type AicteInspectionStatus =
+  | "recommended"
+  | "scrutiny_cleared"
+  | "under_scrutiny"
+  | "clarification_sought";
+
+export interface AicteApprovedProgram {
+  id: string;
+  program_name: string;
+  program_level: AicteProgramLevel;
+  department: string;
+  approved_intake: number;
+  applied_intake: number;
+  eoa_status: AicteEoaStatus;
+  approval_academic_year: string;
+  accreditation_status: AicteAccreditationStatus;
+  nri_quota_approved: boolean;
+  pio_fn_quota_approved: boolean;
+  tfw_quota_approved: boolean;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface AicteInfrastructureNorm {
+  id: string;
+  room_type: AicteRoomType;
+  category_name: string;
+  required_area_sqm: number;
+  available_area_sqm: number;
+  required_count: number;
+  available_count: number;
+  deficiency_percentage: number;
+  compliance_status: "compliant" | "minor_deficiency" | "non_compliant";
+  audited_by: string;
+  created_at?: string;
+}
+
+export interface AicteCadreFsrMetric {
+  id: string;
+  department: string;
+  total_students: number;
+  required_faculty: number;
+  available_faculty: number;
+  fsr_ratio: string;
+  professors_count: number;
+  assoc_professors_count: number;
+  asst_professors_count: number;
+  phd_faculty_pct: number;
+  cadre_ratio_compliant: boolean;
+  created_at?: string;
+}
+
+export interface AicteStatutoryCommittee {
+  id: string;
+  committee_name: string;
+  committee_type: AicteCommitteeType;
+  chairperson_name: string;
+  external_member_name: string;
+  total_members: number;
+  last_meeting_date: string;
+  mom_docket_token: string;
+  statutory_compliance_status: "active" | "reconstitution_due" | "compliant";
+  created_at?: string;
+}
+
+export interface AicteEoaDossier {
+  id: string;
+  application_number: string;
+  academic_year: string;
+  submission_date: string;
+  deficiency_index: number;
+  evc_inspection_status: AicteInspectionStatus;
+  eoa_docket_token: string;
+  mandatory_disclosure_token: string;
+  digital_signature_hash: string;
+  created_at?: string;
+}
+
+export interface AicteComplianceSummaryStats {
+  totalApprovedIntake: number;
+  totalAppliedIntake: number;
+  overallFsrRatio: string;
+  deficiencyIndex: number;
+  eoaApprovalYear: string;
+  activeCommitteesCount: number;
+  totalInstructionalAreaSqm: number;
+  programs: AicteApprovedProgram[];
+  infrastructureNorms: AicteInfrastructureNorm[];
+  cadreMetrics: AicteCadreFsrMetric[];
+  committees: AicteStatutoryCommittee[];
+  dossiers: AicteEoaDossier[];
+}
+
+
 
 
 
