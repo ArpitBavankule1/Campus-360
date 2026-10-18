@@ -44,6 +44,7 @@ import {
   UserPlus,
   UserCheck,
   FileText,
+  Landmark,
 } from "lucide-react";
 import { useAuth } from "@/components/layout/auth-provider";
 import { Badge } from "@/components/ui/badge";
@@ -280,6 +281,12 @@ const studentNavItems: NavItem[] = [
     href: "/aicte",
     icon: Scale,
     badge: "Phase 52",
+  },
+  {
+    title: "UGC Autonomous Governance",
+    href: "/ugc",
+    icon: Landmark,
+    badge: "Phase 53",
   },
   {
     title: "Campus Explorer",

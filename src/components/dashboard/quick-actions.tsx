@@ -35,6 +35,7 @@ import {
   UserCheck,
   FileText,
   Building2,
+  Landmark,
 } from "lucide-react";
 import { cn } from "cn";
 
@@ -415,6 +416,16 @@ const actionItems: QuickActionItem[] = [
     iconColor: "text-blue-600 dark:text-blue-400",
     badge: "Phase 52",
     badgeBg: "bg-blue-500/15 text-blue-600 dark:text-blue-400 border-blue-500/30",
+  },
+  {
+    title: "UGC Autonomous College Governance",
+    description: "Statutory councils, curriculum autonomy, 10-year autonomy reviews & 2(f)/12(B) recognition",
+    href: "/ugc",
+    icon: Landmark,
+    iconBg: "bg-indigo-500/10 dark:bg-indigo-500/20",
+    iconColor: "text-indigo-600 dark:text-indigo-400",
+    badge: "Phase 53",
+    badgeBg: "bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 border-indigo-500/30",
   },
   {
     title: "Notices & Circulars",
