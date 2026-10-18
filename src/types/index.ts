@@ -4148,6 +4148,146 @@ export interface AicteComplianceSummaryStats {
   dossiers: AicteEoaDossier[];
 }
 
+// ==========================================
+// Phase 53: UGC Autonomous College Governance & 2(f)/12(B) Types
+// ==========================================
+
+export type UgcCouncilType =
+  | "governing_body"
+  | "academic_council"
+  | "board_of_studies"
+  | "finance_committee"
+  | "examination_cell";
+
+export type UgcCurriculumRevisionType =
+  | "full_curriculum_revision"
+  | "elective_basket_update"
+  | "industry_internship_embed"
+  | "nep_multidisciplinary_minor";
+
+export type UgcRevisionStatus =
+  | "approved_ratified"
+  | "bos_cleared"
+  | "under_review"
+  | "submitted";
+
+export type UgcSectionStatus =
+  | "2f_and_12b_recognized"
+  | "2f_recognized"
+  | "applied";
+
+export type UgcInspectionOutcome =
+  | "extension_recommended"
+  | "unconditional_extension"
+  | "compliance_pending"
+  | "inspection_scheduled";
+
+export type UgcUcStatus =
+  | "uc_audited_submitted"
+  | "uc_under_audit"
+  | "partially_utilized"
+  | "sanctioned";
+
+export type UgcDossierType =
+  | "annual_autonomy_return"
+  | "governing_body_minutes"
+  | "ugc_2f_12b_certificate"
+  | "affiliation_endorsement"
+  | "iqac_statutory_action_taken";
+
+export interface UgcStatutoryCouncil {
+  id: string;
+  council_type: UgcCouncilType;
+  council_name: string;
+  chairperson: string;
+  university_nominee: string;
+  ugc_nominee: string;
+  state_gov_nominee: string;
+  total_members: number;
+  tenure_period: string;
+  last_meeting_date: string;
+  next_meeting_date: string;
+  resolution_token: string;
+  compliance_status: "active" | "term_renewal_due" | "compliant";
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface UgcCurriculumRevision {
+  id: string;
+  program_code: string;
+  program_name: string;
+  department: string;
+  regulation_year: string;
+  revision_type: UgcCurriculumRevisionType;
+  bos_approval_date: string;
+  academic_council_approval_date: string;
+  total_credits: number;
+  industry_component_pct: number;
+  status: UgcRevisionStatus;
+  curriculum_docket_token: string;
+  created_at?: string;
+}
+
+export interface UgcAutonomyReview {
+  id: string;
+  autonomy_cycle: string;
+  ugc_conferment_letter_no: string;
+  ugc_section_status: UgcSectionStatus;
+  validity_start_year: number;
+  validity_end_year: number;
+  expert_committee_visit_date: string;
+  inspection_outcome: UgcInspectionOutcome;
+  annual_compliance_report_token: string;
+  naac_score_multiplier: number;
+  autonomy_dossier_hash: string;
+  created_at?: string;
+}
+
+export interface UgcGrantUtilization {
+  id: string;
+  grant_scheme: string;
+  financial_year: string;
+  sanctioned_amount_inr: number;
+  released_amount_inr: number;
+  utilized_amount_inr: number;
+  uc_status: UgcUcStatus;
+  chartered_accountant_audit_no: string;
+  uc_certificate_token: string;
+  created_at?: string;
+}
+
+export interface UgcComplianceDossier {
+  id: string;
+  dossier_type: UgcDossierType;
+  title: string;
+  academic_year: string;
+  submission_date: string;
+  dossier_token: string;
+  approval_status: "verified_compliant" | "submitted_to_ugc" | "governing_body_approved" | "draft";
+  digital_seal_hash: string;
+  created_at?: string;
+}
+
+export interface UgcComplianceSummaryStats {
+  autonomyCycle: string;
+  ugcSectionStatus: UgcSectionStatus;
+  validityRange: string;
+  totalCouncils: number;
+  compliantCouncils: number;
+  totalRevisions: number;
+  ratifiedRevisions: number;
+  totalSanctionedGrantsInr: number;
+  totalUtilizedGrantsInr: number;
+  grantsUtilizationPct: number;
+  councils: UgcStatutoryCouncil[];
+  curriculumRevisions: UgcCurriculumRevision[];
+  autonomyReviews: UgcAutonomyReview[];
+  grants: UgcGrantUtilization[];
+  dossiers: UgcComplianceDossier[];
+}
+
+
 
 
 
