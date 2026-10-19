@@ -289,6 +289,12 @@ const studentNavItems: NavItem[] = [
     badge: "Phase 53",
   },
   {
+    title: "MoE Innovation Council (IIC)",
+    href: "/iic",
+    icon: Lightbulb,
+    badge: "Phase 54",
+  },
+  {
     title: "Campus Explorer",
     href: "/explore",
     icon: Compass,

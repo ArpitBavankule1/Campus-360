@@ -428,6 +428,16 @@ const actionItems: QuickActionItem[] = [
     badgeBg: "bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 border-indigo-500/30",
   },
   {
+    title: "MoE Innovation Council (IIC)",
+    description: "5-Star MIC rating, NISP 2026 policy, YUKTI repository dockets & ARIIA rankings",
+    href: "/iic",
+    icon: Lightbulb,
+    iconBg: "bg-amber-500/10 dark:bg-amber-500/20",
+    iconColor: "text-amber-600 dark:text-amber-400",
+    badge: "Phase 54",
+    badgeBg: "bg-amber-500/15 text-amber-600 dark:text-amber-400 border-amber-500/30",
+  },
+  {
     title: "Notices & Circulars",
     description: "Official notifications, examination routines & circulars",
     href: "/notices",
