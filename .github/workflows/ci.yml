@@ -153,6 +153,9 @@ jobs:
       - name: Verify Phase 53 (UGC Autonomous College Governance & 2(f)/12(B) Gateway)
         run: node scripts/verify-phase53.mjs
 
+      - name: Verify Phase 54 (MoE Innovation Council IIC, NISP & YUKTI Gateway)
+        run: node scripts/verify-phase54.mjs
+
       - name: Verify Master Security & Anti-Injection Suite
         run: node scripts/verify-security.mjs
 
