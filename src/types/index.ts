@@ -4287,6 +4287,181 @@ export interface UgcComplianceSummaryStats {
   dossiers: UgcComplianceDossier[];
 }
 
+// ==========================================
+// Phase 54: MoE Institution's Innovation Council (IIC 6.0/7.0), NISP & YUKTI Types
+// ==========================================
+
+export type IicCouncilRole =
+  | "president"
+  | "vice_president"
+  | "convener"
+  | "ipr_coordinator"
+  | "startup_coordinator"
+  | "innovation_coordinator"
+  | "social_media_coordinator"
+  | "nirf_ariia_coordinator"
+  | "external_expert"
+  | "student_lead";
+
+export type IicMemberType =
+  | "internal_faculty"
+  | "external_industry"
+  | "angel_investor"
+  | "student_coordinator";
+
+export type IicQuarter = "Q1" | "Q2" | "Q3" | "Q4";
+
+export type IicActivityCategory =
+  | "mic_driven"
+  | "calendar_activity"
+  | "self_driven"
+  | "celebration_activity";
+
+export type IicActivityStatus =
+  | "verified_approved"
+  | "report_submitted"
+  | "scheduled"
+  | "draft";
+
+export type NispPolicyStatus =
+  | "active_enacted"
+  | "board_approved"
+  | "under_revision";
+
+export type YuktiInnovationStage =
+  | "ideation"
+  | "proof_of_concept"
+  | "prototype"
+  | "startup_commercialized";
+
+export type YuktiPatentStatus =
+  | "granted"
+  | "published"
+  | "filed"
+  | "provisional"
+  | "not_applicable";
+
+export interface IicCouncilMember {
+  id: string;
+  role: IicCouncilRole;
+  name: string;
+  designation: string;
+  department: string;
+  email: string;
+  tenure_year: string;
+  member_type: IicMemberType;
+  status: "active" | "emeritus" | "term_completed";
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface IicQuarterlyActivity {
+  id: string;
+  activity_code: string;
+  title: string;
+  category: IicActivityCategory;
+  quarter: IicQuarter;
+  academic_year: string;
+  start_date: string;
+  end_date: string;
+  coordinator_name: string;
+  participant_count: number;
+  faculty_participant_count: number;
+  expenditure_inr: number;
+  mic_reward_points: number;
+  status: IicActivityStatus;
+  mic_verification_token: string;
+  report_url?: string;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface IicNispPolicy {
+  id: string;
+  policy_dimension: string;
+  clause_title: string;
+  description: string;
+  institutional_target: string;
+  budget_allocated_inr: number;
+  budget_percentage: number;
+  academic_incentives: string;
+  equity_sharing_slab: string;
+  ip_ownership_terms: string;
+  status: NispPolicyStatus;
+  policy_resolution_token: string;
+  created_at?: string;
+}
+
+export interface IicYuktiInnovation {
+  id: string;
+  yukti_token: string;
+  title: string;
+  lead_innovator: string;
+  innovator_type: "student" | "faculty" | "joint_consortium";
+  department: string;
+  domain: string;
+  innovation_stage: YuktiInnovationStage;
+  trl_level: number;
+  patent_status: YuktiPatentStatus;
+  patent_application_no?: string;
+  seed_funding_received_inr: number;
+  moe_mic_evaluated: boolean;
+  national_recognition_status: string;
+  digital_signature_hash: string;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface IicAriiaRanking {
+  id: string;
+  ranking_year: string;
+  rank_band: string;
+  total_score: number;
+  mindset_development_score: number;
+  infrastructure_facilities_score: number;
+  annual_budget_expenditure_score: number;
+  patents_and_commercialization_score: number;
+  startups_graduated_score: number;
+  annual_dossier_token: string;
+  created_at?: string;
+}
+
+export interface IicPerformanceRating {
+  id: string;
+  council_code: string;
+  academic_year: string;
+  star_rating: number;
+  cumulative_points: number;
+  national_percentile: number;
+  annual_certificate_token: string;
+  verified_by_mic: string;
+  qr_verification_url: string;
+  created_at?: string;
+}
+
+export interface IicComplianceSummaryStats {
+  councilCode: string;
+  academicYear: string;
+  starRating: number;
+  cumulativePoints: number;
+  nationalPercentile: number;
+  rankBand: string;
+  nispBudgetAllocatedInr: number;
+  nispBudgetPct: number;
+  totalCouncilMembers: number;
+  totalActivitiesConducted: number;
+  totalParticipants: number;
+  totalYuktiInnovations: number;
+  commercializedInnovations: number;
+  members: IicCouncilMember[];
+  activities: IicQuarterlyActivity[];
+  nispPolicies: IicNispPolicy[];
+  innovations: IicYuktiInnovation[];
+  ariiaRanking: IicAriiaRanking;
+  performanceRating: IicPerformanceRating;
+}
+
+
 
 
 
