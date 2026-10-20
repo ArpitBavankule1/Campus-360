@@ -4461,6 +4461,179 @@ export interface IicComplianceSummaryStats {
   performanceRating: IicPerformanceRating;
 }
 
+// Phase 55: All India Survey on Higher Education (AISHE) Types
+export type AisheSurveyStatus =
+  | "draft"
+  | "in_progress"
+  | "submitted"
+  | "certified_submitted"
+  | "locked";
+
+export type AisheDcfType = "DCF-I" | "DCF-II" | "DCF-III" | "DCF-IV";
+
+export type AisheDcfStatus =
+  | "draft"
+  | "under_verification"
+  | "submitted"
+  | "approved_certified";
+
+export type AisheProgrammeLevel =
+  | "undergraduate"
+  | "postgraduate"
+  | "doctoral"
+  | "integrated"
+  | "pg_diploma";
+
+export type AisheCadreType =
+  | "professor"
+  | "associate_professor"
+  | "assistant_professor"
+  | "adjunct_visiting";
+
+export interface AisheInstitutionProfile {
+  id: string;
+  aishe_code: string;
+  institution_name: string;
+  affiliating_university: string;
+  institution_type: string;
+  management_type: string;
+  survey_year: string;
+  year_of_establishment: number;
+  nodal_officer_name: string;
+  nodal_officer_email: string;
+  nodal_officer_phone: string;
+  survey_status: AisheSurveyStatus;
+  certificate_token: string;
+  verification_hash: string;
+  moe_approval_date: string;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface AisheDcfSurvey {
+  id: string;
+  survey_year: string;
+  dcf_type: AisheDcfType;
+  submission_deadline: string;
+  completion_percentage: number;
+  status: AisheDcfStatus;
+  block_a_basic_info: boolean;
+  block_b_programmes: boolean;
+  block_c_student_enrollment: boolean;
+  block_d_foreign_students: boolean;
+  block_e_staff_information: boolean;
+  block_f_financial_info: boolean;
+  block_g_infrastructure: boolean;
+  block_h_scholarships: boolean;
+  filing_token: string;
+  certified_by: string;
+  created_at?: string;
+}
+
+export interface AisheEnrollmentRecord {
+  id: string;
+  survey_year: string;
+  programme_level: AisheProgrammeLevel;
+  discipline_name: string;
+  sanctioned_intake: number;
+  enrolled_male: number;
+  enrolled_female: number;
+  enrolled_transgender: number;
+  total_enrolled: number;
+  sc_count: number;
+  st_count: number;
+  obc_count: number;
+  general_count: number;
+  ews_count: number;
+  pwd_count: number;
+  out_of_state_count: number;
+  foreign_national_count: number;
+  created_at?: string;
+}
+
+export interface AisheFacultyCadre {
+  id: string;
+  survey_year: string;
+  cadre_type: AisheCadreType;
+  sanctioned_posts: number;
+  regular_in_position: number;
+  contractual_in_position: number;
+  male_faculty: number;
+  female_faculty: number;
+  phd_holders: number;
+  sc_faculty: number;
+  st_faculty: number;
+  obc_faculty: number;
+  general_faculty: number;
+  ews_faculty: number;
+  pwd_faculty: number;
+  created_at?: string;
+}
+
+export interface AisheFinancialStatement {
+  id: string;
+  survey_year: string;
+  financial_year: string;
+  recurring_grants_gov_inr: number;
+  non_recurring_grants_inr: number;
+  tuition_fee_income_inr: number;
+  other_income_inr: number;
+  total_income_inr: number;
+  faculty_salary_expenditure_inr: number;
+  non_teaching_salary_expenditure_inr: number;
+  laboratory_capex_inr: number;
+  library_capex_inr: number;
+  scholarships_distributed_inr: number;
+  total_expenditure_inr: number;
+  audited_udin_token: string;
+  ca_auditor_name: string;
+  audit_date: string;
+  created_at?: string;
+}
+
+export interface AisheInfrastructureAudit {
+  id: string;
+  campus_land_area_acres: number;
+  built_up_area_sqm: number;
+  total_classrooms: number;
+  ict_enabled_classrooms: number;
+  total_laboratories: number;
+  computer_terminals: number;
+  library_books_count: number;
+  e_journals_subscribed: number;
+  hostel_capacity_boys: number;
+  hostel_capacity_girls: number;
+  solar_power_capacity_kw: number;
+  water_recycling_plant: boolean;
+  health_center_beds: number;
+  safety_fire_audit_certified: boolean;
+}
+
+export interface AisheSummaryStats {
+  aisheCode: string;
+  surveyYear: string;
+  surveyStatus: AisheSurveyStatus;
+  certificateToken: string;
+  totalStudents: number;
+  totalMaleStudents: number;
+  totalFemaleStudents: number;
+  genderParityIndex: number;
+  pupilTeacherRatio: number;
+  totalRegularFaculty: number;
+  phdFacultyPercentage: number;
+  socialDiversityPercentage: number;
+  outOfStatePercentage: number;
+  totalIncomeInr: number;
+  totalExpenditureInr: number;
+  profile: AisheInstitutionProfile;
+  surveys: AisheDcfSurvey[];
+  enrollment: AisheEnrollmentRecord[];
+  faculty: AisheFacultyCadre[];
+  finances: AisheFinancialStatement[];
+  infrastructure: AisheInfrastructureAudit;
+}
+
+
 
 
 
