@@ -45,6 +45,7 @@ import {
   UserCheck,
   FileText,
   Landmark,
+  FileSpreadsheet,
 } from "lucide-react";
 import { useAuth } from "@/components/layout/auth-provider";
 import { Badge } from "@/components/ui/badge";
@@ -293,6 +294,12 @@ const studentNavItems: NavItem[] = [
     href: "/iic",
     icon: Lightbulb,
     badge: "Phase 54",
+  },
+  {
+    title: "AISHE MoE Survey",
+    href: "/aishe",
+    icon: FileSpreadsheet,
+    badge: "Phase 55",
   },
   {
     title: "Campus Explorer",
