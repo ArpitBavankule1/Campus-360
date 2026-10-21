@@ -159,6 +159,9 @@ jobs:
       - name: Verify Phase 55 (All India Survey on Higher Education AISHE Gateway)
         run: node scripts/verify-phase55.mjs
 
+      - name: Verify Phase 56 (SWAYAM-NPTEL MOOCs & Academic Credit Transfer Gateway)
+        run: node scripts/verify-phase56.mjs
+
       - name: Verify Master Security & Anti-Injection Suite
         run: node scripts/verify-security.mjs
 
