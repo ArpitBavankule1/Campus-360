@@ -155,6 +155,7 @@ export function CommandPalette() {
     { id: "p-ugc", title: "UGC Autonomous College Governance & 2(f)/12(B)", subtitle: "Statutory councils, curriculum autonomy, 10-year reviews & audited UC", category: "Navigation", href: "/ugc", icon: Landmark },
     { id: "p-iic", title: "MoE Institution's Innovation Council (IIC)", subtitle: "5-Star MIC rating, NISP 2026 policy, YUKTI repository & ARIIA", category: "Navigation", href: "/iic", icon: Lightbulb },
     { id: "p-aishe", title: "All India Survey on Higher Education (AISHE)", subtitle: "MoE DCF annual surveys, GER, Gender Parity Index & financial telemetry", category: "Navigation", href: "/aishe", icon: FileSpreadsheet },
+    { id: "p-swayam", title: "SWAYAM-NPTEL MOOCs & Academic Credit Transfer", subtitle: "Curated IIT/IISc courses, Local Chapter LC-4109, FDPs & NEP 2020 credit ledger", category: "Navigation", href: "/swayam", icon: GraduationCap },
     { id: "p-explore", title: "Campus Explorer", subtitle: "Directory of buildings & facilities", category: "Navigation", href: "/explore", icon: Compass },
     { id: "p-map", title: "Interactive 3D Campus Map", subtitle: "Real-time geographical pinpoints", category: "Navigation", href: "/map", icon: MapPin },
     { id: "p-time", title: "Class Timetable", subtitle: "Day-wise lecture routines", category: "Navigation", href: "/timetable", icon: CalendarDays },

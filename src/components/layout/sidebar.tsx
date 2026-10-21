@@ -302,6 +302,12 @@ const studentNavItems: NavItem[] = [
     badge: "Phase 55",
   },
   {
+    title: "SWAYAM-NPTEL MOOCs",
+    href: "/swayam",
+    icon: GraduationCap,
+    badge: "Phase 56",
+  },
+  {
     title: "Campus Explorer",
     href: "/explore",
     icon: Compass,

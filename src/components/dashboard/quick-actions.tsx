@@ -449,6 +449,16 @@ const actionItems: QuickActionItem[] = [
     badgeBg: "bg-blue-500/15 text-blue-600 dark:text-blue-400 border-blue-500/30",
   },
   {
+    title: "SWAYAM-NPTEL Gateway",
+    description: "MOOCs, IIT/IISc certifications, AICTE FDPs & NEP 2020 Academic Bank of Credits",
+    href: "/swayam",
+    icon: GraduationCap,
+    iconBg: "bg-teal-500/10 dark:bg-teal-500/20",
+    iconColor: "text-teal-600 dark:text-teal-400",
+    badge: "Phase 56",
+    badgeBg: "bg-teal-500/15 text-teal-600 dark:text-teal-400 border-teal-500/30",
+  },
+  {
     title: "Notices & Circulars",
     description: "Official notifications, examination routines & circulars",
     href: "/notices",
