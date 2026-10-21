@@ -4633,6 +4633,148 @@ export interface AisheSummaryStats {
   infrastructure: AisheInfrastructureAudit;
 }
 
+// Phase 56: Smart Campus SWAYAM-NPTEL MOOCs, Local Chapter & Academic Credit Transfer Gateway Types
+export type SwayamChapterRating = "AAA" | "AA" | "A" | "Active";
+export type SwayamCourseDuration = "4_weeks" | "8_weeks" | "12_weeks";
+export type SwayamEnrollmentStatus =
+  | "enrolled"
+  | "assignment_submitted"
+  | "exam_registered"
+  | "certified"
+  | "transferred";
+export type SwayamCertTier =
+  | "elite_gold"
+  | "elite_silver"
+  | "elite"
+  | "successfully_completed"
+  | "participation";
+export type SwayamCreditTransferStatus =
+  | "approved_transferred"
+  | "bos_cleared"
+  | "pending_review";
+export type SwayamRole = "student" | "faculty";
+export type SwayamAbcSyncStatus = "synced_abc" | "pending_sync" | "failed_sync";
+
+export interface SwayamLocalChapter {
+  id: string;
+  local_chapter_id: string;
+  institution_name: string;
+  spoc_name: string;
+  spoc_email: string;
+  spoc_designation: string;
+  spoc_department: string;
+  rating_tier: SwayamChapterRating;
+  active_semester_cycle: string;
+  national_rank: number;
+  total_enrollments: number;
+  exam_registrations: number;
+  successful_certifications: number;
+  elite_gold_certifications: number;
+  elite_silver_certifications: number;
+  faculty_fdp_certifications: number;
+  status: "active" | "renewal_due" | "archived";
+  chapter_token: string;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface SwayamCourse {
+  id: string;
+  course_code: string;
+  course_title: string;
+  offering_institute: string;
+  instructor_name: string;
+  discipline: string;
+  duration_weeks: SwayamCourseDuration;
+  credit_equivalency: 2 | 3 | 4;
+  aicte_approved_fdp: boolean;
+  syllabus_outline: string;
+  exam_date: string;
+  enrollment_status: "enrolling" | "ongoing" | "exam_completed" | "archived";
+  course_token: string;
+  created_at?: string;
+}
+
+export interface SwayamEnrollment {
+  id: string;
+  enrollment_token: string;
+  user_id?: string;
+  user_name: string;
+  roll_number: string;
+  department: string;
+  academic_year: string;
+  course_code: string;
+  course_title: string;
+  role: SwayamRole;
+  enrollment_status: SwayamEnrollmentStatus;
+  assignment_avg_score: number;
+  hall_ticket_no?: string;
+  exam_city: string;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface SwayamCertification {
+  id: string;
+  cert_token: string;
+  enrollment_token: string;
+  candidate_name: string;
+  roll_number: string;
+  course_code: string;
+  course_title: string;
+  offering_institute: string;
+  assignment_score: number;
+  exam_score: number;
+  consolidated_score: number;
+  cert_tier: SwayamCertTier;
+  aicte_fdp_credits: number;
+  verification_hash: string;
+  qr_seal_payload: string;
+  issued_date: string;
+  created_at?: string;
+}
+
+export interface SwayamCreditTransfer {
+  id: string;
+  transfer_token: string;
+  cert_token: string;
+  student_name: string;
+  roll_number: string;
+  department: string;
+  swayam_course_code: string;
+  swayam_course_title: string;
+  equivalent_curriculum_course: string;
+  credits_transferred: 2 | 3 | 4;
+  grade_awarded: "O" | "A+" | "A" | "B+" | "B";
+  bos_approval_date: string;
+  academic_council_ref: string;
+  approval_status: SwayamCreditTransferStatus;
+  abc_sync_status: SwayamAbcSyncStatus;
+  apaar_id: string;
+  created_at?: string;
+}
+
+export interface SwayamSummaryStats {
+  localChapterId: string;
+  ratingTier: SwayamChapterRating;
+  nationalRank: number;
+  activeSemesterCycle: string;
+  totalEnrollments: number;
+  examRegistrations: number;
+  totalCertified: number;
+  eliteGoldCount: number;
+  eliteSilverCount: number;
+  elitePassRatePct: number;
+  facultyFdpCount: number;
+  totalCreditsTransferred: number;
+  chapter: SwayamLocalChapter;
+  courses: SwayamCourse[];
+  enrollments: SwayamEnrollment[];
+  certifications: SwayamCertification[];
+  creditTransfers: SwayamCreditTransfer[];
+}
+
+
 
 
 
