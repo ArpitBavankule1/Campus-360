@@ -162,6 +162,9 @@ jobs:
       - name: Verify Phase 56 (SWAYAM-NPTEL MOOCs & Academic Credit Transfer Gateway)
         run: node scripts/verify-phase56.mjs
 
+      - name: Verify Phase 57 (SAMARTH eGov Suite & Enterprise ERP Integration Gateway)
+        run: node scripts/verify-phase57.mjs
+
       - name: Verify Master Security & Anti-Injection Suite
         run: node scripts/verify-security.mjs
 
