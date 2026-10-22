@@ -4774,12 +4774,155 @@ export interface SwayamSummaryStats {
   creditTransfers: SwayamCreditTransfer[];
 }
 
+// ================================================================
+// Phase 57 — Smart Campus SAMARTH eGov Suite & Enterprise ERP Integration Gateway
+// ================================================================
 
+export type SamarthDeploymentStatus = "active" | "syncing" | "degraded" | "maintenance";
 
+export type SamarthModuleCategory =
+  | "student_lifecycle"
+  | "hrms_faculty"
+  | "governance_academics"
+  | "research_development"
+  | "finance_logistics";
 
+export type SamarthSyncDirection = "INBOUND" | "OUTBOUND" | "BIDIRECTIONAL";
 
+export type SamarthSyncStatus = "COMPLETED" | "IN_PROGRESS" | "PENDING" | "FAILED";
 
+export type SamarthCasStage =
+  | "Stage 1 (Assistant Prof)"
+  | "Stage 2 (Assistant Prof Senior)"
+  | "Stage 3 (Assistant Prof Selection Grade)"
+  | "Stage 4 (Associate Prof)"
+  | "Stage 5 (Professor)"
+  | "Stage 6 (Senior Professor)";
 
+export type SamarthCasStatus =
+  | "DRAFT"
+  | "SUBMITTED"
+  | "UNDER_SCRUTINY"
+  | "COMMITTEE_APPROVED"
+  | "GAZETTED"
+  | "REJECTED";
 
+export type SamarthOnboardingStatus =
+  | "PENDING"
+  | "IN_REVIEW"
+  | "VERIFIED"
+  | "PROVISIONAL"
+  | "FLAGGED";
 
+export interface SamarthInstance {
+  id: string;
+  college_id?: string;
+  instance_code: string;
+  institutional_name: string;
+  moe_institution_code: string;
+  samarth_version: string;
+  environment: string;
+  api_endpoint_url: string;
+  deployment_status: SamarthDeploymentStatus;
+  last_sync_at: string;
+  health_score: number;
+  active_microservices_count: number;
+  created_at?: string;
+  updated_at?: string;
+}
 
+export interface SamarthModule {
+  id: string;
+  instance_id?: string;
+  module_key: string;
+  name: string;
+  category: SamarthModuleCategory;
+  description: string;
+  is_enabled: boolean;
+  sync_frequency: string;
+  api_route: string;
+  total_records_synced: number;
+  last_successful_sync_at: string;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface SamarthSyncLog {
+  id: string;
+  instance_id?: string;
+  sync_token: string;
+  module_key: string;
+  direction: SamarthSyncDirection;
+  status: SamarthSyncStatus;
+  records_processed: number;
+  records_updated: number;
+  records_failed: number;
+  latency_ms: number;
+  payload_checksum: string;
+  error_message?: string;
+  initiated_by: string;
+  synced_at: string;
+  created_at?: string;
+}
+
+export interface SamarthCasApplication {
+  id: string;
+  instance_id?: string;
+  cas_token: string;
+  faculty_name: string;
+  faculty_email: string;
+  department: string;
+  current_designation: string;
+  current_stage: SamarthCasStage;
+  target_stage: SamarthCasStage;
+  api_score_claimed: number;
+  api_score_verified: number;
+  publications_count: number;
+  research_projects_count: number;
+  status: SamarthCasStatus;
+  scrutiny_notes?: string;
+  gazette_notification_number?: string;
+  submission_date: string;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface SamarthStudentOnboarding {
+  id: string;
+  instance_id?: string;
+  onboarding_token: string;
+  student_name: string;
+  student_email: string;
+  enrollment_number: string;
+  apaar_id: string;
+  program_name: string;
+  admission_quota: string;
+  academic_year: string;
+  verification_status: SamarthOnboardingStatus;
+  fee_clearance_status: "CLEARED" | "PARTIAL" | "PENDING" | "EXEMPTED";
+  digilocker_verified: boolean;
+  samarth_sso_linked: boolean;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface SamarthSummaryStats {
+  instanceCode: string;
+  institutionalName: string;
+  samarthVersion: string;
+  deploymentStatus: SamarthDeploymentStatus;
+  healthScorePct: number;
+  activeModulesCount: number;
+  totalModulesCount: number;
+  totalSyncEventsToday: number;
+  syncSuccessRatePct: number;
+  casTotalApplications: number;
+  casApprovedRatePct: number;
+  studentOnboardingsTotal: number;
+  studentVerifiedRatePct: number;
+  instance: SamarthInstance;
+  modules: SamarthModule[];
+  syncLogs: SamarthSyncLog[];
+  casApplications: SamarthCasApplication[];
+  studentOnboardings: SamarthStudentOnboarding[];
+}
