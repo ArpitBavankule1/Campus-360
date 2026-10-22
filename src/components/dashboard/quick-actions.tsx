@@ -37,6 +37,7 @@ import {
   Building2,
   Landmark,
   FileSpreadsheet,
+  Server,
 } from "lucide-react";
 import { cn } from "cn";
 
@@ -457,6 +458,16 @@ const actionItems: QuickActionItem[] = [
     iconColor: "text-teal-600 dark:text-teal-400",
     badge: "Phase 56",
     badgeBg: "bg-teal-500/15 text-teal-600 dark:text-teal-400 border-teal-500/30",
+  },
+  {
+    title: "SAMARTH ERP Gateway",
+    description: "MoE SAMARTH microservices, CAS promotion e-dossiers & student lifecycle SSO",
+    href: "/samarth",
+    icon: Server,
+    iconBg: "bg-indigo-500/10 dark:bg-indigo-500/20",
+    iconColor: "text-indigo-600 dark:text-indigo-400",
+    badge: "Phase 57",
+    badgeBg: "bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 border-indigo-500/30",
   },
   {
     title: "Notices & Circulars",

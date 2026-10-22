@@ -46,6 +46,7 @@ import {
   FileText,
   Landmark,
   FileSpreadsheet,
+  Server,
 } from "lucide-react";
 import { useAuth } from "@/components/layout/auth-provider";
 import { Badge } from "@/components/ui/badge";
@@ -306,6 +307,12 @@ const studentNavItems: NavItem[] = [
     href: "/swayam",
     icon: GraduationCap,
     badge: "Phase 56",
+  },
+  {
+    title: "SAMARTH eGov ERP",
+    href: "/samarth",
+    icon: Server,
+    badge: "Phase 57",
   },
   {
     title: "Campus Explorer",
