@@ -315,6 +315,12 @@ const studentNavItems: NavItem[] = [
     badge: "Phase 57",
   },
   {
+    title: "PM-USHA Grants",
+    href: "/pm-usha",
+    icon: Landmark,
+    badge: "Phase 58",
+  },
+  {
     title: "Campus Explorer",
     href: "/explore",
     icon: Compass,

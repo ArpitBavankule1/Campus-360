@@ -158,6 +158,7 @@ export function CommandPalette() {
     { id: "p-aishe", title: "All India Survey on Higher Education (AISHE)", subtitle: "MoE DCF annual surveys, GER, Gender Parity Index & financial telemetry", category: "Navigation", href: "/aishe", icon: FileSpreadsheet },
     { id: "p-swayam", title: "SWAYAM-NPTEL MOOCs & Academic Credit Transfer", subtitle: "Curated IIT/IISc courses, Local Chapter LC-4109, FDPs & NEP 2020 credit ledger", category: "Navigation", href: "/swayam", icon: GraduationCap },
     { id: "p-samarth", title: "SAMARTH eGov Suite & Enterprise ERP", subtitle: "MoE SAMARTH ERP, CAS promotion dossiers, sync telemetry & student life cycle", category: "Navigation", href: "/samarth", icon: Server },
+    { id: "p-pm-usha", title: "PM-USHA Grants & Institutional Development", subtitle: "National higher education funding, MERU upgrades, PFMS allocations & GFR 12-A", category: "Navigation", href: "/pm-usha", icon: Landmark },
     { id: "p-explore", title: "Campus Explorer", subtitle: "Directory of buildings & facilities", category: "Navigation", href: "/explore", icon: Compass },
     { id: "p-map", title: "Interactive 3D Campus Map", subtitle: "Real-time geographical pinpoints", category: "Navigation", href: "/map", icon: MapPin },
     { id: "p-time", title: "Class Timetable", subtitle: "Day-wise lecture routines", category: "Navigation", href: "/timetable", icon: CalendarDays },

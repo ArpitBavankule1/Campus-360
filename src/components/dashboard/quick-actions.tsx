@@ -470,6 +470,16 @@ const actionItems: QuickActionItem[] = [
     badgeBg: "bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 border-indigo-500/30",
   },
   {
+    title: "PM-USHA Grants Gateway",
+    description: "National higher education funding, MERU upgrades, PFMS allocations & GFR 12-A",
+    href: "/pm-usha",
+    icon: Landmark,
+    iconBg: "bg-emerald-500/10 dark:bg-emerald-500/20",
+    iconColor: "text-emerald-600 dark:text-emerald-400",
+    badge: "Phase 58",
+    badgeBg: "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border-emerald-500/30",
+  },
+  {
     title: "Notices & Circulars",
     description: "Official notifications, examination routines & circulars",
     href: "/notices",
