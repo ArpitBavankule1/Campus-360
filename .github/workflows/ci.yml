@@ -165,6 +165,9 @@ jobs:
       - name: Verify Phase 57 (SAMARTH eGov Suite & Enterprise ERP Integration Gateway)
         run: node scripts/verify-phase57.mjs
 
+      - name: Verify Phase 58 (PM-USHA Grants & Institutional Development Gateway)
+        run: node scripts/verify-phase58.mjs
+
       - name: Verify Master Security & Anti-Injection Suite
         run: node scripts/verify-security.mjs
 
