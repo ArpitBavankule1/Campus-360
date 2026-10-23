@@ -317,7 +317,12 @@ graph TD
 - **Unified Scholar Lifecycle & SAMARTH SSO Onboarding**: Automated student registration ledger (`SAMARTH-STU-2026-XXXX`) with APAAR / ABC ID synchronization, DigiLocker credentials verification, and fee clearance audits.
 - **Modular Microservices Directory & Administration**: Real-time management and toggle controls for admissions, continuous evaluation, statutory ordinances, ANRF/SERB seed grants, and government procurement interop.
 
-
+### 47. 🏛️ Smart Campus PM-USHA (Pradhan Mantri Uchchatar Shiksha Abhiyan), Grants & Institutional Development Gateway (Phase 58)
+- **Institutional PM-USHA Development Profile & SHEC Governance**: Ministry of Education institutional code (`USHA-INST-MH-2026-88`), State Higher Education Council (MSHEC) endorsement, and nodal officer oversight for multi-crore institutional grants.
+- **Multi-Disciplinary Education and Research (MERU) & Infrastructure DPRs**: Comprehensive Detailed Project Reports portfolio (`PM-USHA-PROP-2026-XXXX`) for high-performance computing centers, modern science labs, gender equity resource centers, and digital media studios.
+- **Public Financial Management System (PFMS) Fund Disbursals**: End-to-end allocation ledger (`PM-USHA-ALLOC-2026-XX`) tracking central (60%) and state (40%) fund credits, sanction orders, transaction IDs, and multi-tranche disbursal milestones.
+- **Geo-Tagged Physical & Financial Milestone Tracker**: Real-time civil works and laboratory modernizations monitoring with GPS coordinates, physical vs financial absorption indicators, and state PWD/SPD site inspection certifications.
+- **GFR 12-A Statutory Utilization Certificates (UC)**: Chartered accountant certified digital expenditure declarations (`PM-USHA-UC-2025-26-XXXX`) with SHA-256 verification hashes, accrued interest deductions, and formal MoE PAB acceptance.
 
 ---
 
@@ -523,6 +528,9 @@ node scripts/verify-phase56.mjs
 
 # Phase 57: Smart Campus SAMARTH eGov Suite & Enterprise ERP Integration Gateway
 node scripts/verify-phase57.mjs
+
+# Phase 58: Smart Campus PM-USHA Grants & Institutional Development Gateway
+node scripts/verify-phase58.mjs
 
 # Run production build validation
 npm run build
