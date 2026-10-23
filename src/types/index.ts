@@ -4926,3 +4926,176 @@ export interface SamarthSummaryStats {
   casApplications: SamarthCasApplication[];
   studentOnboardings: SamarthStudentOnboarding[];
 }
+
+// ============================================================================
+// Phase 58: Smart Campus PM-USHA (Pradhan Mantri Uchchatar Shiksha Abhiyan)
+// Grants, Infrastructure & Institutional Development Types
+// ============================================================================
+
+export type PmUshaCategory =
+  | "MERU"
+  | "STRENGTHENING_UNIVERSITY"
+  | "INFRASTRUCTURE_COLLEGE"
+  | "EQUITY_INITIATIVE"
+  | "MODEL_DEGREE_COLLEGE";
+
+export type PmUshaComponentType =
+  | "MERU_UPGRADE"
+  | "INFRASTRUCTURE_GRANTS"
+  | "RESEARCH_INNOVATION"
+  | "GENDER_EQUITY"
+  | "DIGITAL_LEARNING_CENTER";
+
+export type PmUshaProposalStatus =
+  | "Draft"
+  | "Submitted"
+  | "SHEC_Recommended"
+  | "MoE_Approved"
+  | "Rejected"
+  | "Revision_Requested";
+
+export type PmUshaDisbursalStatus =
+  | "Sanctioned"
+  | "PFMS_Credited"
+  | "Pending_State_Share"
+  | "On_Hold";
+
+export type PmUshaMilestoneCategory =
+  | "Civil_Works"
+  | "Lab_Modernization"
+  | "Smart_Classrooms"
+  | "Solar_Green_Energy"
+  | "Digital_Library_Infra";
+
+export type PmUshaInspectionStatus =
+  | "Pending"
+  | "Inspected_Satisfactory"
+  | "Deficiency_Noted"
+  | "Certified";
+
+export type PmUshaUcStatus =
+  | "Draft"
+  | "Certified_by_CA"
+  | "Submitted_to_SHEC"
+  | "MoE_Accepted"
+  | "Queried";
+
+export interface PmUshaInstitutionalProfile {
+  id: string;
+  college_id?: string;
+  institutional_code: string;
+  shec_state: string;
+  category: PmUshaCategory;
+  nodal_officer_name: string;
+  nodal_officer_email: string;
+  nodal_officer_phone: string;
+  pfms_agency_code: string;
+  pfms_bank_account_no: string;
+  current_cycle: string;
+  total_approved_grant_cr: number;
+  total_disbursed_grant_cr: number;
+  total_utilized_grant_cr: number;
+  status: "Active" | "Under Review" | "Audited" | "Suspended";
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface PmUshaProjectProposal {
+  id: string;
+  college_id?: string;
+  proposal_code: string;
+  title: string;
+  component_type: PmUshaComponentType;
+  submitted_date: string;
+  estimated_budget_lakhs: number;
+  approved_budget_lakhs: number;
+  central_share_percentage: number;
+  state_share_percentage: number;
+  target_completion_date: string;
+  approval_status: PmUshaProposalStatus;
+  review_remarks?: string;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface PmUshaFundAllocation {
+  id: string;
+  college_id?: string;
+  allocation_code: string;
+  proposal_id?: string;
+  sanction_order_no: string;
+  sanction_date: string;
+  installment_number: number;
+  central_share_amount_lakhs: number;
+  state_share_amount_lakhs: number;
+  total_sanctioned_lakhs: number;
+  pfms_transaction_id: string;
+  disbursal_status: PmUshaDisbursalStatus;
+  disbursal_date?: string;
+  utilization_status: "Unspent" | "Partially_Utilized" | "Fully_Utilized";
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface PmUshaPhysicalMilestone {
+  id: string;
+  college_id?: string;
+  milestone_code: string;
+  proposal_id?: string;
+  milestone_name: string;
+  work_category: PmUshaMilestoneCategory;
+  target_date: string;
+  physical_progress_percentage: number;
+  financial_progress_percentage: number;
+  geo_latitude?: number;
+  geo_longitude?: number;
+  site_inspection_status: PmUshaInspectionStatus;
+  inspection_date?: string;
+  inspector_designation?: string;
+  geo_tag_photo_url?: string;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface PmUshaUtilizationCertificate {
+  id: string;
+  college_id?: string;
+  certificate_number: string;
+  allocation_id?: string;
+  financial_year: string;
+  gfr_format: string;
+  grant_in_aid_sanctioned_lakhs: number;
+  interest_earned_lakhs: number;
+  expenditure_incurred_lakhs: number;
+  unspent_balance_lakhs: number;
+  statutory_auditor_name: string;
+  ca_membership_no: string;
+  signed_date: string;
+  submission_status: PmUshaUcStatus;
+  verification_hash: string;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface PmUshaSummaryStats {
+  institutionalCode: string;
+  shecState: string;
+  pfmsAgencyCode: string;
+  currentCycle: string;
+  totalApprovedGrantCr: number;
+  totalDisbursedGrantCr: number;
+  totalUtilizedGrantCr: number;
+  fundUtilizationRatePct: number;
+  totalProposalsCount: number;
+  approvedProposalsCount: number;
+  milestonesTotalCount: number;
+  milestonesCertifiedCount: number;
+  milestoneCompletionRatePct: number;
+  pfmsComplianceScorePct: number;
+  profile: PmUshaInstitutionalProfile;
+  proposals: PmUshaProjectProposal[];
+  allocations: PmUshaFundAllocation[];
+  milestones: PmUshaPhysicalMilestone[];
+  certificates: PmUshaUtilizationCertificate[];
+}
+
